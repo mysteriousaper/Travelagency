@@ -485,5 +485,14 @@ if (currencyButtons.length) {
     .catch(() => { /* rates unavailable: prices stay as published */ });
 }
 
+/* Floating contact box: hidden while the first screen is in view (its contacts are in the header),
+   so it never covers the hero; it slides in once the visitor scrolls on. */
+const widget = $('[data-widget]');
+const firstScreen = $('.hero');
+if (widget && firstScreen && 'IntersectionObserver' in window) {
+  widget.classList.add('is-away');
+  new IntersectionObserver(([entry]) => widget.classList.toggle('is-away', entry.isIntersecting), { threshold: 0.35 }).observe(firstScreen);
+}
+
 /* Remember the chosen language for the next visit to the root address */
 storageSet('kt-lang', lang);

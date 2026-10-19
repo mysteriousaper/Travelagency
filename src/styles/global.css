@@ -132,22 +132,27 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .hero-card { --ease: cubic-bezier(0.22, 0.61, 0.36, 1); position: relative; overflow: hidden; border: 0; padding: 0; border-radius: var(--radius); flex: 1 1 0; min-width: 0; transition: flex-grow 0.6s var(--ease); background: var(--navy); text-align: left; isolation: isolate; }
 .hero-card.is-wide { flex-grow: 2.2; }
 .hero-card img { position: absolute; top: 0; left: 50%; height: 100%; width: calc((100cqw - 16px) * 0.6875); max-width: none; transform: translateX(-50%); object-fit: cover; }
-.hero-card-titles { display: grid; }
-.hero-card-titles > * { grid-area: 1 / 1; align-self: end; transition: opacity 0.25s ease; }
-.hero-card .t-wide { width: calc((100cqw - 16px) * 0.6875 - 48px); opacity: 0; }
-.hero-card .t-narrow { width: calc((100cqw - 16px) * 0.3125 - 48px); font-size: 19px; opacity: 1; transition-delay: 0.3s; }
-.hero-card.is-wide .t-wide { opacity: 1; transition-delay: 0.3s; }
-.hero-card.is-wide .t-narrow { opacity: 0; transition-delay: 0s; }
+/* Each card has two complete text layers (eyebrow + title), laid out once at the wide and the
+   narrow width. They cross-fade while the card resizes, so no line ever re-wraps mid-animation. */
+.hero-card-text > * { grid-area: 1 / 1; align-self: end; display: flex; flex-direction: column; gap: 6px; }
+/* Narrow card: the wide layer leaves at once; the narrow layer fits any width, so it can come in right away.
+   Wide card: the narrow layer stays until the card is wide enough, then the two swap at the same moment. */
+.hero-card .t-wide { width: calc((100cqw - 16px) * 0.6875 - 48px); opacity: 0; transition: opacity 0.14s ease-in 0s; }
+.hero-card .t-narrow { width: calc((100cqw - 16px) * 0.3125 - 48px); opacity: 1; transition: opacity 0.3s ease-out 0.1s; }
+.hero-card .t-narrow .hero-card-title { font-size: 19px; }
+.hero-card .t-narrow .eyebrow { font-size: 11px; letter-spacing: 0.14em; }
+.hero-card.is-wide .t-wide { opacity: 1; transition: opacity 0.3s ease-out 0.32s; }
+.hero-card.is-wide .t-narrow { opacity: 0; transition: opacity 0.14s ease-in 0.2s; }
 @media (hover: hover) {
   .hero-cards:has(.hero-card:hover) .hero-card:not(:hover) { flex-grow: 1; }
-  .hero-cards:has(.hero-card:hover) .hero-card:not(:hover) .t-wide { opacity: 0; transition-delay: 0s; }
-  .hero-cards:has(.hero-card:hover) .hero-card:not(:hover) .t-narrow { opacity: 1; transition-delay: 0.3s; }
+  .hero-cards:has(.hero-card:hover) .hero-card:not(:hover) .t-wide { opacity: 0; transition: opacity 0.14s ease-in 0s; }
+  .hero-cards:has(.hero-card:hover) .hero-card:not(:hover) .t-narrow { opacity: 1; transition: opacity 0.3s ease-out 0.1s; }
   .hero-cards .hero-card:hover { flex-grow: 2.2; }
-  .hero-cards .hero-card:hover .t-wide { opacity: 1; transition-delay: 0.3s; }
-  .hero-cards .hero-card:hover .t-narrow { opacity: 0; transition-delay: 0s; }
+  .hero-cards .hero-card:hover .t-wide { opacity: 1; transition: opacity 0.3s ease-out 0.32s; }
+  .hero-cards .hero-card:hover .t-narrow { opacity: 0; transition: opacity 0.14s ease-in 0.2s; }
 }
 .hero-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,0) 45%, rgba(15,23,42,0.85) 100%); }
-.hero-card-text { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 24px; color: #fff; display: flex; flex-direction: column; gap: 6px; }
+.hero-card-text { position: absolute; z-index: 1; left: 24px; bottom: 24px; color: #fff; display: grid; }
 .eyebrow { font-size: 12px; letter-spacing: 0.2em; color: #fcd34d; font-weight: 700; text-transform: uppercase; }
 .hero-card-title { font-family: var(--font-display); font-size: 26px; font-weight: 600; line-height: 1.15; }
 @media (max-width: 720px) {
@@ -339,6 +344,8 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 @media (max-width: 720px) { .footer-inner { padding: 28px 20px; } }
 
 /* Floating contact */
+.widget { transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0s; }
+.widget.is-away { opacity: 0; transform: translateY(16px); visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s; }
 .widget { position: fixed; right: 20px; bottom: 20px; z-index: 40; background: var(--card); border: 1px solid #e2e5ea; border-radius: 20px; box-shadow: 0 18px 44px -18px rgba(15,23,42,0.5); padding: 8px; width: 230px; display: flex; flex-direction: column; gap: 6px; }
 .widget-title { font-family: var(--font-display); padding: 6px 8px 2px; font-size: 14px; font-weight: 600; }
 .widget-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
@@ -351,6 +358,10 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 /* Dialog */
 dialog.quote-dialog { width: min(560px, calc(100% - 24px)); border: 0; border-radius: 20px; padding: 0; background: var(--bg); color: var(--ink); }
 dialog.quote-dialog::backdrop { background: rgba(15,23,42,0.6); }
+dialog.quote-dialog[open] { animation: dialog-in 0.2s ease-out; }
+dialog.quote-dialog[open]::backdrop { animation: backdrop-in 0.2s ease-out; }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes backdrop-in { from { opacity: 0; } }
 .dialog-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
 .dialog-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .dialog-head h2 { font-size: 22px; font-weight: 600; }
@@ -375,4 +386,4 @@ dialog.quote-dialog::backdrop { background: rgba(15,23,42,0.6); }
   .print-foot { margin-top: 10mm; font-size: 10pt; color: #333; line-height: 1.6; break-inside: avoid; }
 }
 
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { *, ::backdrop { transition: none !important; animation: none !important; } }
