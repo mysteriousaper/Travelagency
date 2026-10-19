@@ -2,20 +2,29 @@ slug: rome
 order: 5
 region: europe
 code: FCO
-image: ""
-image_alt: { en: "", hy: "", ru: "" }
+image: "/images/tours/rome.jpg"
+image_alt: { en: "The Colosseum in Rome at dusk", hy: "Կոլիզեումը Հռոմում մթնշաղին", ru: "Колизей в Риме в сумерках" }
+# Photo licence requires this credit to stay visible on the tour page.
+image_credit: "Diliff, CC BY-SA 2.5"
+image_credit_url: "https://commons.wikimedia.org/wiki/File:Colosseum_in_Rome,_Italy_-_April_2007.jpg"
 name: { en: "Rome", hy: "Հռոմ", ru: "Рим" }
 country: { en: "Italy", hy: "Իտալիա", ru: "Италия" }
 description:
   en: "The Colosseum, the Vatican Museums, the Trevi Fountain and long Italian dinners."
   hy: "Կոլիզեում, Վատիկանի թանգարաններ, Տրևիի շատրվան և երկար իտալական ընթրիքներ։"
   ru: "Колизей, музеи Ватикана, фонтан Треви и долгие итальянские ужины."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+flight:
+  en: "Direct flights from Zvartnots, about 4 h 20 min."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, մոտ 4 ժամ 20 րոպե։"
+  ru: "Прямые рейсы из Звартноца, около 4 ч 20 мин."
 visa:
   en: "Schengen visa. We prepare it as part of the trip."
   hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
   ru: "Шенгенская виза. Оформим её вместе с поездкой."
-best_months: "[PLACEHOLDER: your recommendation]"
+best_months:
+  en: "April to June, and September to October."
+  hy: "Ապրիլից հունիս և սեպտեմբերից հոկտեմբեր։"
+  ru: "С апреля по июнь и с сентября по октябрь."
 nights: "[PLACEHOLDER: typical length]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

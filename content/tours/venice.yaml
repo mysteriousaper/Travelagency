@@ -10,12 +10,18 @@ description:
   en: "Canals, gondolas, St Mark's Square and day trips to Murano and Burano."
   hy: "Ջրանցքներ, գոնդոլներ, Սուրբ Մարկոսի հրապարակ և մեկօրյա այցեր Մուրանո ու Բուրանո։"
   ru: "Каналы, гондолы, площадь Сан-Марко и поездки на Мурано и Бурано."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+flight:
+  en: "Direct flights from Zvartnots."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից։"
+  ru: "Прямые рейсы из Звартноца."
 visa:
   en: "Schengen visa. We prepare it as part of the trip."
   hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
   ru: "Шенгенская виза. Оформим её вместе с поездкой."
-best_months: "[PLACEHOLDER: your recommendation]"
+best_months:
+  en: "April to June, and September to October."
+  hy: "Ապրիլից հունիս և սեպտեմբերից հոկտեմբեր։"
+  ru: "С апреля по июнь и с сентября по октябрь."
 nights: "[PLACEHOLDER: typical length]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

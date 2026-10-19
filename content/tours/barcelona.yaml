@@ -2,20 +2,29 @@ slug: barcelona
 order: 8
 region: europe
 code: BCN
-image: ""
-image_alt: { en: "", hy: "", ru: "" }
+image: "/images/tours/barcelona.jpg"
+image_alt: { en: "The ceiling of the Sagrada Família in Barcelona", hy: "Սագրադա Ֆամիլիայի առաստաղը Բարսելոնայում", ru: "Своды Саграда Фамилии в Барселоне" }
+# Photo licence requires this credit to stay visible on the tour page.
+image_credit: "Alvesgaspar, CC BY-SA 4.0"
+image_credit_url: "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_March_2015-10a.jpg"
 name: { en: "Barcelona", hy: "Բարսելոնա", ru: "Барселона" }
 country: { en: "Spain", hy: "Իսպանիա", ru: "Испания" }
 description:
   en: "Gaudí's Sagrada Família and Park Güell, the Gothic Quarter and the city beaches."
   hy: "Գաուդիի Սագրադա Ֆամիլիան և Գուել այգին, Գոթական թաղամասը և քաղաքային լողափերը։"
   ru: "Саграда Фамилия и парк Гуэль Гауди, Готический квартал и городские пляжи."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+flight:
+  en: "Direct flights from Zvartnots, about 5 hours."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, մոտ 5 ժամ։"
+  ru: "Прямые рейсы из Звартноца, около 5 часов."
 visa:
   en: "Schengen visa. We prepare it as part of the trip."
   hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
   ru: "Шенгенская виза. Оформим её вместе с поездкой."
-best_months: "[PLACEHOLDER: your recommendation]"
+best_months:
+  en: "April to June, and September to October."
+  hy: "Ապրիլից հունիս և սեպտեմբերից հոկտեմբեր։"
+  ru: "С апреля по июнь и с сентября по октябрь."
 nights: "[PLACEHOLDER: typical length]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

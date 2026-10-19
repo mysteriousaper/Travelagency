@@ -32,6 +32,7 @@ const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', ma
               ? <img src={tour.image} alt="" loading="lazy" width="600" height="440" />
               : <div class="ph-box">[PLACEHOLDER: photo of {pick(tour.name, 'en')}]</div>}
             <span class="tour-code">{tour.code}</span>
+            {tour.image_credit && <span class="photo-credit">Photo: {tour.image_credit}</span>}
           </a>
           <div class="tour-card-body">
             <div class="tour-card-title">

@@ -2,20 +2,29 @@ slug: prague
 order: 7
 region: europe
 code: PRG
-image: ""
-image_alt: { en: "", hy: "", ru: "" }
+image: "/images/tours/prague.jpg"
+image_alt: { en: "Charles Bridge and the Vltava river in Prague", hy: "Կարլի կամուրջը և Վլտավա գետը Պրահայում", ru: "Карлов мост и Влтава в Праге" }
+# Photo licence requires this credit to stay visible on the tour page.
+image_credit: "DXR, CC BY-SA 4.0"
+image_credit_url: "https://commons.wikimedia.org/wiki/File:North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most,_Prague_20160808_1.jpg"
 name: { en: "Prague", hy: "Պրահա", ru: "Прага" }
 country: { en: "Czechia", hy: "Չեխիա", ru: "Чехия" }
 description:
   en: "Charles Bridge, the Old Town Square and Prague Castle, all within walking distance."
   hy: "Կարլի կամուրջ, Հին քաղաքի հրապարակ և Պրահայի ամրոց, ամենը՝ քայլելու հեռավորության վրա։"
   ru: "Карлов мост, Староместская площадь и Пражский град, всё в пешей доступности."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+flight:
+  en: "Direct flights from Zvartnots, about 4 h 10 min."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, մոտ 4 ժամ 10 րոպե։"
+  ru: "Прямые рейсы из Звартноца, около 4 ч 10 мин."
 visa:
   en: "Schengen visa. We prepare it as part of the trip."
   hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
   ru: "Шенгенская виза. Оформим её вместе с поездкой."
-best_months: "[PLACEHOLDER: your recommendation]"
+best_months:
+  en: "May to September, and December for the Christmas markets."
+  hy: "Մայիսից սեպտեմբեր, իսկ դեկտեմբերին՝ Սուրբ Ծննդյան տոնավաճառների համար։"
+  ru: "С мая по сентябрь, а в декабре — ради рождественских ярмарок."
 nights: "[PLACEHOLDER: typical length]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

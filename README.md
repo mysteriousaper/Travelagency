@@ -69,7 +69,9 @@ To host on Vercel or Netlify instead, replace the Node adapter in `astro.config.
 
 ## Photos
 
-The Sharm El Sheikh, Dubai, Paris, Venice and flight photos are Unsplash stock images (free to use). Replace them with your own when you can. Doha, Rome, Prague, Barcelona and the office still need photos.
+- **Sharm El Sheikh, Dubai, Paris, Venice and flight photos:** Unsplash stock images, free to use with no credit needed.
+- **Doha, Rome, Prague and Barcelona photos:** from Wikimedia Commons under Creative Commons licences. Their licences require the photographer credit, which the site shows on the photo (`image_credit` in each tour file). If you replace a photo with your own, clear those two fields.
+- **Still needed:** photos of your office and team.
 
 ## How it's built
 

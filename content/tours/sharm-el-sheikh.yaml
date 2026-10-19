@@ -13,9 +13,15 @@ description:
   en: "A Red Sea resort town in Egypt's Sinai. People go for the beach hotels and for snorkelling and diving on the reefs at Ras Mohammed and Tiran."
   hy: "Կարմիր ծովի ափին գտնվող հանգստավայր Եգիպտոսի Սինայի թերակղզում։ Այստեղ գալիս են լողափնյա հյուրանոցների, ինչպես նաև Ռաս Մոհամեդի և Տիրանի խութերում սնորքլինգի ու դայվինգի համար։"
   ru: "Курорт на Красном море, на Синайском полуострове в Египте. Сюда едут ради пляжных отелей, снорклинга и дайвинга на рифах Рас-Мохаммеда и Тирана."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
-visa: "[PLACEHOLDER: what Armenian passport holders need for Sinai]"
-best_months: "[PLACEHOLDER: your recommendation]"
+flight:
+  en: "Direct flights from Zvartnots, some of them seasonal."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, որոշները՝ սեզոնային։"
+  ru: "Прямые рейсы из Звартноца, часть из них сезонные."
+visa: "[PLACEHOLDER: Egypt / Sinai entry rules for Armenian passports. Online sources disagree, please confirm]"
+best_months:
+  en: "October to May. June to September is very hot."
+  hy: "Հոկտեմբերից մայիս։ Հունիսից սեպտեմբեր շատ շոգ է։"
+  ru: "С октября по май. С июня по сентябрь очень жарко."
 nights: "[PLACEHOLDER: typical length, e.g. 7 nights]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

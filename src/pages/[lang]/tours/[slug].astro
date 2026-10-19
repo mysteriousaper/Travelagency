@@ -30,11 +30,12 @@ const facts = [
     <p>{pick(tour.country, lang)} · {tour.code}</p>
   </div>
   <div class="split">
-    <div class="tour-hero">
+    <figure class="tour-hero">
       {tour.image
         ? <img src={tour.image} alt={pick(tour.image_alt, lang)} width="1200" height="800" />
         : <div class="ph-box">[PLACEHOLDER: photo of {pick(tour.name, 'en')}]</div>}
-    </div>
+      {tour.image_credit && <figcaption class="photo-credit">Photo: {tour.image_credit_url ? <a href={tour.image_credit_url} rel="noopener" target="_blank">{tour.image_credit}</a> : tour.image_credit}</figcaption>}
+    </figure>
     <div class="card stack" style="gap: 18px">
       <p style="margin: 0; font-size: 17px">{description}</p>
       <dl class="facts">

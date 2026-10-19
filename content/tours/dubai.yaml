@@ -13,9 +13,15 @@ description:
   en: "Beach hotels on Jumeirah and Palm Jumeirah, big malls and the view from Burj Khalifa. A popular short trip in the cooler months."
   hy: "Լողափնյա հյուրանոցներ Ջումեյրայում և Փալմ Ջումեյրայում, մեծ առևտրի կենտրոններ և տեսարան Բուրջ Խալիֆայից։ Հարմար է կարճ ուղևորության համար զով ամիսներին։"
   ru: "Пляжные отели на Джумейре и Палм-Джумейре, большие торговые центры и вид с Бурдж-Халифы. Удобно для короткой поездки в прохладные месяцы."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
-visa: "[PLACEHOLDER: UAE entry rules for Armenian passports]"
-best_months: "[PLACEHOLDER: your recommendation]"
+flight:
+  en: "Direct flights from Zvartnots, about 3 hours."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, մոտ 3 ժամ։"
+  ru: "Прямые рейсы из Звартноца, около 3 часов."
+visa: "[PLACEHOLDER: UAE entry rules for Armenian passports. Online sources disagree, please confirm]"
+best_months:
+  en: "November to March. Summers are very hot."
+  hy: "Նոյեմբերից մարտ։ Ամռանը շատ շոգ է։"
+  ru: "С ноября по март. Летом очень жарко."
 nights: "[PLACEHOLDER: typical length, e.g. 5 nights]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:

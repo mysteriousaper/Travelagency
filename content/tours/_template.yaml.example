@@ -6,6 +6,8 @@ region: sea          # sea (Red Sea) | gulf | europe
 code: XXX            # airport code shown on the card
 image: ""            # e.g. /images/tours/example.jpg (put the file in public/images/tours/)
 image_alt: { en: "", hy: "", ru: "" }
+image_credit: ""        # photo credit, if the photo licence requires one
+image_credit_url: ""
 name: { en: "", hy: "", ru: "" }
 country: { en: "", hy: "", ru: "" }
 description: { en: "", hy: "", ru: "" }

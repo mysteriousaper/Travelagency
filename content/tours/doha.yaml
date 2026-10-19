@@ -2,17 +2,29 @@ slug: doha
 order: 3
 region: gulf
 code: DOH
-image: ""
-image_alt: { en: "", hy: "", ru: "" }
+image: "/images/tours/doha.jpg"
+image_alt: { en: "Souq Waqif market in Doha", hy: "Սուկ Վակիֆ շուկան Դոհայում", ru: "Рынок Сук-Вакиф в Дохе" }
+# Photo licence requires this credit to stay visible on the tour page.
+image_credit: "Diego Delso, CC BY-SA 3.0"
+image_credit_url: "https://commons.wikimedia.org/wiki/File:Souq_Waqif,_Doha,_Catar,_2013-08-05,_DD_75.JPG"
 name: { en: "Doha", hy: "Դոհա", ru: "Доха" }
 country: { en: "Qatar", hy: "Կատար", ru: "Катар" }
 description:
   en: "Qatar's capital: Souq Waqif, the Corniche waterfront and the Museum of Islamic Art. Booked as a few days on its own or as a stopover."
   hy: "Կատարի մայրաքաղաքը՝ Սուկ Վակիֆ շուկայով, Կորնիշ ափամերձ զբոսավայրով և Իսլամական արվեստի թանգարանով։ Կարելի է գնալ մի քանի օրով կամ կանգ առնել ճանապարհին։"
   ru: "Столица Катара: рынок Сук-Вакиф, набережная Корниш и Музей исламского искусства. Можно поехать на несколько дней или остановиться по пути."
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
-visa: "[PLACEHOLDER: Qatar entry rules for Armenian passports]"
-best_months: "[PLACEHOLDER: your recommendation]"
+flight:
+  en: "Direct flights from Zvartnots, about 3 hours."
+  hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, մոտ 3 ժամ։"
+  ru: "Прямые рейсы из Звартноца, около 3 часов."
+visa:
+  en: "No visa needed for stays of up to 90 days within 6 months (in force since 8 December 2019)."
+  hy: "Վիզա պետք չէ մինչև 90 օր մնալու համար՝ 6 ամսվա ընթացքում (գործում է 2019 թ. դեկտեմբերի 8-ից)։"
+  ru: "Виза не нужна для пребывания до 90 дней в течение 6 месяцев (действует с 8 декабря 2019 г.)."
+best_months:
+  en: "November to March. Summers are very hot."
+  hy: "Նոյեմբերից մարտ։ Ամռանը շատ շոգ է։"
+  ru: "С ноября по март. Летом очень жарко."
 nights: "[PLACEHOLDER: typical length]"
 includes: "[PLACEHOLDER: what the package includes]"
 price_from_amd:
