@@ -51,7 +51,7 @@ Anything still written as `[PLACEHOLDER: ...]` shows on the site with a yellow h
 
 **Add a destination:** copy `content/tours/_template.yaml.example` to `content/tours/<name>.yaml` and fill it in. Put its photo in `public/images/tours/`. It then appears automatically in the tour list, search, footer and its own page.
 
-**Prices:** set `price_from_amd: 450000` in a tour file. Leave it empty to show "Price on request". Visitors can switch prices to $, € or ₽. The site converts them with the official rates of the Central Bank of Armenia, which it fetches automatically every hour.
+**Prices:** add `offers` to a tour file (see `content/tours/_template.yaml.example`): title, dates, hotel, price per person, currency and what's included. The card shows the lowest price as "from …". A tour without offers shows "Price on request". Visitors can switch prices to $, € or ₽. The site converts them with the official rates of the Central Bank of Armenia, which it fetches automatically every hour.
 
 After editing, rebuild and redeploy (`npm run build`). If the site is connected to the repository on a host like Render, pushing the change is enough.
 
@@ -70,7 +70,8 @@ To host on Vercel or Netlify instead, replace the Node adapter in `astro.config.
 ## Photos
 
 - **Sharm El Sheikh, Dubai, Paris, Venice and flight photos:** Unsplash stock images, free to use with no credit needed.
-- **Doha, Rome, Prague and Barcelona photos:** from Wikimedia Commons under Creative Commons licences. Their licences require the photographer credit, which the site shows on the photo (`image_credit` in each tour file). If you replace a photo with your own, clear those two fields.
+- **Belgrade photo:** Wikimedia Commons, public domain (CC0), no credit needed.
+- **Doha, Rome, Prague, Barcelona and Tbilisi photos:** from Wikimedia Commons under Creative Commons licences. Their licences require the photographer credit, which the site shows on the photo (`image_credit` in each tour file). If you replace a photo with your own, clear those two fields.
 - **Still needed:** photos of your office and team.
 
 ## How it's built

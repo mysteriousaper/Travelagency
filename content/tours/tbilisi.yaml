@@ -1,0 +1,41 @@
+slug: tbilisi
+order: 4
+region: caucasus
+code: TBS
+image: "/images/tours/tbilisi.jpg"
+image_alt: { en: "Tbilisi seen from the Narikala fortress", hy: "Թբիլիսին Նարիկալա ամրոցից", ru: "Тбилиси с крепости Нарикала" }
+# Photo licence requires this credit to stay visible on the tour page.
+image_credit: "Marcin Konsek, CC BY-SA 4.0"
+image_credit_url: "https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Widoki_z_Twierdzy_Narikala_(41).jpg"
+name: { en: "Tbilisi", hy: "Թբիլիսի", ru: "Тбилиси" }
+country: { en: "Georgia", hy: "Վրաստան", ru: "Грузия" }
+description:
+  en: "Georgia's capital: the old town under the Narikala fortress, the sulphur baths, wine bars and a famous New Year's Eve."
+  hy: "Վրաստանի մայրաքաղաքը՝ Նարիկալա ամրոցի տակ գտնվող հին քաղաքով, ծծմբային բաղնիքներով, գինու բարերով և հայտնի Ամանորյա գիշերով։"
+  ru: "Столица Грузии: старый город под крепостью Нарикала, серные бани, винные бары и знаменитая новогодняя ночь."
+visa:
+  en: "No visa needed for Armenian citizens."
+  hy: "ՀՀ քաղաքացիների համար վիզա պետք չէ։"
+  ru: "Гражданам Армении виза не нужна."
+best_months:
+  en: "April to October, and New Year."
+  hy: "Ապրիլից հոկտեմբեր, ինչպես նաև Ամանորին։"
+  ru: "С апреля по октябрь, а также на Новый год."
+
+offers:
+  - title: { en: "New Year 2027 in Tbilisi", hy: "Դիմավորեք 2027 թվականը Թբիլիսիում", ru: "Встречайте 2027 год в Тбилиси" }
+    dates:
+      en: "30 Dec 2026 – 3 Jan 2027 or 31 Dec 2026 – 4 Jan 2027. You can stay longer."
+      hy: "30.12.2026 – 03.01.2027 կամ 31.12.2026 – 04.01.2027։ Օրերը կարելի է երկարաձգել։"
+      ru: "30.12.2026 – 03.01.2027 или 31.12.2026 – 04.01.2027. Можно продлить."
+    hotel: "Pine Astoria Hotel 5★"
+    text:
+      en: "With Avo Adamyan, Hasmik Papinyan, Spartak Araqelyan and Tatul Avoyan."
+      hy: "Ավո Ադամյան, Հասմիկ Պապինյան, Սպարտակ Առաքելյան և Թաթուլ Ավոյան։"
+      ru: "С участием Аво Адамяна, Асмик Папинян, Спартака Аракеляна и Татула Авояна."
+    price: 449
+    currency: USD
+    price_note:
+      en: "Paid in dram, at the equivalent of 449 US dollars."
+      hy: "Արժեքը՝ 449 ԱՄՆ դոլարին համարժեք ՀՀ դրամ։"
+      ru: "Оплата в драмах, по эквиваленту 449 долларов США."

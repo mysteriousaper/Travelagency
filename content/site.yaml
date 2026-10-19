@@ -10,12 +10,16 @@ branches:
       hy: "Երևան 0009, Տերյան փ. 62"
       ru: "Ереван 0009, ул. Терьяна, 62"
     district: { en: "Kentron district", hy: "Կենտրոն վարչական շրջան", ru: "Административный район Кентрон" }
-    hours: { en: "Every day 10:00–19:00", hy: "Ամեն օր 10:00–19:00", ru: "Ежедневно 10:00–19:00" }
+    hours: { en: "Every day 10:00–19:30", hy: "Ամեն օր 10:00–19:30", ru: "Ежедневно 10:00–19:30" }
     map_query: "62 Teryan St, Yerevan 0009, Armenia"
+    # As listed in King Travel's Telegram posts.
     phones:
-      - "+374 10 584402"
-      - "+374 99 584402"
       - "+374 11 584402"
+      - "+374 99 584402"
+      - "+374 98 584402"
+      - "+374 55 584402"
+      - "+374 77 584402"
+      - "+374 10 584402"
 
   - name: { en: "Vazgen I Vehapar St. office", hy: "Վազգեն Առաջին Վեհափառի փողոցի գրասենյակ", ru: "Офис на ул. Вазгена Первого Вехапара" }
     address:
@@ -23,15 +27,17 @@ branches:
       hy: "Երևան 0033, Վազգեն Առաջին Վեհափառի փ. 3"
       ru: "Ереван 0033, ул. Вазгена Первого Вехапара, 3"
     district: { en: "Arabkir district", hy: "Արաբկիր վարչական շրջան", ru: "Административный район Арабкир" }
-    hours: ""
+    hours: { en: "Every day 10:00–19:30", hy: "Ամեն օր 10:00–19:30", ru: "Ежедневно 10:00–19:30" }
     map_query: "3 Vazgen Arajin Vehapari St, Yerevan 0033, Armenia"
     phones:
       - "+374 11 584402"
+      - "+374 94 584402"
+      - "+374 33 584402"
       - "+374 96 584402"
 
-# Digits only, with the country code and no "+". Example: 37499584402
-# While empty, the site shows no WhatsApp button.
-whatsapp_number: ""
+# Digits only, with the country code and no "+". While empty, no WhatsApp button shows.
+# TEMPORARY: example number until the agency confirms its WhatsApp line.
+whatsapp_number: "37499584402"
 
 # A Telegram username (without "@") that clients can write to.
 # While empty, the Telegram buttons open the channel below.
@@ -60,7 +66,7 @@ reviews:
 # Office visit requests. Visitors choose a day and time; staff confirm by phone.
 office:
   open_days: [1, 2, 3, 4, 5, 6, 7]   # 1 = Monday ... 7 = Sunday
-  times: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
+  times: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]
   days_ahead: 7
 
 # Exchange rates for the $ / € / ₽ price switch come automatically from the

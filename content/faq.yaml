@@ -12,6 +12,15 @@ items:
       ru: "Нет. Узнать цены можно бесплатно, первая консультация по визе тоже бесплатна."
 
   - question:
+      en: "Can I pay in installments?"
+      hy: "Կարո՞ղ եմ վճարել ապառիկով"
+      ru: "Можно ли оплатить в рассрочку?"
+    answer:
+      en: "Yes: installments with 0% down payment, PayLater and Rocket Line. We work with VTB-Armenia Bank, Unibank and Inecobank."
+      hy: "Այո՝ ապառիկ 0% կանխավճարով, PayLater և Rocket Line։ Աշխատում ենք ՎՏԲ-Հայաստան Բանկի, Յունիբանկի և Ինեկոբանկի հետ։"
+      ru: "Да: рассрочка без первоначального взноса, PayLater и Rocket Line. Мы работаем с Банком ВТБ (Армения), Юнибанком и Инекобанком."
+
+  - question:
       en: "Do you arrange transfers?"
       hy: "Կազմակերպո՞ւմ եք տրանսֆեր"
       ru: "Вы организуете трансфер?"

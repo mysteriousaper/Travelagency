@@ -26,9 +26,9 @@ cta:
 
 hero:
   badge_destinations:
-    en: "Sharm El Sheikh · Dubai · Doha · Europe"
-    hy: "Շարմ էլ Շեյխ · Դուբայ · Դոհա · Եվրոպա"
-    ru: "Шарм-эль-Шейх · Дубай · Доха · Европа"
+    en: "Sharm El Sheikh · Doha · Belgrade · Tbilisi · Dubai · Europe"
+    hy: "Շարմ էլ Շեյխ · Դոհա · Բելգրադ · Թբիլիսի · Դուբայ · Եվրոպա"
+    ru: "Шарм-эль-Шейх · Доха · Белград · Тбилиси · Дубай · Европа"
   badge_visas:
     en: "Visas: Schengen, US, UK"
     hy: "Վիզաներ՝ Շենգեն, ԱՄՆ, Մեծ Բրիտանիա"
@@ -46,7 +46,7 @@ hero:
     hy: "Հանգստի փաթեթներ դեպի Շարմ էլ Շեյխ, Դուբայ, Դոհա և Եվրոպայի քաղաքներ։ Մենք նաև զբաղվում ենք վիզաներով և ավիատոմսերով։ Գրեք WhatsApp-ով, և ձեզ կպատասխանի մեր գրասենյակի աշխատակիցը։"
     ru: "Пакетные туры в Шарм-эль-Шейх, Дубай, Доху и города Европы. Также оформляем визы и авиабилеты. Напишите в WhatsApp, и вам ответит сотрудник нашего офиса."
   card_sea: { en: "Sun & Sea", hy: "Արև և ծով", ru: "Солнце и море" }
-  card_europe: { en: "Europe", hy: "Եվրոպա", ru: "Европа" }
+  card_europe: { en: "Europe & Georgia", hy: "Եվրոպա և Վրաստան", ru: "Европа и Грузия" }
 
 search:
   label: { en: "Search", hy: "Որոնում", ru: "Поиск" }
@@ -158,8 +158,13 @@ tours:
   region_sea: { en: "Red Sea", hy: "Կարմիր ծով", ru: "Красное море" }
   region_gulf: { en: "Gulf", hy: "Պարսից ծոց", ru: "Персидский залив" }
   region_europe: { en: "Europe", hy: "Եվրոպա", ru: "Европа" }
+  region_caucasus: { en: "Georgia", hy: "Վրաստան", ru: "Грузия" }
   from: { en: "from", hy: "սկսած", ru: "от" }
   ask_price: { en: "Price on request", hy: "Գինը՝ ըստ հարցման", ru: "Цена по запросу" }
+  offers: { en: "Current offers", hy: "Ընթացիկ առաջարկներ", ru: "Актуальные предложения" }
+  per_person: { en: "Per person", hy: "1 անձը՝", ru: "За человека" }
+  book_offer: { en: "Book this offer", hy: "Ամրագրել", ru: "Забронировать" }
+  installments: { en: "Installments with 0% down payment, PayLater and Rocket Line.", hy: "Ապառիկ՝ 0% կանխավճարով, PayLater և Rocket Line։", ru: "Рассрочка без первоначального взноса, PayLater и Rocket Line." }
   details: { en: "Details", hy: "Մանրամասն", ru: "Подробнее" }
   ask_whatsapp: { en: "Ask on WhatsApp", hy: "Հարցնել WhatsApp-ով", ru: "Спросить в WhatsApp" }
   request: { en: "Request prices", hy: "Հարցնել գները", ru: "Запросить цены" }
@@ -190,6 +195,16 @@ footer:
 widget:
   title: { en: "Write to us", hy: "Գրեք մեզ", ru: "Напишите нам" }
   call: { en: "Call", hy: "Զանգել", ru: "Позвонить" }
+
+includes:
+  flight: { en: "Flight", hy: "Ավիատոմս", ru: "Авиабилет" }
+  direct_flight: { en: "Direct flight", hy: "Ավիատոմս՝ ուղիղ թռիչքով", ru: "Прямой перелёт" }
+  hotel: { en: "Hotel", hy: "Հյուրանոց", ru: "Отель" }
+  hotel_breakfast: { en: "Hotel with breakfast", hy: "Հյուրանոց՝ նախաճաշով", ru: "Отель с завтраком" }
+  breakfast: { en: "Breakfast", hy: "Նախաճաշ", ru: "Завтрак" }
+  all_inclusive: { en: "All-inclusive meals", hy: "All Inclusive սնունդ", ru: "Питание «всё включено»" }
+  transfer: { en: "Transfer", hy: "Տրանսֆեր", ru: "Трансфер" }
+  insurance: { en: "Insurance", hy: "Ապահովագրություն", ru: "Страховка" }
 
 notfound:
   title: { en: "Page not found", hy: "Էջը չի գտնվել", ru: "Страница не найдена" }

@@ -2,7 +2,7 @@
 # used; "slug" decides the page address, e.g. /en/tours/antalya/.
 slug: example
 order: 99            # lower numbers come first
-region: sea          # sea (Red Sea) | gulf | europe
+region: sea          # sea (Red Sea) | gulf | europe | caucasus
 code: XXX            # airport code shown on the card
 image: ""            # e.g. /images/tours/example.jpg (put the file in public/images/tours/)
 image_alt: { en: "", hy: "", ru: "" }
@@ -16,4 +16,15 @@ visa: ""
 best_months: ""
 nights: ""           # optional, e.g. { en: "7 nights", hy: "7 գիշեր", ru: "7 ночей" }
 includes: ""         # optional
-price_from_amd:      # a number like 450000, or leave empty for "Price on request"
+
+# Offers with prices (optional). Without offers the tour shows "Price on request".
+offers:
+  - title: { en: "", hy: "", ru: "" }
+    dates: { en: "", hy: "", ru: "" }     # optional
+    hotel: ""                              # optional, e.g. "Nobel Gallery Hotel 4★"
+    price: 145000                          # per person
+    currency: AMD                          # AMD (default), USD, EUR or RUB
+    # Pick from: flight, direct_flight, hotel, hotel_breakfast, breakfast,
+    # all_inclusive, transfer, insurance (texts are in content/ui.yaml > includes)
+    includes: [flight, hotel, breakfast]
+    installments: true                     # shows the installment / PayLater line

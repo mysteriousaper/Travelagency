@@ -2,7 +2,9 @@
 import Base from '../../../layouts/Base.astro';
 import Ph from '../../../components/Ph.astro';
 import { tours } from '../../../lib/content.js';
+import Price from '../../../components/Price.astro';
 import { LOCALES, makeT, pick, href, whatsappLink } from '../../../lib/i18n.js';
+import { offersOf } from '../../../lib/price.js';
 
 export function getStaticPaths() {
   return LOCALES.flatMap((lang) => tours.map((tour) => ({ params: { lang, slug: tour.slug }, props: { tour } })));
@@ -14,7 +16,8 @@ const t = makeT(lang);
 const name = pick(tour.name, lang);
 const description = pick(tour.description, lang);
 const wa = whatsappLink(`${name}: ${t('tours.request')}`);
-const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', maximumFractionDigits: 0 });
+const offers = offersOf(tour);
+const includeLabel = (key) => pick(makeT(lang)(`includes.${key}`), lang);
 const facts = [
   [t('tours.flight'), tour.flight],
   [t('tours.visa'), tour.visa],
@@ -41,9 +44,7 @@ const facts = [
       <dl class="facts">
         {facts.map(([label, value]) => <><dt>{label}</dt><dd><Ph text={pick(value, lang)} /></dd></>)}
       </dl>
-      {typeof tour.price_from_amd === 'number'
-        ? <div class="price" style="font-size: 20px" data-price-amd={tour.price_from_amd} data-prefix={t('tours.from')}>{t('tours.from')} {amd.format(tour.price_from_amd)}</div>
-        : <div class="price" style="font-size: 18px">{t('tours.ask_price')}</div>}
+      {!offers.length && <div class="price" style="font-size: 18px">{t('tours.ask_price')}</div>}
       <div class="grow"></div>
       <div class="btn-row" style="flex: none">
         {wa && <a class="btn btn-green" href={wa}>{t('tours.ask_whatsapp')}</a>}
@@ -51,4 +52,34 @@ const facts = [
       </div>
     </div>
   </div>
+  {offers.length > 0 && (
+    <section class="section" aria-labelledby="offers-title">
+      <h2 id="offers-title" class="section-title" style="font-size: 34px">{t('tours.offers')}</h2>
+      <div class="tour-grid">
+        {offers.map((offer) => {
+          const title = pick(offer.title, lang) || name;
+          const dates = pick(offer.dates, lang);
+          return (
+            <article class="card stack offer">
+              <h3 style="font-size: 20px">{title}</h3>
+              {dates && <p class="muted" style="margin: 0; font-weight: 700">{dates}</p>}
+              {offer.hotel && <p style="margin: 0">{offer.hotel}</p>}
+              {pick(offer.text, lang) && <p class="muted" style="margin: 0">{pick(offer.text, lang)}</p>}
+              {offer.includes?.length > 0 && (
+                <div>
+                  <div class="muted" style="font-size: 13px; font-weight: 700">{t('tours.includes')}</div>
+                  <ul class="includes">{offer.includes.map((key) => <li>{includeLabel(key)}</li>)}</ul>
+                </div>
+              )}
+              <div class="grow"></div>
+              <Price amount={offer.price} currency={offer.currency ?? 'AMD'} lang={lang} prefix={t('tours.per_person')} style="font-size: 22px" />
+              {pick(offer.price_note, lang) && <p class="muted" style="margin: 0; font-size: 13px">{pick(offer.price_note, lang)}</p>}
+              {offer.installments && <p class="muted" style="margin: 0; font-size: 13px">{t('tours.installments')}</p>}
+              <button type="button" class="btn btn-navy" data-open-dialog="quote" data-destination={pick(tour.name, 'en')} data-context={[pick(offer.title, 'en') || pick(tour.name, 'en'), pick(offer.dates, 'en')].filter(Boolean).join(' · ')}>{t('tours.book_offer')}</button>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  )}
 </Base>

@@ -1,5 +1,5 @@
 slug: prague
-order: 7
+order: 9
 region: europe
 code: PRG
 image: "/images/tours/prague.jpg"
@@ -25,4 +25,3 @@ best_months:
   en: "May to September, and December for the Christmas markets."
   hy: "Մայիսից սեպտեմբեր, իսկ դեկտեմբերին՝ Սուրբ Ծննդյան տոնավաճառների համար։"
   ru: "С мая по сентябрь, а в декабре — ради рождественских ярмарок."
-price_from_amd:      # e.g. 450000; empty shows "Price on request"

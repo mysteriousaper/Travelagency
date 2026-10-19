@@ -1,0 +1,36 @@
+slug: belgrade
+order: 3
+region: europe
+code: BEG
+image: "/images/tours/belgrade.jpg"
+image_alt: { en: "Inside the Temple of Saint Sava in Belgrade", hy: "Սուրբ Սավա տաճարի ներսը Բելգրադում", ru: "Внутри храма Святого Саввы в Белграде" }
+name: { en: "Belgrade", hy: "Բելգրադ", ru: "Белград" }
+country: { en: "Serbia", hy: "Սերբիա", ru: "Сербия" }
+description:
+  en: "Serbia's capital and a European trip with no visa: the Kalemegdan fortress above the Sava and the Danube, Knez Mihailova street, cafés and lively evenings."
+  hy: "Սերբիայի մայրաքաղաքը՝ եվրոպական ճամփորդություն առանց վիզայի. Կալեմեգդան ամրոցը Սավա և Դանուբ գետերի վերևում, Կնեզ Միխայլովա փողոցը, սրճարաններն ու աշխույժ երեկոները։"
+  ru: "Столица Сербии и поездка в Европу без визы: крепость Калемегдан над Савой и Дунаем, улица Князя Михаила, кафе и оживлённые вечера."
+flight:
+  en: "Direct flight from Zvartnots."
+  hy: "Ուղիղ թռիչք «Զվարթնոց»-ից։"
+  ru: "Прямой перелёт из Звартноца."
+visa:
+  en: "No visa needed."
+  hy: "Վիզա պետք չէ։"
+  ru: "Виза не нужна."
+best_months:
+  en: "May to September, and New Year."
+  hy: "Մայիսից սեպտեմբեր, ինչպես նաև Ամանորին։"
+  ru: "С мая по сентябрь, а также на Новый год."
+
+# Offers copied from King Travel's Instagram. Prices are per person, in AMD.
+offers:
+  - title: { en: "Belgrade with no visa", hy: "Առանց վիզայի՝ դեպի Բելգրադ", ru: "Белград без визы" }
+    price: 145000
+    includes: [flight, hotel, breakfast]
+    installments: true
+  - title: { en: "New Year in Serbia", hy: "Ամանորը դիմավորեք Սերբիայում", ru: "Новый год в Сербии" }
+    dates: { en: "1–8 January, 8 days", hy: "Հունվարի 1–8, 8 օր", ru: "1–8 января, 8 дней" }
+    hotel: "Nobel Gallery Hotel 4★"
+    price: 275000
+    includes: [direct_flight, hotel, breakfast]

@@ -1,5 +1,5 @@
 slug: doha
-order: 3
+order: 2
 region: gulf
 code: DOH
 image: "/images/tours/doha.jpg"
@@ -25,4 +25,9 @@ best_months:
   en: "November to March. Summers are very hot."
   hy: "Նոյեմբերից մարտ։ Ամռանը շատ շոգ է։"
   ru: "С ноября по март. Летом очень жарко."
-price_from_amd:      # e.g. 450000; empty shows "Price on request"
+
+# Offers copied from King Travel's Instagram. Prices are per person, in AMD.
+offers:
+  - title: { en: "Doha getaway", hy: "Արևոտ ու շքեղ Դոհա", ru: "Солнечная Доха" }
+    price: 202000
+    includes: [flight, hotel_breakfast, transfer, insurance]

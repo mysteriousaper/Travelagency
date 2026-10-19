@@ -246,15 +246,18 @@ $$('form[data-lead]').forEach((form) => {
   });
 });
 
-/* Currency switch for "from" prices. Rates: Central Bank of Armenia, via /api/rates */
+/* Currency switch. Prices show in their own currency until the visitor picks one.
+   Rates: Central Bank of Armenia, via /api/rates (dram per unit). */
 const currencyButtons = $$('[data-currency]');
-let rates = {};
+let rates = { AMD: 1 };
 function showPrices(code) {
-  const rate = code === 'AMD' ? 1 : rates[code];
-  if (!rate) return;
+  if (!rates[code]) return;
   const fmt = new Intl.NumberFormat(lang, { style: 'currency', currency: code, maximumFractionDigits: 0 });
-  $$('[data-price-amd]').forEach((el) => {
-    el.textContent = `${el.dataset.prefix} ${fmt.format(Number(el.dataset.priceAmd) / rate)}`;
+  $$('[data-price]').forEach((el) => {
+    const from = el.dataset.cur || 'AMD';
+    if (!rates[from]) return;
+    const amd = Number(el.dataset.price) * rates[from];
+    el.textContent = `${el.dataset.prefix} ${fmt.format(amd / rates[code])}`.trim();
   });
   currencyButtons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.currency === code)));
 }
@@ -263,18 +266,21 @@ currencyButtons.forEach((b) => b.addEventListener('click', () => {
   showPrices(b.dataset.currency);
 }));
 if (currencyButtons.length) {
+  currencyButtons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
   fetch('/api/rates')
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
     .then((data) => {
-      rates = data.rates || {};
+      rates = { AMD: 1, ...(data.rates || {}) };
       const note = data.date ? `${data.source}, ${new Date(data.date).toLocaleDateString(lang)}` : data.source;
       currencyButtons.forEach((b) => {
-        if (b.dataset.currency === 'AMD' || rates[b.dataset.currency]) b.disabled = false;
-        if (rates[b.dataset.currency]) b.title = `1 ${b.dataset.currency} = ${rates[b.dataset.currency]} AMD (${note})`;
+        const code = b.dataset.currency;
+        if (rates[code]) b.disabled = false;
+        if (code !== 'AMD' && rates[code]) b.title = `1 ${code} = ${rates[code]} AMD (${note})`;
       });
-      showPrices(storageGet('kt-currency') || 'AMD');
+      const saved = storageGet('kt-currency');
+      if (saved) showPrices(saved);
     })
-    .catch(() => { /* rates unavailable: prices stay in dram */ });
+    .catch(() => { /* rates unavailable: prices stay as published */ });
 }
 
 /* Remember the chosen language for the next visit to the root address */

@@ -22,8 +22,8 @@ const nav = [
   ['flights', 'flights', t('nav.flights')],
   ['contact', 'contact', t('nav.contact')],
 ];
-const seaTours = tours.filter((x) => x.region !== 'europe');
-const euTours = tours.filter((x) => x.region === 'europe');
+const seaTours = tours.filter((x) => x.region === 'sea' || x.region === 'gulf');
+const euTours = tours.filter((x) => x.region === 'europe' || x.region === 'caucasus');
 const social = Object.entries(site.social ?? {}).filter(([, url]) => url);
 const socialNames = { instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', telegram: 'Telegram', youtube: 'YouTube' };
 const hotels = ['3★', '4★', '5★'];
@@ -69,7 +69,7 @@ const hotels = ['3★', '4★', '5★'];
         </nav>
         <span class="sep" aria-hidden="true">|</span>
         <div class="switch" role="group" aria-label={t('nav.currency')} data-currency-switch>
-          {currencies.map(([code, sym]) => <button type="button" data-currency={code} aria-pressed={code === 'AMD' ? 'true' : 'false'} aria-label={code} disabled={code !== 'AMD'}>{sym}</button>)}
+          {currencies.map(([code, sym]) => <button type="button" data-currency={code} aria-pressed="false" aria-label={code} disabled>{sym}</button>)}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 slug: barcelona
-order: 8
+order: 10
 region: europe
 code: BCN
 image: "/images/tours/barcelona.jpg"
@@ -25,4 +25,3 @@ best_months:
   en: "April to June, and September to October."
   hy: "Ապրիլից հունիս և սեպտեմբերից հոկտեմբեր։"
   ru: "С апреля по июнь и с сентября по октябрь."
-price_from_amd:      # e.g. 450000; empty shows "Price on request"

@@ -1,7 +1,8 @@
 ---
-import Ph from './Ph.astro';
+import Price from './Price.astro';
 import { tours } from '../lib/content.js';
 import { makeT, pick, href, whatsappLink } from '../lib/i18n.js';
+import { fromPrice, offersOf } from '../lib/price.js';
 
 const { lang, headingLevel = 'h2', showHeading = true } = Astro.props;
 const t = makeT(lang);
@@ -11,8 +12,8 @@ const filters = [
   ['sea', t('tours.region_sea')],
   ['gulf', t('tours.region_gulf')],
   ['europe', t('tours.region_europe')],
-];
-const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', maximumFractionDigits: 0 });
+  ['caucasus', t('tours.region_caucasus')],
+].filter(([key]) => key === 'all' || tours.some((x) => x.region === key));
 ---
 <div data-filter-root>
   <div class="section-head">
@@ -25,6 +26,8 @@ const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', ma
     {tours.map((tour) => {
       const name = pick(tour.name, lang);
       const wa = whatsappLink(`${name}: ${t('tours.request')}`);
+      const price = fromPrice(tour);
+      const first = offersOf(tour)[0];
       return (
         <article class="tour-card" data-region={tour.region}>
           <a class="tour-card-img" href={href(lang, `tours/${tour.slug}`)} tabindex="-1" aria-hidden="true">
@@ -39,9 +42,9 @@ const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', ma
               <h3><a href={href(lang, `tours/${tour.slug}`)}>{name}</a></h3>
               <span class="muted" style="font-size: 13px">{pick(tour.country, lang)}</span>
             </div>
-            {pick(tour.nights, lang) && <div class="muted" style="font-size: 13px"><Ph text={pick(tour.nights, lang)} /></div>}
-            {typeof tour.price_from_amd === 'number'
-              ? <div class="price" data-price-amd={tour.price_from_amd} data-prefix={t('tours.from')}>{t('tours.from')} {amd.format(tour.price_from_amd)}</div>
+            {first && pick(first.title, lang) && <div class="muted" style="font-size: 13px">{pick(first.title, lang)}</div>}
+            {price
+              ? <Price amount={price.amount} currency={price.currency} lang={lang} prefix={t('tours.from')} />
               : <div class="price">{t('tours.ask_price')}</div>}
             <div class="grow"></div>
             <div class="btn-row">

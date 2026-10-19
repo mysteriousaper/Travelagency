@@ -1,0 +1,6 @@
+---
+// A price the currency switch can convert (see showPrices in src/scripts/site.js).
+import { formatPrice } from '../lib/price.js';
+const { amount, currency = 'AMD', lang, prefix = '', class: className = 'price', style } = Astro.props;
+---
+<div class={className} style={style} data-price={amount} data-cur={currency} data-prefix={prefix}>{prefix} {formatPrice(amount, currency, lang)}</div>

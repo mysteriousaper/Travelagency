@@ -16,8 +16,8 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = makeT(lang);
-const seaNames = tours.filter((x) => x.region !== 'europe').map((x) => pick(x.name, lang));
-const euNames = tours.filter((x) => x.region === 'europe').map((x) => pick(x.name, lang));
+const seaNames = tours.filter((x) => x.region === 'sea' || x.region === 'gulf').map((x) => pick(x.name, lang));
+const euNames = tours.filter((x) => x.region === 'europe' || x.region === 'caucasus').map((x) => pick(x.name, lang));
 const list = new Intl.ListFormat(lang, { style: 'long', type: 'conjunction' });
 const types = t('builder.types');
 const typesEn = makeT('en')('builder.types');
