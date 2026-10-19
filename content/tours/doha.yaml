@@ -1,0 +1,18 @@
+slug: doha
+order: 3
+region: gulf
+code: DOH
+image: ""
+image_alt: { en: "", hy: "", ru: "" }
+name: { en: "Doha", hy: "Դոհա", ru: "Доха" }
+country: { en: "Qatar", hy: "Կատար", ru: "Катар" }
+description:
+  en: "Qatar's capital: Souq Waqif, the Corniche waterfront and the Museum of Islamic Art. Booked as a few days on its own or as a stopover."
+  hy: "Կատարի մայրաքաղաքը՝ Սուկ Վակիֆ շուկայով, Կորնիշ ափամերձ զբոսավայրով և Իսլամական արվեստի թանգարանով։ Կարելի է գնալ մի քանի օրով կամ կանգ առնել ճանապարհին։"
+  ru: "Столица Катара: рынок Сук-Вакиф, набережная Корниш и Музей исламского искусства. Можно поехать на несколько дней или остановиться по пути."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa: "[PLACEHOLDER: Qatar entry rules for Armenian passports]"
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

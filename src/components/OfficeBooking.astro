@@ -1,0 +1,33 @@
+---
+// Office visit picker. "tile" opens the shared dialog; "inline" is a full form.
+import Ph from './Ph.astro';
+import ContactFields from './ContactFields.astro';
+import { site } from '../lib/content.js';
+import { makeT, pick } from '../lib/i18n.js';
+
+const { lang, mode = 'tile' } = Astro.props;
+const t = makeT(lang);
+const office = site.office;
+const config = JSON.stringify({ open_days: office.open_days, days_ahead: office.days_ahead });
+const Tag = mode === 'inline' ? 'form' : 'div';
+const formAttrs = mode === 'inline' ? { 'data-lead': 'booking', novalidate: true } : {};
+---
+<Tag class="card stack" data-office={config} {...formAttrs}>
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+    <h2>{t('office.title')}</h2>
+    {mode === 'tile' && <div class="ph-box" style="width: 64px; height: 64px; font-size: 9px; padding: 4px; border-radius: 14px">[PLACEHOLDER: office photo]</div>}
+  </div>
+  <div class="muted" style="font-size: 14px">{pick(site.address, lang)} · {t('office.open')}: <Ph text={pick(site.hours, lang)} /></div>
+  <p class="muted" style="margin: 0; font-size: 14px">{t('office.pick')}</p>
+  <div class="day-row chips" data-chips="day" data-days aria-label={t('field.day')}>
+    <input type="hidden" name="day" data-detail="Day" />
+  </div>
+  <div class="slot-grid chips" data-chips="time" aria-label={t('field.time')}>
+    {office.times.map((time, i) => <button type="button" class="chip" data-value={time} aria-pressed={i === 0 ? 'true' : 'false'}>{time}</button>)}
+    <input type="hidden" name="time" value={office.times[0]} data-detail="Time" />
+  </div>
+  <p style="margin: 0; font-weight: 700" data-slot-label></p>
+  {mode === 'inline'
+    ? <><ContactFields lang={lang} /><button type="submit" class="btn btn-navy">{t('office.book')}</button></>
+    : <button type="button" class="btn btn-outline" data-office-book>{t('office.book')}</button>}
+</Tag>

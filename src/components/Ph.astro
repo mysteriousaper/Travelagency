@@ -1,0 +1,6 @@
+---
+// Renders text, highlighting any "[PLACEHOLDER: ...]" parts so they are easy to spot.
+const { text = '' } = Astro.props;
+const parts = String(text).split(/(\[PLACEHOLDER[^\]]*\])/g).filter(Boolean);
+---
+{parts.map((part) => (part.startsWith('[PLACEHOLDER') ? <mark class="ph">{part}</mark> : part))}

@@ -1,0 +1,32 @@
+---
+import Ph from './Ph.astro';
+import { visas } from '../lib/content.js';
+import { makeT, pick } from '../lib/i18n.js';
+
+const { lang, class: className = '' } = Astro.props;
+const t = makeT(lang);
+---
+<div class={`card-dark stack ${className}`} data-visa style="gap: 18px">
+  <div class="visa-head">
+    <h2>{t('visa.title')}</h2>
+    <span class="muted" style="font-size: 13px">{t('visa.note')}</span>
+  </div>
+  <div class="visa-countries">
+    {visas.map((v, i) => (
+      <button type="button" data-country={v.id} data-country-name={pick(v.name, lang)} aria-pressed={i === 0 ? 'true' : 'false'}>{pick(v.name, lang)}</button>
+    ))}
+  </div>
+  {visas.map((v, i) => (
+    <ul class={`visa-list${i === 0 ? ' is-active' : ''}`} data-visa-list={v.id}>
+      <li class="print-title">King Travel · {pick(v.name, lang)}</li>
+      {pick(v.documents, lang).map((doc) => (
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg><span><Ph text={doc} /></span></li>
+      ))}
+    </ul>
+  ))}
+  <div class="btn-row" style="flex: none">
+    <button type="button" class="btn btn-outline-light" data-print-visa>{t('visa.print')}</button>
+    <button type="button" class="btn btn-amber" data-open-dialog="visa">{t('visa.book')}</button>
+  </div>
+  <p class="visa-foot">{t('visa.services')}</p>
+</div>

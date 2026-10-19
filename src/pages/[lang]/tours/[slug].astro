@@ -1,0 +1,53 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Ph from '../../../components/Ph.astro';
+import { tours } from '../../../lib/content.js';
+import { LOCALES, makeT, pick, href, whatsappLink } from '../../../lib/i18n.js';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => tours.map((tour) => ({ params: { lang, slug: tour.slug }, props: { tour } })));
+}
+
+const { lang } = Astro.params;
+const { tour } = Astro.props;
+const t = makeT(lang);
+const name = pick(tour.name, lang);
+const description = pick(tour.description, lang);
+const wa = whatsappLink(`${name}: ${t('tours.request')}`);
+const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', maximumFractionDigits: 0 });
+const facts = [
+  [t('tours.flight'), tour.flight],
+  [t('tours.visa'), tour.visa],
+  [t('tours.months'), tour.best_months],
+  [t('tours.nights'), tour.nights],
+  [t('tours.includes'), tour.includes],
+];
+---
+<Base lang={lang} title={`${name}, ${pick(tour.country, lang)} · King Travel`} description={description} current="tours">
+  <div class="page-head">
+    <a href={href(lang, 'tours')} class="muted" style="font-weight: 700">{t('tours.back')}</a>
+    <h1>{name}</h1>
+    <p>{pick(tour.country, lang)} · {tour.code}</p>
+  </div>
+  <div class="split">
+    <div class="tour-hero">
+      {tour.image
+        ? <img src={tour.image} alt={pick(tour.image_alt, lang)} width="1200" height="800" />
+        : <div class="ph-box">[PLACEHOLDER: photo of {pick(tour.name, 'en')}]</div>}
+    </div>
+    <div class="card stack" style="gap: 18px">
+      <p style="margin: 0; font-size: 17px">{description}</p>
+      <dl class="facts">
+        {facts.map(([label, value]) => <><dt>{label}</dt><dd><Ph text={pick(value, lang)} /></dd></>)}
+      </dl>
+      {typeof tour.price_from_amd === 'number'
+        ? <div class="price" style="font-size: 20px" data-price-amd={tour.price_from_amd} data-prefix={t('tours.from')}>{t('tours.from')} {amd.format(tour.price_from_amd)}</div>
+        : <div class="price" style="font-size: 18px">{t('tours.ask_price')}</div>}
+      <div class="grow"></div>
+      <div class="btn-row" style="flex: none">
+        {wa && <a class="btn btn-green" href={wa}>{t('tours.ask_whatsapp')}</a>}
+        <button type="button" class="btn btn-navy" data-open-dialog="quote" data-destination={pick(tour.name, 'en')}>{t('tours.request')}</button>
+      </div>
+    </div>
+  </div>
+</Base>

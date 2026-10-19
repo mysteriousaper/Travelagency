@@ -1,0 +1,21 @@
+---
+import Base from '../../../layouts/Base.astro';
+import TourGrid from '../../../components/TourGrid.astro';
+import { LOCALES, makeT } from '../../../lib/i18n.js';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = makeT(lang);
+---
+<Base lang={lang} title={`${t('tours.title')} · King Travel`} description={t('tours.page_lead')} current="tours">
+  <div class="page-head">
+    <h1>{t('tours.title')} <span style="color: #94a3b8">{t('tours.subtitle')}</span></h1>
+    <p>{t('tours.page_lead')}</p>
+  </div>
+  <section style="padding-top: 8px">
+    <TourGrid lang={lang} showHeading={false} />
+  </section>
+</Base>

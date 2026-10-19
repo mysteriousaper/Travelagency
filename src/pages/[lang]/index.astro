@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import Ph from '../../components/Ph.astro';
+import SearchPanel from '../../components/SearchPanel.astro';
+import VisaChecker from '../../components/VisaChecker.astro';
+import TourGrid from '../../components/TourGrid.astro';
+import OfficeBooking from '../../components/OfficeBooking.astro';
+import Reviews from '../../components/Reviews.astro';
+import Faq from '../../components/Faq.astro';
+import { site, tours } from '../../lib/content.js';
+import { LOCALES, makeT, pick, href } from '../../lib/i18n.js';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = makeT(lang);
+const seaNames = tours.filter((x) => x.region !== 'europe').map((x) => pick(x.name, lang));
+const euNames = tours.filter((x) => x.region === 'europe').map((x) => pick(x.name, lang));
+const list = new Intl.ListFormat(lang, { style: 'long', type: 'conjunction' });
+const types = t('builder.types');
+const typesEn = makeT('en')('builder.types');
+---
+<Base lang={lang} title={t('meta.home_title')} description={t('meta.home_description')} current="home">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="tags">
+        <span class="tag tag-amber">{t('hero.badge_destinations')}</span>
+        <span class="tag tag-blue">{t('hero.badge_visas')}</span>
+      </div>
+      <h1>{t('hero.title_lead')}<em>{t('hero.title_accent')}</em></h1>
+      <p class="hero-lead">{t('hero.lead')}</p>
+      <SearchPanel lang={lang} />
+    </div>
+    <div class="hero-cards">
+      <a class="hero-card is-wide" href={href(lang, 'tours')}>
+        <img src="/images/tours/dubai.jpg" alt="" fetchpriority="high" />
+        <span class="hero-card-text"><span class="eyebrow">{t('hero.card_sea')}</span><span class="hero-card-title">{list.format(seaNames)}</span></span>
+      </a>
+      <a class="hero-card" href={href(lang, 'tours')}>
+        <img src="/images/tours/paris.jpg" alt="" loading="lazy" />
+        <span class="hero-card-text"><span class="eyebrow">{t('hero.card_europe')}</span><span class="hero-card-title">{list.format(euNames)}</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="bento" aria-label={t('nav.visas')}>
+    <VisaChecker lang={lang} class="span-2" />
+
+    <div class="photo-tile">
+      <img src="/images/flight.jpg" alt="" loading="lazy" />
+      <div class="photo-tile-inner">
+        <h2 style="font-size: 20px">{t('flight.tile_title')}</h2>
+        <p class="muted" style="margin: 0; font-size: 14px">{t('flight.tile_text')}</p>
+        <div class="route" aria-hidden="true"><span>EVN</span><span class="line"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8"><path d="M2 13l8-1 4-8h2l-2 8 6 1 2-3h2l-1 4 1 4h-2l-2-3-6 1 2 8h-2l-4-8-8-1z" /></svg><span class="line"></span><span>DXB</span></div>
+        <a class="btn btn-navy" href={href(lang, 'flights')}>{t('search.submit_flights')}</a>
+      </div>
+    </div>
+
+    <div class="card stack" data-builder>
+      <h2>{t('builder.title')}</h2>
+      <p class="muted" style="margin: 0; font-size: 14px">{t('builder.text')}</p>
+      <div class="chips" data-chips="places" data-multiple data-builder-places>
+        {tours.map((x, i) => <button type="button" class="chip" data-value={pick(x.name, 'en')} aria-pressed={i === 0 ? 'true' : 'false'}>{pick(x.name, lang)}</button>)}
+        <input type="hidden" value={pick(tours[0].name, 'en')} />
+      </div>
+      <div class="chips" data-chips="type" data-builder-type>
+        {types.map((label, i) => <button type="button" class="chip chip-amber" data-value={typesEn[i]} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>)}
+        <input type="hidden" value={typesEn[0]} />
+      </div>
+      <div class="grow"></div>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid #f1f5f9">
+        <span class="muted" style="font-size: 14px"><span data-builder-count>1</span> {t('builder.picked')}</span>
+        <button type="button" class="btn btn-navy" data-builder-submit>{t('builder.submit')}</button>
+      </div>
+    </div>
+
+    {site.social_packages_enabled && (
+      <div class="card-amber stack">
+        <span class="tag tag-dark" style="align-self: flex-start">{t('social.label')}</span>
+        <h2 style="line-height: 1.3"><Ph text={pick(site.social_packages_text, lang)} /></h2>
+        <div class="grow"></div>
+        <button type="button" class="btn btn-outline" style="align-self: flex-start" data-open-dialog="callback" data-context={t('social.label')}>{t('social.ask')}</button>
+      </div>
+    )}
+
+    <OfficeBooking lang={lang} />
+  </section>
+
+  <section class="section" id="tours" aria-label={t('tours.title')}>
+    <TourGrid lang={lang} />
+  </section>
+
+  <section class="section bento" style="padding-top: 72px">
+    <Reviews lang={lang} />
+    <Faq lang={lang} class="span-2" />
+  </section>
+</Base>

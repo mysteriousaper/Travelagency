@@ -1,0 +1,63 @@
+# King Travel: site settings.
+# Anything written as "[PLACEHOLDER: ...]" shows up highlighted on the site
+# until you replace it. Text with en / hy / ru is shown in that language.
+
+phones:
+  - "[PLACEHOLDER: main phone, e.g. +374 10 00 00 00]"
+  - "[PLACEHOLDER: second phone]"
+
+# Digits only, with the country code and no "+". Example: 37499123456
+# While empty, WhatsApp buttons lead to the contact page instead.
+whatsapp_number: ""
+
+# Telegram username without "@". Example: kingtravel_am
+telegram_username: ""
+
+email: ""
+
+address:
+  en: "62 Teryan St, Yerevan, Armenia"
+  hy: "Երևան, Տերյան փողոց 62"
+  ru: "Ереван, ул. Терьяна, 62"
+
+address_extra: "[PLACEHOLDER: floor or entrance, and a landmark people know]"
+
+hours: "[PLACEHOLDER: days and hours, e.g. Mon–Sat 10:00–19:00]"
+
+licence: "[PLACEHOLDER: tour operator licence number]"
+
+social:
+  instagram: ""
+  facebook: ""
+  tiktok: ""
+  telegram: ""
+  youtube: ""
+
+reviews:
+  google_url: ""
+  yandex_url: ""
+  # Paste real reviews here, word for word, with the client's permission:
+  # - text: "..."
+  #   name: "Anna"
+  #   city: "Yerevan"
+  #   source: "Google"
+  items: []
+
+# Office visit requests. Visitors choose one of these; staff confirm by phone.
+office:
+  # 1 = Monday ... 7 = Sunday.  [PLACEHOLDER: confirm your open days]
+  open_days: [1, 2, 3, 4, 5, 6]
+  # [PLACEHOLDER: confirm the times you can see visitors]
+  times: ["10:00", "11:30", "13:00", "14:30", "16:00", "17:30"]
+  days_ahead: 6
+
+# How many dram one unit is worth. Fill these in to let visitors switch
+# prices to $, € or ₽. Currencies left empty are hidden from the switcher.
+currency_rates_amd:
+  USD:
+  EUR:
+  RUB:
+
+# Set to false to hide the social package tile, footer link and FAQ entry.
+social_packages_enabled: true
+social_packages_text: "[PLACEHOLDER: one sentence on what you do with Armenian social packages]"

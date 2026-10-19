@@ -1,0 +1,21 @@
+slug: rome
+order: 5
+region: europe
+code: FCO
+image: ""
+image_alt: { en: "", hy: "", ru: "" }
+name: { en: "Rome", hy: "Հռոմ", ru: "Рим" }
+country: { en: "Italy", hy: "Իտալիա", ru: "Италия" }
+description:
+  en: "The Colosseum, the Vatican Museums, the Trevi Fountain and long Italian dinners."
+  hy: "Կոլիզեում, Վատիկանի թանգարաններ, Տրևիի շատրվան և երկար իտալական ընթրիքներ։"
+  ru: "Колизей, музеи Ватикана, фонтан Треви и долгие итальянские ужины."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa:
+  en: "Schengen visa. We prepare it as part of the trip."
+  hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
+  ru: "Шенгенская виза. Оформим её вместе с поездкой."
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

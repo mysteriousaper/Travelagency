@@ -1,0 +1,19 @@
+---
+// Name, phone, optional email and reply channel. Used inside every request form.
+import { makeT } from '../lib/i18n.js';
+const { lang } = Astro.props;
+const t = makeT(lang);
+const channels = ['WhatsApp', 'Telegram', 'Email'];
+---
+<div class="fields">
+  <label class="field">{t('field.name')}<input name="name" required maxlength="100" autocomplete="name" /></label>
+  <label class="field">{t('field.phone')}<input name="phone" type="tel" required maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+374" /></label>
+  <label class="field">{t('field.email')}<input name="email" type="email" maxlength="120" autocomplete="email" /></label>
+</div>
+<fieldset class="chips" data-chips="channel">
+  <legend>{t('field.reply_via')}</legend>
+  {channels.map((c, i) => <button type="button" class="chip" data-value={c} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
+  <input type="hidden" name="channel" value="WhatsApp" />
+</fieldset>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<p class="form-status" data-status role="status" aria-live="polite"></p>

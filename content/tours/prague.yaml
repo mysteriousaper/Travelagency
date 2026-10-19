@@ -1,0 +1,21 @@
+slug: prague
+order: 7
+region: europe
+code: PRG
+image: ""
+image_alt: { en: "", hy: "", ru: "" }
+name: { en: "Prague", hy: "Պրահա", ru: "Прага" }
+country: { en: "Czechia", hy: "Չեխիա", ru: "Чехия" }
+description:
+  en: "Charles Bridge, the Old Town Square and Prague Castle, all within walking distance."
+  hy: "Կարլի կամուրջ, Հին քաղաքի հրապարակ և Պրահայի ամրոց, ամենը՝ քայլելու հեռավորության վրա։"
+  ru: "Карлов мост, Староместская площадь и Пражский град, всё в пешей доступности."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa:
+  en: "Schengen visa. We prepare it as part of the trip."
+  hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
+  ru: "Шенгенская виза. Оформим её вместе с поездкой."
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

@@ -1,0 +1,21 @@
+slug: dubai
+order: 2
+region: gulf
+code: DXB
+image: /images/tours/dubai.jpg
+image_alt:
+  en: "Burj Al Arab seen from Jumeirah beach"
+  hy: "Բուրջ ալ Արաբը Ջումեյրա լողափից"
+  ru: "Бурдж-эль-Араб с пляжа Джумейра"
+name: { en: "Dubai", hy: "Դուբայ", ru: "Дубай" }
+country: { en: "UAE", hy: "ԱՄԷ", ru: "ОАЭ" }
+description:
+  en: "Beach hotels on Jumeirah and Palm Jumeirah, big malls and the view from Burj Khalifa. A popular short trip in the cooler months."
+  hy: "Լողափնյա հյուրանոցներ Ջումեյրայում և Փալմ Ջումեյրայում, մեծ առևտրի կենտրոններ և տեսարան Բուրջ Խալիֆայից։ Հարմար է կարճ ուղևորության համար զով ամիսներին։"
+  ru: "Пляжные отели на Джумейре и Палм-Джумейре, большие торговые центры и вид с Бурдж-Халифы. Удобно для короткой поездки в прохладные месяцы."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa: "[PLACEHOLDER: UAE entry rules for Armenian passports]"
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length, e.g. 5 nights]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

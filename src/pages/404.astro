@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { DEFAULT_LOCALE, makeT, href } from '../lib/i18n.js';
+const lang = DEFAULT_LOCALE;
+const t = makeT(lang);
+---
+<Base lang={lang} title={`${t('notfound.title')} · King Travel`} description={t('notfound.title')}>
+  <div class="page-head" style="padding-bottom: 40px">
+    <h1>{t('notfound.title')}</h1>
+    <p><a class="btn btn-navy" href={href(lang)}>{t('notfound.back')}</a></p>
+  </div>
+</Base>

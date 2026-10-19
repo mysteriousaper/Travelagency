@@ -1,0 +1,37 @@
+# Questions and answers. Replace the placeholders with your real policies.
+# "social: true" entries are hidden when social_packages_enabled is false.
+
+items:
+  - question:
+      en: "How often do the visa applications you prepare get approved?"
+      hy: "Որքա՞ն հաճախ են հաստատվում ձեր պատրաստած վիզայի դիմումները"
+      ru: "Как часто одобряют визовые заявки, которые вы готовите?"
+    answer: "[PLACEHOLDER: your real figure (the brief says 99%) and what it counts]. The embassy makes the final decision."
+
+  - question:
+      en: "Do I pay anything to get a price?"
+      hy: "Պե՞տք է արդյոք վճարել գինն իմանալու համար"
+      ru: "Нужно ли платить, чтобы узнать цену?"
+    answer:
+      en: "No. Prices and the first visa consultation are free. [PLACEHOLDER: when you take a deposit, and how much]"
+      hy: "Ոչ։ Գների հարցումը և առաջին վիզային խորհրդատվությունն անվճար են։ [PLACEHOLDER: when you take a deposit, and how much]"
+      ru: "Нет. Расчёт цены и первая консультация по визе бесплатны. [PLACEHOLDER: when you take a deposit, and how much]"
+
+  - question:
+      en: "Can I change the trip after booking?"
+      hy: "Կարո՞ղ եմ փոխել ուղևորությունը ամրագրումից հետո"
+      ru: "Можно ли изменить поездку после бронирования?"
+    answer: "[PLACEHOLDER: what can be changed, until when, and any fees]"
+
+  - question:
+      en: "Do you arrange the transfer to Zvartnots?"
+      hy: "Կազմակերպո՞ւմ եք տրանսֆեր դեպի «Զվարթնոց»"
+      ru: "Вы организуете трансфер в Звартноц?"
+    answer: "[PLACEHOLDER: yes or no, and at what hours]"
+
+  - question:
+      en: "How do social packages work with you?"
+      hy: "Ինչպե՞ս է աշխատում սոցիալական փաթեթը ձեզ մոտ"
+      ru: "Как у вас работает социальный пакет?"
+    answer: "[PLACEHOLDER: the steps]"
+    social: true

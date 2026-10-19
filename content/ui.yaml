@@ -1,0 +1,198 @@
+# Interface texts in Armenian (hy), English (en) and Russian (ru).
+# The Armenian and Russian texts are drafts. Have a native speaker check them.
+
+meta:
+  home_title:
+    en: "King Travel: holidays and visas from Yerevan"
+    hy: "King Travel. հանգիստ և վիզաներ Երևանից"
+    ru: "King Travel: отдых и визы из Еревана"
+  home_description:
+    en: "Package holidays to Sharm El Sheikh, Dubai, Doha and Europe, visas and flight tickets. Office at 62 Teryan St, Yerevan."
+    hy: "Հանգստի փաթեթներ դեպի Շարմ էլ Շեյխ, Դուբայ, Դոհա և Եվրոպա, վիզաներ և ավիատոմսեր։ Գրասենյակը՝ Երևան, Տերյան 62։"
+    ru: "Пакетные туры в Шарм-эль-Шейх, Дубай, Доху и Европу, визы и авиабилеты. Офис: Ереван, ул. Терьяна, 62."
+
+nav:
+  home: { en: "Home", hy: "Գլխավոր", ru: "Главная" }
+  tours: { en: "Tours", hy: "Տուրեր", ru: "Туры" }
+  visas: { en: "Visas", hy: "Վիզաներ", ru: "Визы" }
+  flights: { en: "Flights", hy: "Ավիատոմսեր", ru: "Авиабилеты" }
+  contact: { en: "Office", hy: "Գրասենյակ", ru: "Офис" }
+  menu: { en: "Menu", hy: "Մենյու", ru: "Меню" }
+  language: { en: "Language", hy: "Լեզու", ru: "Язык" }
+  currency: { en: "Currency", hy: "Արժույթ", ru: "Валюта" }
+
+cta:
+  plan: { en: "Plan My Trip", hy: "Պլանավորել ուղևորությունը", ru: "Спланировать поездку" }
+
+hero:
+  badge_destinations:
+    en: "Sharm El Sheikh · Dubai · Doha · Europe"
+    hy: "Շարմ էլ Շեյխ · Դուբայ · Դոհա · Եվրոպա"
+    ru: "Шарм-эль-Шейх · Дубай · Доха · Европа"
+  badge_visas:
+    en: "Visas: Schengen, US, UK"
+    hy: "Վիզաներ՝ Շենգեն, ԱՄՆ, Մեծ Բրիտանիա"
+    ru: "Визы: Шенген, США, Великобритания"
+  title_lead:
+    en: "Your travel concierge on "
+    hy: "Ձեր ճամփորդական կոնսյերժը "
+    ru: "Ваш тревел-консьерж "
+  title_accent:
+    en: "Teryan Street."
+    hy: "Տերյան փողոցում։"
+    ru: "на улице Терьяна."
+  lead:
+    en: "Package holidays to Sharm El Sheikh, Dubai, Doha and cities in Europe. We also do visas and flight tickets. Ask on WhatsApp and a person from our office replies."
+    hy: "Հանգստի փաթեթներ դեպի Շարմ էլ Շեյխ, Դուբայ, Դոհա և Եվրոպայի քաղաքներ։ Մենք նաև զբաղվում ենք վիզաներով և ավիատոմսերով։ Գրեք WhatsApp-ով, և ձեզ կպատասխանի մեր գրասենյակի աշխատակիցը։"
+    ru: "Пакетные туры в Шарм-эль-Шейх, Дубай, Доху и города Европы. Также оформляем визы и авиабилеты. Напишите в WhatsApp, и вам ответит сотрудник нашего офиса."
+  card_sea: { en: "Sun & Sea", hy: "Արև և ծով", ru: "Солнце и море" }
+  card_europe: { en: "Europe", hy: "Եվրոպա", ru: "Европа" }
+
+search:
+  label: { en: "Search", hy: "Որոնում", ru: "Поиск" }
+  tab_tours: { en: "Tours", hy: "Տուրեր", ru: "Туры" }
+  tab_visa: { en: "Visa check", hy: "Վիզայի ստուգում", ru: "Проверка визы" }
+  tab_flights: { en: "Flights", hy: "Ավիատոմսեր", ru: "Авиабилеты" }
+  submit_tours: { en: "Get tour prices", hy: "Ստանալ գները", ru: "Узнать цены" }
+  submit_visa: { en: "Ask about my visa", hy: "Հարցնել վիզայի մասին", ru: "Спросить о визе" }
+  submit_flights: { en: "Ask for a fare", hy: "Հարցնել տոմսի գինը", ru: "Узнать цену билета" }
+  free_note:
+    en: "Free, no payment. We send prices to WhatsApp, Telegram or email."
+    hy: "Անվճար է, առանց կանխավճարի։ Գները կուղարկենք WhatsApp-ով, Telegram-ով կամ էլ. փոստով։"
+    ru: "Бесплатно, без оплаты. Цены пришлём в WhatsApp, Telegram или на почту."
+
+field:
+  destination: { en: "Destination", hy: "Ուղղություն", ru: "Направление" }
+  month: { en: "Month", hy: "Ամիս", ru: "Месяц" }
+  not_sure: { en: "Not sure yet", hy: "Դեռ չգիտեմ", ru: "Пока не знаю" }
+  travellers: { en: "Who's going", hy: "Ով է մեկնում", ru: "Кто едет" }
+  travellers_options:
+    en: ["2 adults", "1 adult", "2 adults + children", "Group"]
+    hy: ["2 մեծահասակ", "1 մեծահասակ", "2 մեծահասակ + երեխաներ", "Խումբ"]
+    ru: ["2 взрослых", "1 взрослый", "2 взрослых + дети", "Группа"]
+  hotel: { en: "Hotel", hy: "Հյուրանոց", ru: "Отель" }
+  country: { en: "Country", hy: "Երկիր", ru: "Страна" }
+  purpose: { en: "Purpose", hy: "Նպատակ", ru: "Цель" }
+  purpose_options:
+    en: ["Tourism", "Business", "Visiting family"]
+    hy: ["Զբոսաշրջություն", "Գործնական", "Հարազատների այց"]
+    ru: ["Туризм", "Бизнес", "Визит к родственникам"]
+  work: { en: "Work", hy: "Զբաղվածություն", ru: "Занятость" }
+  work_options:
+    en: ["Employed", "Self-employed", "Student", "Retired", "Not working"]
+    hy: ["Աշխատող", "Անհատ ձեռներեց", "Ուսանող", "Թոշակառու", "Չեմ աշխատում"]
+    ru: ["Работаю по найму", "ИП / свой бизнес", "Студент", "Пенсионер", "Не работаю"]
+  from: { en: "From", hy: "Որտեղից", ru: "Откуда" }
+  to: { en: "To", hy: "Ուր", ru: "Куда" }
+  depart: { en: "Leave", hy: "Մեկնում", ru: "Вылет" }
+  return: { en: "Come back", hy: "Վերադարձ", ru: "Возвращение" }
+  one_way: { en: "One way", hy: "Միակողմանի", ru: "В одну сторону" }
+  passengers: { en: "Passengers", hy: "Ուղևորներ", ru: "Пассажиры" }
+  other: { en: "Other", hy: "Այլ", ru: "Другое" }
+  name: { en: "Your name", hy: "Ձեր անունը", ru: "Ваше имя" }
+  phone: { en: "Phone", hy: "Հեռախոս", ru: "Телефон" }
+  email: { en: "Email (optional)", hy: "Էլ. փոստ (ըստ ցանկության)", ru: "Эл. почта (необязательно)" }
+  email_required: { en: "Email", hy: "Էլ. փոստ", ru: "Эл. почта" }
+  reply_via: { en: "Send the answer to", hy: "Պատասխանը ուղարկել", ru: "Куда прислать ответ" }
+  notes: { en: "Anything we should know? Children's ages, budget, sea view.", hy: "Ուրիշ ի՞նչ պետք է իմանանք. երեխաների տարիքը, բյուջեն, ծովի տեսարանը։", ru: "Что ещё нам важно знать? Возраст детей, бюджет, вид на море." }
+  day: { en: "Day", hy: "Օր", ru: "День" }
+  time: { en: "Time", hy: "Ժամ", ru: "Время" }
+
+form:
+  send: { en: "Send", hy: "Ուղարկել", ru: "Отправить" }
+  sending: { en: "Sending…", hy: "Ուղարկվում է…", ru: "Отправляем…" }
+  ok: { en: "Thank you! We'll reply soon.", hy: "Շնորհակալություն։ Շուտով կպատասխանենք։", ru: "Спасибо! Скоро ответим." }
+  error: { en: "Couldn't send. Please write to us on WhatsApp instead.", hy: "Չհաջողվեց ուղարկել։ Խնդրում ենք գրել մեզ WhatsApp-ով։", ru: "Не удалось отправить. Пожалуйста, напишите нам в WhatsApp." }
+  invalid: { en: "Please check your name and phone number.", hy: "Խնդրում ենք ստուգել անունը և հեռախոսահամարը։", ru: "Проверьте, пожалуйста, имя и номер телефона." }
+  close: { en: "Close", hy: "Փակել", ru: "Закрыть" }
+  dialog_quote: { en: "Plan my trip", hy: "Պլանավորել ուղևորությունը", ru: "Спланировать поездку" }
+  dialog_visa: { en: "Free visa consultation", hy: "Անվճար վիզային խորհրդատվություն", ru: "Бесплатная консультация по визе" }
+  dialog_booking: { en: "Visit the office", hy: "Այցելել գրասենյակ", ru: "Визит в офис" }
+  dialog_callback: { en: "Call me back", hy: "Զանգահարեք ինձ", ru: "Перезвоните мне" }
+
+visa:
+  title: { en: "What do you need for the visa?", hy: "Ի՞նչ է պետք վիզայի համար", ru: "Что нужно для визы?" }
+  note: { en: "The usual list. The embassy's current list is the one that counts.", hy: "Սովորական ցանկ։ Վերջնականը դեսպանատան գործող ցանկն է։", ru: "Обычный список. Окончательный — действующий список посольства." }
+  print: { en: "Print or save as PDF", hy: "Տպել կամ պահել PDF", ru: "Распечатать или сохранить в PDF" }
+  book: { en: "Book a free visa consultation", hy: "Գրանցվել անվճար խորհրդատվության", ru: "Записаться на бесплатную консультацию" }
+  services: { en: "We check your documents, translate them, book the embassy appointment and issue travel insurance.", hy: "Ստուգում ենք փաստաթղթերը, թարգմանում ենք դրանք, գրանցում ենք դեսպանատանը և ձևակերպում ճամփորդական ապահովագրություն։", ru: "Проверяем документы, переводим их, записываем в посольство и оформляем страховку." }
+  page_title: { en: "Visas", hy: "Վիզաներ", ru: "Визы" }
+  page_lead: { en: "Schengen, US, UK and other visas for Armenian passport holders. The first consultation is free.", hy: "Շենգենյան, ԱՄՆ, Մեծ Բրիտանիայի և այլ վիզաներ ՀՀ քաղաքացիների համար։ Առաջին խորհրդատվությունն անվճար է։", ru: "Шенгенские, американские, британские и другие визы для граждан Армении. Первая консультация бесплатно." }
+  consultation_info: "[PLACEHOLDER: how long the consultation takes, and whether it's in person or online]"
+  success_title: { en: "How often are applications approved?", hy: "Որքա՞ն հաճախ են դիմումները հաստատվում", ru: "Как часто одобряют заявки?" }
+
+flight:
+  tile_title: { en: "Just the flight", hy: "Միայն ավիատոմս", ru: "Только билет" }
+  tile_text: { en: "Already have a hotel? We'll find the ticket from Zvartnots.", hy: "Հյուրանոցն արդեն ունե՞ք։ Մենք կգտնենք տոմսը «Զվարթնոց»-ից։", ru: "Отель уже есть? Найдём билет из Звартноца." }
+  page_title: { en: "Flight tickets", hy: "Ավիատոմսեր", ru: "Авиабилеты" }
+  page_lead: { en: "Tell us the route and dates. We'll send the options and prices to your phone.", hy: "Նշեք երթուղին և ամսաթվերը։ Տարբերակներն ու գները կուղարկենք ձեր հեռախոսին։", ru: "Укажите маршрут и даты. Варианты и цены пришлём вам на телефон." }
+
+builder:
+  title: { en: "Build your tour", hy: "Կազմեք ձեր տուրը", ru: "Соберите свой тур" }
+  text: { en: "Pick one place or combine a few.", hy: "Ընտրեք մեկ ուղղություն կամ միավորեք մի քանիսը։", ru: "Выберите одно направление или объедините несколько." }
+  types:
+    en: ["Flight + hotel", "All-inclusive", "Group tour"]
+    hy: ["Ավիատոմս + հյուրանոց", "Ամեն ինչ ներառված", "Խմբային տուր"]
+    ru: ["Перелёт + отель", "Всё включено", "Групповой тур"]
+  picked: { en: "picked", hy: "ընտրված", ru: "выбрано" }
+  submit: { en: "Get a price", hy: "Ստանալ գինը", ru: "Узнать цену" }
+
+social:
+  label: { en: "Social packages", hy: "Սոցիալական փաթեթներ", ru: "Социальные пакеты" }
+  ask: { en: "Ask us about it →", hy: "Հարցրեք մեզ →", ru: "Спросите нас →" }
+
+office:
+  title: { en: "Come to the office", hy: "Եկեք գրասենյակ", ru: "Приходите в офис" }
+  open: { en: "Open", hy: "Աշխատում ենք", ru: "Открыто" }
+  pick: { en: "Pick a time so someone is free when you arrive. We'll call to confirm.", hy: "Ընտրեք ժամը, որ ձեր գալու պահին մեզանից մեկն ազատ լինի։ Կզանգենք հաստատելու։", ru: "Выберите время, чтобы к вашему приходу кто-то был свободен. Мы позвоним и подтвердим." }
+  book: { en: "Request this time", hy: "Ամրագրել այս ժամը", ru: "Записаться на это время" }
+  map: { en: "Open in Google Maps", hy: "Բացել Google Maps-ում", ru: "Открыть в Google Maps" }
+  photo: "[PLACEHOLDER: photo of your door or sign on Teryan Street]"
+  page_title: { en: "Office and contacts", hy: "Գրասենյակ և կոնտակտներ", ru: "Офис и контакты" }
+
+tours:
+  title: { en: "Tours", hy: "Տուրեր", ru: "Туры" }
+  subtitle: { en: "from Zvartnots", hy: "«Զվարթնոց»-ից", ru: "из Звартноца" }
+  all: { en: "All", hy: "Բոլորը", ru: "Все" }
+  region_sea: { en: "Red Sea", hy: "Կարմիր ծով", ru: "Красное море" }
+  region_gulf: { en: "Gulf", hy: "Պարսից ծոց", ru: "Персидский залив" }
+  region_europe: { en: "Europe", hy: "Եվրոպա", ru: "Европа" }
+  from: { en: "from", hy: "սկսած", ru: "от" }
+  ask_price: { en: "Price on request", hy: "Գինը՝ ըստ հարցման", ru: "Цена по запросу" }
+  details: { en: "Details", hy: "Մանրամասն", ru: "Подробнее" }
+  ask_whatsapp: { en: "Ask on WhatsApp", hy: "Հարցնել WhatsApp-ով", ru: "Спросить в WhatsApp" }
+  request: { en: "Request prices", hy: "Հարցնել գները", ru: "Запросить цены" }
+  flight: { en: "Flight", hy: "Թռիչք", ru: "Перелёт" }
+  visa: { en: "Visa", hy: "Վիզա", ru: "Виза" }
+  months: { en: "Best months", hy: "Լավագույն ամիսները", ru: "Лучшие месяцы" }
+  nights: { en: "Length", hy: "Տևողություն", ru: "Длительность" }
+  includes: { en: "Included", hy: "Ներառված է", ru: "Включено" }
+  back: { en: "← All tours", hy: "← Բոլոր տուրերը", ru: "← Все туры" }
+  page_lead: { en: "Prices depend on dates and hotel. Pick a destination and we'll send current offers.", hy: "Գները կախված են ամսաթվերից և հյուրանոցից։ Ընտրեք ուղղությունը, և մենք կուղարկենք ընթացիկ առաջարկները։", ru: "Цены зависят от дат и отеля. Выберите направление, и мы пришлём актуальные предложения." }
+
+reviews:
+  title: { en: "What clients wrote", hy: "Ինչ են գրել հաճախորդները", ru: "Что пишут клиенты" }
+  empty: "[PLACEHOLDER: a real review, word for word, with the client's permission]"
+  google: { en: "Google reviews →", hy: "Google կարծիքներ →", ru: "Отзывы в Google →" }
+  yandex: { en: "Yandex reviews →", hy: "Yandex կարծիքներ →", ru: "Отзывы в Яндексе →" }
+  photo: "[PLACEHOLDER: client trip photo, with permission]"
+
+faq:
+  title: { en: "Questions people ask us", hy: "Հաճախ տրվող հարցեր", ru: "Частые вопросы" }
+
+footer:
+  newsletter: { en: "New tours and visa news by email", hy: "Նոր տուրեր և վիզային նորություններ էլ. փոստով", ru: "Новые туры и новости о визах на почту" }
+  newsletter_note: "[PLACEHOLDER: how often you'll send it]"
+  subscribe: { en: "Subscribe", hy: "Բաժանորդագրվել", ru: "Подписаться" }
+  services: { en: "Services", hy: "Ծառայություններ", ru: "Услуги" }
+  insurance: { en: "Travel insurance", hy: "Ճամփորդական ապահովագրություն", ru: "Страховка" }
+  licence: { en: "Licence", hy: "Լիցենզիա", ru: "Лицензия" }
+  follow: { en: "Follow us", hy: "Հետևեք մեզ", ru: "Мы в соцсетях" }
+
+widget:
+  title: { en: "Write to us", hy: "Գրեք մեզ", ru: "Напишите нам" }
+  call: { en: "Call me", hy: "Զանգեք ինձ", ru: "Перезвоните" }
+
+notfound:
+  title: { en: "Page not found", hy: "Էջը չի գտնվել", ru: "Страница не найдена" }
+  back: { en: "Go to the home page", hy: "Գլխավոր էջ", ru: "На главную" }

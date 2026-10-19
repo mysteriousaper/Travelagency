@@ -1,0 +1,202 @@
+---
+import '../styles/global.css';
+import Ph from '../components/Ph.astro';
+import ContactFields from '../components/ContactFields.astro';
+import { site, tours } from '../lib/content.js';
+import { LOCALES, LOCALE_LABELS, LOCALE_NAMES, makeT, pick, href, switchLocale, whatsappLink, telegramLink } from '../lib/i18n.js';
+
+const { lang, title, description, current = '' } = Astro.props;
+const t = makeT(lang);
+const path = Astro.url.pathname;
+const wa = whatsappLink() ?? href(lang, 'contact');
+const tg = telegramLink() ?? href(lang, 'contact');
+
+const rates = Object.fromEntries(
+  Object.entries(site.currency_rates_amd ?? {}).filter(([, v]) => typeof v === 'number' && v > 0),
+);
+const currencies = [['AMD', '֏'], ['USD', '$'], ['EUR', '€'], ['RUB', '₽']].filter(([c]) => c === 'AMD' || rates[c]);
+
+const nav = [
+  ['home', '', t('nav.home')],
+  ['tours', 'tours', t('nav.tours')],
+  ['visas', 'visas', t('nav.visas')],
+  ['flights', 'flights', t('nav.flights')],
+  ['contact', 'contact', t('nav.contact')],
+];
+const seaTours = tours.filter((x) => x.region !== 'europe');
+const euTours = tours.filter((x) => x.region === 'europe');
+const social = Object.entries(site.social ?? {}).filter(([, url]) => url);
+const socialNames = { instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', telegram: 'Telegram', youtube: 'YouTube' };
+const hotels = ['3★', '4★', '5★'];
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(path, Astro.site)} />
+  {LOCALES.map((l) => <link rel="alternate" hreflang={l} href={new URL(switchLocale(path, l), Astro.site)} />)}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body
+  data-lang={lang}
+  data-wa={wa}
+  data-msg-sending={t('form.sending')}
+  data-msg-ok={t('form.ok')}
+  data-msg-error={t('form.error')}
+  data-msg-invalid={t('form.invalid')}
+>
+  <script type="application/json" id="rates" set:html={JSON.stringify(rates)} />
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-group">
+        {site.phones.map((p, i) => (
+          p.startsWith('[PLACEHOLDER') ? <span><Ph text={p} /></span> : <a href={`tel:${p.replace(/[^\d+]/g, '')}`} class={i > 0 ? 'hide-sm' : ''}>{p}</a>
+        ))}
+        <span>{pick(site.address, lang)}</span>
+      </div>
+      <div class="topbar-group">
+        <a href={wa}>WhatsApp</a>
+        <a href={tg}>Telegram</a>
+        <span class="sep" aria-hidden="true">|</span>
+        <nav class="switch" aria-label={t('nav.language')}>
+          {LOCALES.map((l) => <a href={switchLocale(path, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : 'false'} title={LOCALE_NAMES[l]}>{LOCALE_LABELS[l]}</a>)}
+        </nav>
+        {currencies.length > 1 && (
+          <>
+            <span class="sep" aria-hidden="true">|</span>
+            <div class="switch" role="group" aria-label={t('nav.currency')}>
+              {currencies.map(([code, sym]) => <button type="button" data-currency={code} aria-pressed={code === 'AMD' ? 'true' : 'false'} aria-label={code}>{sym}</button>)}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href={href(lang)} class="logo" aria-label="King Travel">
+        <span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5L3 8z" /><path d="M5 21h14" /></svg></span>
+        <span class="logo-text">King Travel</span>
+      </a>
+      <nav class="nav" id="main-nav" aria-label={t('nav.menu')}>
+        {nav.map(([key, p, label]) => <a href={href(lang, p)} aria-current={current === key ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      <div style="display: flex; gap: 8px; align-items: center">
+        <button type="button" class="menu-toggle" aria-controls="main-nav" aria-expanded="false" data-menu-toggle>{t('nav.menu')}</button>
+        <button type="button" class="btn btn-amber" data-open-dialog="quote">{t('cta.plan')}</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <slot />
+  </main>
+
+  <footer class="footer container">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-news">
+          <h2>{t('footer.newsletter')}</h2>
+          <p class="muted" style="margin: 0; color: #a3aec0"><Ph text={t('footer.newsletter_note')} /></p>
+          <form data-lead="newsletter" novalidate>
+            <label class="visually-hidden" for="newsletter-email">{t('field.email_required')}</label>
+            <input id="newsletter-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn btn-amber">{t('footer.subscribe')}</button>
+          </form>
+          <p class="form-status" data-status role="status" aria-live="polite"></p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <strong>{t('hero.card_sea')}</strong>
+            {seaTours.map((x) => <a href={href(lang, `tours/${x.slug}`)}>{pick(x.name, lang)}</a>)}
+          </div>
+          <div>
+            <strong>{t('hero.card_europe')}</strong>
+            {euTours.map((x) => <a href={href(lang, `tours/${x.slug}`)}>{pick(x.name, lang)}</a>)}
+          </div>
+          <div>
+            <strong>{t('footer.services')}</strong>
+            <a href={href(lang, 'visas')}>{t('nav.visas')}</a>
+            <a href={href(lang, 'visas')}>{t('footer.insurance')}</a>
+            <a href={href(lang, 'flights')}>{t('nav.flights')}</a>
+            {site.social_packages_enabled && <a href={href(lang, 'contact')}>{t('social.label')}</a>}
+            <a href={href(lang, 'contact')}>{t('nav.contact')}</a>
+          </div>
+          {social.length > 0 && (
+            <div>
+              <strong>{t('footer.follow')}</strong>
+              {social.map(([k, url]) => <a href={url} rel="noopener" target="_blank">{socialNames[k] ?? k}</a>)}
+            </div>
+          )}
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>King Travel · {pick(site.address, lang)} · <Ph text={pick(site.hours, lang)} /> · {t('footer.licence')} <Ph text={site.licence} /></span>
+        <span>© {new Date().getFullYear()} King Travel</span>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="widget" aria-label={t('widget.title')}>
+    <div class="widget-title">{t('widget.title')}</div>
+    <div class="widget-row">
+      <a class="w-wa" href={wa}>WhatsApp</a>
+      <a class="w-tg" href={tg}>Telegram</a>
+      <button type="button" class="w-call" data-open-dialog="callback">{t('widget.call')}</button>
+    </div>
+  </aside>
+
+  <dialog class="quote-dialog" id="quote-dialog" aria-labelledby="quote-dialog-title">
+    <form class="dialog-body" data-lead="quote" novalidate>
+      <div class="dialog-head">
+        <h2 id="quote-dialog-title">
+          <span data-title-for="quote">{t('form.dialog_quote')}</span>
+          <span data-title-for="visa" hidden>{t('form.dialog_visa')}</span>
+          <span data-title-for="booking" hidden>{t('form.dialog_booking')}</span>
+          <span data-title-for="callback" hidden>{t('form.dialog_callback')}</span>
+        </h2>
+        <button type="button" class="icon-btn" data-close-dialog aria-label={t('form.close')}>×</button>
+      </div>
+      <p class="muted" style="margin: 0; font-weight: 700" data-context-text hidden></p>
+      <input type="hidden" name="context" data-detail="Request" />
+      <div data-only="quote" class="stack" style="gap: 10px">
+        <div class="fields">
+          <label class="field">{t('field.destination')}
+            <select name="destination" data-detail="Destination">
+              {tours.map((x) => <option value={pick(x.name, 'en')}>{pick(x.name, lang)}</option>)}
+              <option value="Other">{t('field.other')}</option>
+            </select>
+          </label>
+          <label class="field">{t('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
+          <label class="field">{t('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
+        </div>
+        <fieldset class="chips" data-chips="hotel">
+          <legend>{t('field.hotel')}</legend>
+          {hotels.map((h) => <button type="button" class="chip" data-value={h} aria-pressed={h === '4★' ? 'true' : 'false'}>{h}</button>)}
+          <input type="hidden" name="hotel" value="4★" data-detail="Hotel" />
+        </fieldset>
+      </div>
+      <label class="field" data-only="quote visa booking">{t('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
+      <ContactFields lang={lang} />
+      <button type="submit" class="btn btn-amber btn-block">{t('form.send')}</button>
+      <p class="search-note">{t('search.free_note')}</p>
+    </form>
+  </dialog>
+
+  <script>
+    import '../scripts/site.js';
+  </script>
+</body>
+</html>

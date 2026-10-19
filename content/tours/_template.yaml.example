@@ -1,0 +1,17 @@
+# Copy this file to add a destination. The file name (without .yaml) is not
+# used; "slug" decides the page address, e.g. /en/tours/antalya/.
+slug: example
+order: 99            # lower numbers come first
+region: sea          # sea (Red Sea) | gulf | europe
+code: XXX            # airport code shown on the card
+image: ""            # e.g. /images/tours/example.jpg (put the file in public/images/tours/)
+image_alt: { en: "", hy: "", ru: "" }
+name: { en: "", hy: "", ru: "" }
+country: { en: "", hy: "", ru: "" }
+description: { en: "", hy: "", ru: "" }
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa: "[PLACEHOLDER: entry rules for Armenian passports]"
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length, e.g. 7 nights]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:      # a number like 450000, or leave empty for "Price on request"

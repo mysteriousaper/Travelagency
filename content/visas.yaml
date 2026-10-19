@@ -1,0 +1,83 @@
+# Visa document lists shown in the visa checker.
+# These are the usual requirements; check them against the embassies.
+
+countries:
+  - id: schengen
+    name: { en: "Schengen countries", hy: "Շենգենյան երկրներ", ru: "Шенгенские страны" }
+    documents:
+      en:
+        - "Passport valid at least 3 months after you return"
+        - "Two photos, 3.5 × 4.5 cm"
+        - "Recent bank statements"
+        - "Letter from your employer"
+        - "Hotel booking and flight reservation"
+        - "Travel insurance with at least €30,000 cover"
+      hy:
+        - "Անձնագիր, որը վավեր է վերադարձից հետո առնվազն 3 ամիս"
+        - "Երկու լուսանկար, 3.5 × 4.5 սմ"
+        - "Բանկային քաղվածք վերջին ամիսների համար"
+        - "Տեղեկանք աշխատավայրից"
+        - "Հյուրանոցի ամրագրում և ավիատոմսի ամրագրում"
+        - "Ճամփորդական ապահովագրություն՝ առնվազն 30 000 € ծածկույթով"
+      ru:
+        - "Паспорт, действующий минимум 3 месяца после возвращения"
+        - "Две фотографии 3,5 × 4,5 см"
+        - "Выписка из банка за последние месяцы"
+        - "Справка с места работы"
+        - "Бронь отеля и бронь авиабилетов"
+        - "Страховка с покрытием от 30 000 €"
+
+  - id: usa
+    name: { en: "USA", hy: "ԱՄՆ", ru: "США" }
+    documents:
+      en:
+        - "DS-160 form confirmation"
+        - "Valid passport"
+        - "Photo, 5 × 5 cm"
+        - "Proof of job, property or family in Armenia"
+        - "Bank statements"
+        - "Interview at the embassy"
+      hy:
+        - "DS-160 հայտի հաստատում"
+        - "Վավեր անձնագիր"
+        - "Լուսանկար, 5 × 5 սմ"
+        - "Հայաստանում աշխատանքի, գույքի կամ ընտանիքի ապացույց"
+        - "Բանկային քաղվածքներ"
+        - "Հարցազրույց դեսպանատանը"
+      ru:
+        - "Подтверждение анкеты DS-160"
+        - "Действующий паспорт"
+        - "Фотография 5 × 5 см"
+        - "Подтверждение работы, имущества или семьи в Армении"
+        - "Выписки из банка"
+        - "Собеседование в посольстве"
+
+  - id: uk
+    name: { en: "UK", hy: "Մեծ Բրիտանիա", ru: "Великобритания" }
+    documents:
+      en:
+        - "Online application"
+        - "Valid passport"
+        - "Bank statements"
+        - "Proof of employment"
+        - "Where you'll stay"
+        - "Biometrics appointment"
+      hy:
+        - "Առցանց դիմում"
+        - "Վավեր անձնագիր"
+        - "Բանկային քաղվածքներ"
+        - "Աշխատանքի ապացույց"
+        - "Կացության վայրի տվյալներ"
+        - "Բիոմետրիկ տվյալների հանձնում"
+      ru:
+        - "Онлайн-заявка"
+        - "Действующий паспорт"
+        - "Выписки из банка"
+        - "Подтверждение занятости"
+        - "Где вы будете жить"
+        - "Сдача биометрии"
+
+  - id: other
+    name: { en: "Other countries", hy: "Այլ երկրներ", ru: "Другие страны" }
+    documents:
+      en: ["[PLACEHOLDER: the other countries you handle most often, with their lists]"]

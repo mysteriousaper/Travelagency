@@ -1,0 +1,21 @@
+slug: sharm-el-sheikh
+order: 1
+region: sea
+code: SSH
+image: /images/tours/sharm-el-sheikh.jpg
+image_alt:
+  en: "A diver beside a coral wall in the Red Sea"
+  hy: "Ջրասուզակ կորալային պատի մոտ Կարմիր ծովում"
+  ru: "Дайвер у кораллового рифа в Красном море"
+name: { en: "Sharm El Sheikh", hy: "Շարմ էլ Շեյխ", ru: "Шарм-эль-Шейх" }
+country: { en: "Egypt", hy: "Եգիպտոս", ru: "Египет" }
+description:
+  en: "A Red Sea resort town in Egypt's Sinai. People go for the beach hotels and for snorkelling and diving on the reefs at Ras Mohammed and Tiran."
+  hy: "Կարմիր ծովի ափին գտնվող հանգստավայր Եգիպտոսի Սինայի թերակղզում։ Այստեղ գալիս են լողափնյա հյուրանոցների, ինչպես նաև Ռաս Մոհամեդի և Տիրանի խութերում սնորքլինգի ու դայվինգի համար։"
+  ru: "Курорт на Красном море, на Синайском полуострове в Египте. Сюда едут ради пляжных отелей, снорклинга и дайвинга на рифах Рас-Мохаммеда и Тирана."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa: "[PLACEHOLDER: what Armenian passport holders need for Sinai]"
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length, e.g. 7 nights]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

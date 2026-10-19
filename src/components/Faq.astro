@@ -1,0 +1,19 @@
+---
+import Ph from './Ph.astro';
+import { faq } from '../lib/content.js';
+import { makeT, pick } from '../lib/i18n.js';
+
+const { lang, class: className = '' } = Astro.props;
+const t = makeT(lang);
+---
+<section class={`card stack faq ${className}`} id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title" style="font-size: 26px">{t('faq.title')}</h2>
+  <div>
+    {faq.map((item, i) => (
+      <details open={i === 0}>
+        <summary>{pick(item.question, lang)}</summary>
+        <p><Ph text={pick(item.answer, lang)} /></p>
+      </details>
+    ))}
+  </div>
+</section>

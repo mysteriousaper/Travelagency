@@ -1,0 +1,26 @@
+---
+// The root address sends visitors to their language (Armenian by default).
+import { DEFAULT_LOCALE, LOCALES } from '../lib/i18n.js';
+const fallback = `/${DEFAULT_LOCALE}/`;
+---
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+<head>
+  <meta charset="utf-8" />
+  <title>King Travel</title>
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content={`0; url=${fallback}`} />
+  <link rel="canonical" href={fallback} />
+  <script is:inline define:vars={{ LOCALES, fallback }}>
+    let target = fallback;
+    try {
+      const saved = localStorage.getItem('kt-lang');
+      const browser = (navigator.language || '').slice(0, 2);
+      const lang = [saved, browser].find((l) => LOCALES.includes(l));
+      if (lang) target = `/${lang}/`;
+    } catch {}
+    location.replace(target);
+  </script>
+</head>
+<body><a href={fallback}>King Travel</a></body>
+</html>

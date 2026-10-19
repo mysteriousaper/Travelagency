@@ -1,0 +1,20 @@
+{
+  "name": "king-travel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "start": "node ./dist/server/entry.mjs",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@astrojs/node": "9.5.5",
+    "astro": "5.18.2",
+    "yaml": "2.8.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

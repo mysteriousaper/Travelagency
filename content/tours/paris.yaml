@@ -1,0 +1,21 @@
+slug: paris
+order: 4
+region: europe
+code: CDG
+image: "/images/tours/paris.jpg"
+image_alt: { en: "Pont Alexandre III in Paris at dusk", hy: "Ալեքսանդր III կամուրջը Փարիզում մթնշաղին", ru: "Мост Александра III в Париже в сумерках" }
+name: { en: "Paris", hy: "Փարիզ", ru: "Париж" }
+country: { en: "France", hy: "Ֆրանսիա", ru: "Франция" }
+description:
+  en: "The Louvre, the Eiffel Tower, Montmartre and walks along the Seine."
+  hy: "Լուվր, Էյֆելյան աշտարակ, Մոնմարտր և զբոսանքներ Սենի ափով։"
+  ru: "Лувр, Эйфелева башня, Монмартр и прогулки вдоль Сены."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa:
+  en: "Schengen visa. We prepare it as part of the trip."
+  hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
+  ru: "Шенгенская виза. Оформим её вместе с поездкой."
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

@@ -1,0 +1,21 @@
+slug: venice
+order: 6
+region: europe
+code: VCE
+image: "/images/tours/venice.jpg"
+image_alt: { en: "Boats on the Grand Canal in Venice", hy: "Նավակներ Վենետիկի Մեծ ջրանցքում", ru: "Лодки на Большом канале в Венеции" }
+name: { en: "Venice", hy: "Վենետիկ", ru: "Венеция" }
+country: { en: "Italy", hy: "Իտալիա", ru: "Италия" }
+description:
+  en: "Canals, gondolas, St Mark's Square and day trips to Murano and Burano."
+  hy: "Ջրանցքներ, գոնդոլներ, Սուրբ Մարկոսի հրապարակ և մեկօրյա այցեր Մուրանո ու Բուրանո։"
+  ru: "Каналы, гондолы, площадь Сан-Марко и поездки на Мурано и Бурано."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa:
+  en: "Schengen visa. We prepare it as part of the trip."
+  hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
+  ru: "Шенгенская виза. Оформим её вместе с поездкой."
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:

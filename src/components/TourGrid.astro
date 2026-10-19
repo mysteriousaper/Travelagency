@@ -1,0 +1,55 @@
+---
+import Ph from './Ph.astro';
+import { tours } from '../lib/content.js';
+import { makeT, pick, href, whatsappLink } from '../lib/i18n.js';
+
+const { lang, headingLevel = 'h2', showHeading = true } = Astro.props;
+const t = makeT(lang);
+const Heading = headingLevel;
+const filters = [
+  ['all', t('tours.all')],
+  ['sea', t('tours.region_sea')],
+  ['gulf', t('tours.region_gulf')],
+  ['europe', t('tours.region_europe')],
+];
+const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', maximumFractionDigits: 0 });
+---
+<div data-filter-root>
+  <div class="section-head">
+    {showHeading && <Heading class="section-title">{t('tours.title')}<br /><span>{t('tours.subtitle')}</span></Heading>}
+    <div class="filters" role="group" aria-label={t('tours.title')}>
+      {filters.map(([key, label], i) => <button type="button" data-filter={key} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>)}
+    </div>
+  </div>
+  <div class="tour-grid">
+    {tours.map((tour) => {
+      const name = pick(tour.name, lang);
+      const wa = whatsappLink(`${name}: ${t('tours.request')}`);
+      return (
+        <article class="tour-card" data-region={tour.region}>
+          <a class="tour-card-img" href={href(lang, `tours/${tour.slug}`)} tabindex="-1" aria-hidden="true">
+            {tour.image
+              ? <img src={tour.image} alt="" loading="lazy" width="600" height="440" />
+              : <div class="ph-box">[PLACEHOLDER: photo of {pick(tour.name, 'en')}]</div>}
+            <span class="tour-code">{tour.code}</span>
+          </a>
+          <div class="tour-card-body">
+            <div class="tour-card-title">
+              <h3><a href={href(lang, `tours/${tour.slug}`)}>{name}</a></h3>
+              <span class="muted" style="font-size: 13px">{pick(tour.country, lang)}</span>
+            </div>
+            <div class="muted" style="font-size: 13px"><Ph text={pick(tour.nights, lang)} /></div>
+            {typeof tour.price_from_amd === 'number'
+              ? <div class="price" data-price-amd={tour.price_from_amd} data-prefix={t('tours.from')}>{t('tours.from')} {amd.format(tour.price_from_amd)}</div>
+              : <div class="price">{t('tours.ask_price')}</div>}
+            <div class="grow"></div>
+            <div class="btn-row">
+              {wa && <a class="btn btn-green" href={wa}>WhatsApp</a>}
+              <button type="button" class="btn btn-navy" data-open-dialog="quote" data-destination={pick(tour.name, 'en')}>{t('tours.request')}</button>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</div>

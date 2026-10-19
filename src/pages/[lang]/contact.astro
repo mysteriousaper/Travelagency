@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import Ph from '../../components/Ph.astro';
+import OfficeBooking from '../../components/OfficeBooking.astro';
+import Faq from '../../components/Faq.astro';
+import { site } from '../../lib/content.js';
+import { LOCALES, makeT, pick, whatsappLink, telegramLink } from '../../lib/i18n.js';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = makeT(lang);
+const address = pick(site.address, 'en');
+const mapQuery = encodeURIComponent(address);
+const wa = whatsappLink();
+const tg = telegramLink();
+---
+<Base lang={lang} title={`${t('office.page_title')} · King Travel`} description={pick(site.address, lang)} current="contact">
+  <div class="page-head">
+    <h1>{t('office.page_title')}</h1>
+    <p>{pick(site.address, lang)}. <Ph text={pick(site.address_extra, lang)} /></p>
+  </div>
+  <div class="split">
+    <div class="card stack">
+      <dl class="facts">
+        <dt>{t('field.phone')}</dt>
+        <dd>{site.phones.map((p) => <div>{p.startsWith('[PLACEHOLDER') ? <Ph text={p} /> : <a href={`tel:${p.replace(/[^\d+]/g, '')}`}>{p}</a>}</div>)}</dd>
+        <dt>WhatsApp</dt><dd>{wa ? <a href={wa}>{site.whatsapp_number}</a> : <Ph text="[PLACEHOLDER: WhatsApp number in content/site.yaml]" />}</dd>
+        <dt>Telegram</dt><dd>{tg ? <a href={tg}>@{site.telegram_username}</a> : <Ph text="[PLACEHOLDER: Telegram username in content/site.yaml]" />}</dd>
+        <dt>Email</dt><dd>{site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <Ph text="[PLACEHOLDER: email in content/site.yaml]" />}</dd>
+        <dt>{t('office.open')}</dt><dd><Ph text={pick(site.hours, lang)} /></dd>
+      </dl>
+      <iframe class="map-frame" title={pick(site.address, lang)} loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}></iframe>
+      <a class="btn btn-outline" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} rel="noopener" target="_blank">{t('office.map')}</a>
+      <div class="ph-box" style="height: 200px">{t('office.photo')}</div>
+    </div>
+    <OfficeBooking lang={lang} mode="inline" />
+  </div>
+  <div class="section"><Faq lang={lang} /></div>
+</Base>

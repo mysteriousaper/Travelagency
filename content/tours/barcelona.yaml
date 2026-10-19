@@ -1,0 +1,21 @@
+slug: barcelona
+order: 8
+region: europe
+code: BCN
+image: ""
+image_alt: { en: "", hy: "", ru: "" }
+name: { en: "Barcelona", hy: "Բարսելոնա", ru: "Барселона" }
+country: { en: "Spain", hy: "Իսպանիա", ru: "Испания" }
+description:
+  en: "Gaudí's Sagrada Família and Park Güell, the Gothic Quarter and the city beaches."
+  hy: "Գաուդիի Սագրադա Ֆամիլիան և Գուել այգին, Գոթական թաղամասը և քաղաքային լողափերը։"
+  ru: "Саграда Фамилия и парк Гуэль Гауди, Готический квартал и городские пляжи."
+flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
+visa:
+  en: "Schengen visa. We prepare it as part of the trip."
+  hy: "Շենգենյան վիզա։ Մենք այն կձևակերպենք ուղևորության հետ միասին։"
+  ru: "Шенгенская виза. Оформим её вместе с поездкой."
+best_months: "[PLACEHOLDER: your recommendation]"
+nights: "[PLACEHOLDER: typical length]"
+includes: "[PLACEHOLDER: what the package includes]"
+price_from_amd:
