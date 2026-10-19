@@ -18,7 +18,6 @@ const t = makeT(lang);
   </div>
   {visas.map((v, i) => (
     <ul class={`visa-list${i === 0 ? ' is-active' : ''}`} data-visa-list={v.id}>
-      <li class="print-title">King Travel · {pick(v.name, lang)}</li>
       {pick(v.documents, lang).map((doc) => (
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg><span><Ph text={doc} /></span></li>
       ))}

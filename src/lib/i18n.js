@@ -2,7 +2,9 @@ import { ui, site } from './content.js';
 
 export const LOCALES = ['hy', 'en', 'ru'];
 export const DEFAULT_LOCALE = 'hy';
-export const LOCALE_LABELS = { hy: 'HY', en: 'EN', ru: 'RU' };
+// Shown in the language switch: each language in its own script, so people find theirs at a glance.
+export const LOCALE_SHORT = { hy: 'Հայ', ru: 'Рус', en: 'Eng' };
+export const SWITCH_ORDER = ['hy', 'ru', 'en'];
 export const LOCALE_NAMES = { hy: 'Հայերեն', en: 'English', ru: 'Русский' };
 
 /** Returns the value for `lang` from a { en, hy, ru } object; plain values pass through. */

@@ -10,10 +10,17 @@ const t = makeT(lang);
   <h2 id="faq-title" style="font-size: 26px">{t('faq.title')}</h2>
   <div>
     {faq.map((item, i) => (
-      <details open={i === 0}>
-        <summary>{pick(item.question, lang)}</summary>
-        <p><Ph text={pick(item.answer, lang)} /></p>
-      </details>
+      <div class={`faq-item${i === 0 ? ' is-open' : ''}`}>
+        <h3 class="faq-q-wrap">
+          <button type="button" class="faq-q" id={`faq-q-${i}`} aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`faq-a-${i}`}>
+            <span>{pick(item.question, lang)}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq-a" id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`}>
+          <div><p><Ph text={pick(item.answer, lang)} /></p></div>
+        </div>
+      </div>
     ))}
   </div>
 </section>

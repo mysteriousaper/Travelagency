@@ -34,13 +34,13 @@ hero:
     hy: "Վիզաներ՝ Շենգեն, ԱՄՆ, Մեծ Բրիտանիա"
     ru: "Визы: Шенген, США, Великобритания"
   title_lead:
-    en: "Your travel concierge on "
-    hy: "Ձեր ճամփորդական կոնսյերժը "
-    ru: "Ваш тревел-консьерж "
+    en: "You pick the place, "
+    hy: "Դուք ընտրեք ուղղությունը, "
+    ru: "Вы выбираете, куда ехать, "
   title_accent:
-    en: "Teryan Street."
-    hy: "Տերյան փողոցում։"
-    ru: "на улице Терьяна."
+    en: "we take care of the rest."
+    hy: "մնացածը մենք կկազմակերպենք։"
+    ru: "остальное мы возьмём на себя."
   lead:
     en: "Package holidays to Sharm El Sheikh, Dubai, Doha and cities in Europe. We also do visas and flight tickets. Ask on WhatsApp and a person from our office replies."
     hy: "Հանգստի փաթեթներ դեպի Շարմ էլ Շեյխ, Դուբայ, Դոհա և Եվրոպայի քաղաքներ։ Մենք նաև զբաղվում ենք վիզաներով և ավիատոմսերով։ Գրեք WhatsApp-ով, և ձեզ կպատասխանի մեր գրասենյակի աշխատակիցը։"
@@ -115,6 +115,8 @@ visa:
   note: { en: "The usual list. The embassy's current list is the one that counts.", hy: "Սովորական ցանկ։ Վերջնականը դեսպանատան գործող ցանկն է։", ru: "Обычный список. Окончательный — действующий список посольства." }
   print: { en: "Print or save as PDF", hy: "Տպել կամ պահել PDF", ru: "Распечатать или сохранить в PDF" }
   book: { en: "Book a free visa consultation", hy: "Գրանցվել անվճար խորհրդատվության", ru: "Записаться на бесплатную консультацию" }
+  print_heading: { en: "Visa documents checklist", hy: "Վիզայի փաստաթղթերի ցանկ", ru: "Список документов для визы" }
+  print_questions: { en: "Questions? Call us", hy: "Հարցերի դեպքում զանգահարեք", ru: "Остались вопросы? Звоните" }
   services: { en: "We check your documents, translate them, book the embassy appointment and issue travel insurance.", hy: "Ստուգում ենք փաստաթղթերը, թարգմանում ենք դրանք, գրանցում ենք դեսպանատանը և ձևակերպում ճամփորդական ապահովագրություն։", ru: "Проверяем документы, переводим их, записываем в посольство и оформляем страховку." }
   page_title: { en: "Visas", hy: "Վիզաներ", ru: "Визы" }
   page_lead: { en: "Schengen, US, UK and other visas for Armenian passport holders. The first consultation is free.", hy: "Շենգենյան, ԱՄՆ, Մեծ Բրիտանիայի և այլ վիզաներ ՀՀ քաղաքացիների համար։ Առաջին խորհրդատվությունն անվճար է։", ru: "Шенгенские, американские, британские и другие визы для граждан Армении. Первая консультация бесплатно." }

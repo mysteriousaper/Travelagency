@@ -88,11 +88,149 @@ $$('[data-visa]').forEach((root) => {
     });
   });
   $('[data-print-visa]', root)?.addEventListener('click', () => {
+    const sheet = $('#print-sheet');
+    const active = $('[data-country][aria-pressed="true"]', root);
+    $('[data-print-country]', sheet).textContent = active?.dataset.countryName || '';
+    $('[data-print-date]', sheet).textContent = new Date().toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
+    const list = $('[data-print-list]', sheet);
+    list.replaceChildren(...$$('.visa-list.is-active li', root).map((li) => {
+      const item = document.createElement('li');
+      item.textContent = li.textContent.trim();
+      return item;
+    }));
     body.dataset.print = 'visa';
     window.print();
   });
 });
 window.addEventListener('afterprint', () => { delete body.dataset.print; });
+
+/* Dropdowns: the native <select> stays in the form (and works without JavaScript);
+   the site draws its own list so it looks the same everywhere, and the whole field is clickable. */
+const chevron = '<svg class="dd-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+let ddCount = 0;
+function closeDropdown(field, focusButton = false) {
+  if (!field.classList.contains('is-open')) return;
+  field.classList.remove('is-open');
+  const btn = $('.dd-btn', field);
+  btn.setAttribute('aria-expanded', 'false');
+  if (focusButton) btn.focus();
+}
+function enhanceSelect(select) {
+  const field = select.closest('.field');
+  if (!field || field.classList.contains('has-dd')) return;
+  const id = `dd-${++ddCount}`;
+  const label = [...field.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent.trim()).join(' ');
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'dd-btn';
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-controls', id);
+  btn.innerHTML = `<span class="dd-value"></span>${chevron}`;
+  const list = document.createElement('ul');
+  list.className = 'dd-list';
+  list.id = id;
+  list.setAttribute('role', 'listbox');
+  list.setAttribute('aria-label', label);
+  list.tabIndex = -1;
+  const items = [...select.options].map((opt, i) => {
+    const li = document.createElement('li');
+    li.setAttribute('role', 'option');
+    li.id = `${id}-${i}`;
+    li.textContent = opt.text;
+    list.append(li);
+    return li;
+  });
+  select.classList.add('dd-native');
+  select.tabIndex = -1;
+  select.setAttribute('aria-hidden', 'true');
+  select.before(btn);
+  field.append(list);
+  field.classList.add('has-dd');
+
+  let active = select.selectedIndex;
+  const setActive = (i) => {
+    active = Math.max(0, Math.min(items.length - 1, i));
+    items.forEach((li, j) => li.classList.toggle('is-active', j === active));
+    list.setAttribute('aria-activedescendant', items[active].id);
+    items[active].scrollIntoView({ block: 'nearest' });
+  };
+  const sync = () => {
+    const i = select.selectedIndex;
+    $('.dd-value', btn).textContent = select.options[i]?.text ?? '';
+    btn.setAttribute('aria-label', `${label}: ${select.options[i]?.text ?? ''}`);
+    items.forEach((li, j) => li.setAttribute('aria-selected', String(j === i)));
+  };
+  const choose = (i) => {
+    if (select.selectedIndex !== i) {
+      select.selectedIndex = i;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    closeDropdown(field, true);
+  };
+  const open = () => {
+    $$('.field.is-open').forEach((f) => closeDropdown(f));
+    field.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    setActive(select.selectedIndex);
+    list.focus({ preventScroll: true });
+  };
+
+  btn.addEventListener('click', () => (field.classList.contains('is-open') ? closeDropdown(field, true) : open()));
+  btn.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) { e.preventDefault(); open(); }
+  });
+  list.addEventListener('click', (e) => {
+    e.preventDefault(); // stop the surrounding <label> from re-clicking the button
+    const li = e.target.closest('li');
+    if (li) choose(items.indexOf(li));
+  });
+  list.addEventListener('mousemove', (e) => {
+    const li = e.target.closest('li');
+    if (li && items.indexOf(li) !== active) setActive(items.indexOf(li));
+  });
+  list.addEventListener('keydown', (e) => {
+    const keys = { ArrowDown: active + 1, ArrowUp: active - 1, Home: 0, End: items.length - 1, PageDown: active + 5, PageUp: active - 5 };
+    if (e.key in keys) { e.preventDefault(); setActive(keys[e.key]); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(active); }
+    else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeDropdown(field, true); }
+    else if (e.key === 'Tab') closeDropdown(field);
+    else if (e.key.length === 1) {
+      const k = e.key.toLowerCase();
+      const next = items.findIndex((li, j) => j > active && li.textContent.toLowerCase().startsWith(k));
+      const first = items.findIndex((li) => li.textContent.toLowerCase().startsWith(k));
+      if (next >= 0 || first >= 0) setActive(next >= 0 ? next : first);
+    }
+  });
+  select.addEventListener('change', sync);
+  select.form?.addEventListener('reset', () => setTimeout(sync));
+  sync();
+}
+$$('.field select').forEach(enhanceSelect);
+document.addEventListener('pointerdown', (e) => {
+  $$('.field.is-open').forEach((f) => { if (!f.contains(e.target)) closeDropdown(f); });
+});
+
+/* Date fields: a click anywhere on the field opens the calendar */
+$$('.field input[type="date"]').forEach((input) => {
+  const field = input.closest('.field');
+  field.classList.add('has-picker');
+  field.addEventListener('click', (e) => {
+    if (e.target === input) return;
+    e.preventDefault();
+    input.focus();
+    try { input.showPicker(); } catch { /* older browsers: focus is enough */ }
+  });
+});
+
+/* Questions and answers */
+$$('.faq-q').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+});
 
 /* Tour filters */
 $$('[data-filter-root]').forEach((root) => {
@@ -175,7 +313,10 @@ function openDialog(type, { context = '', destination = '' } = {}) {
   ctx.hidden = !context;
   if (destination) {
     const select = $('select[name="destination"]', form);
-    if ([...select.options].some((o) => o.value === destination)) select.value = destination;
+    if ([...select.options].some((o) => o.value === destination)) {
+      select.value = destination;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
   }
   const status = $('[data-status]', form);
   status.textContent = '';
@@ -267,8 +408,13 @@ currencyButtons.forEach((b) => b.addEventListener('click', () => {
 }));
 if (currencyButtons.length) {
   currencyButtons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+  const embedded = () => {
+    const data = JSON.parse($('#rates-fallback')?.textContent || 'null');
+    return data?.rates ? { ...data, source: 'Central Bank of Armenia' } : Promise.reject(new Error('no rates'));
+  };
   fetch('/api/rates')
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .catch(embedded)
     .then((data) => {
       rates = { AMD: 1, ...(data.rates || {}) };
       const note = data.date ? `${data.source}, ${new Date(data.date).toLocaleDateString(lang)}` : data.source;
