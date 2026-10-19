@@ -22,7 +22,7 @@ nav:
   currency: { en: "Currency", hy: "Արժույթ", ru: "Валюта" }
 
 cta:
-  plan: { en: "Plan My Trip", hy: "Պլանավորել ուղևորությունը", ru: "Спланировать поездку" }
+  plan: { en: "Plan a trip", hy: "Ընտրել տուր", ru: "Подобрать тур" }
 
 hero:
   badge_destinations:
@@ -93,7 +93,10 @@ field:
   phone: { en: "Phone", hy: "Հեռախոս", ru: "Телефон" }
   email: { en: "Email (optional)", hy: "Էլ. փոստ (ըստ ցանկության)", ru: "Эл. почта (необязательно)" }
   email_required: { en: "Email", hy: "Էլ. փոստ", ru: "Эл. почта" }
-  reply_via: { en: "Send the answer to", hy: "Պատասխանը ուղարկել", ru: "Куда прислать ответ" }
+  reply_via: { en: "Where should we reply?", hy: "Ո՞ւր պատասխանենք", ru: "Куда вам ответить?" }
+  hint_whatsapp: { en: "We'll message you on WhatsApp at this number.", hy: "Կգրենք ձեզ WhatsApp-ով այս համարին։", ru: "Напишем вам в WhatsApp на этот номер." }
+  hint_telegram: { en: "We'll message you on Telegram at this number.", hy: "Կգրենք ձեզ Telegram-ով այս համարին։", ru: "Напишем вам в Telegram на этот номер." }
+  hint_email: { en: "We'll send the answer to your email.", hy: "Պատասխանը կուղարկենք ձեր էլ. փոստին։", ru: "Пришлём ответ на вашу почту." }
   notes: { en: "Anything we should know? Children's ages, budget, sea view.", hy: "Ուրիշ ի՞նչ պետք է իմանանք. երեխաների տարիքը, բյուջեն, ծովի տեսարանը։", ru: "Что ещё нам важно знать? Возраст детей, бюджет, вид на море." }
   day: { en: "Day", hy: "Օր", ru: "День" }
   time: { en: "Time", hy: "Ժամ", ru: "Время" }
@@ -102,13 +105,15 @@ form:
   send: { en: "Send", hy: "Ուղարկել", ru: "Отправить" }
   sending: { en: "Sending…", hy: "Ուղարկվում է…", ru: "Отправляем…" }
   ok: { en: "Thank you! We'll reply soon.", hy: "Շնորհակալություն։ Շուտով կպատասխանենք։", ru: "Спасибо! Скоро ответим." }
-  error: { en: "Couldn't send. Please call us:", hy: "Չհաջողվեց ուղարկել։ Խնդրում ենք զանգահարել՝", ru: "Не удалось отправить. Позвоните нам:" }
+  error: { en: "We couldn't send it from the site. Send the same request on WhatsApp in one tap, or call us:", hy: "Չհաջողվեց ուղարկել կայքից։ Ուղարկեք նույն հայտը WhatsApp-ով մեկ սեղմումով կամ զանգահարեք՝", ru: "Не получилось отправить с сайта. Отправьте эту же заявку в WhatsApp одним нажатием или позвоните:" }
+  send_whatsapp: { en: "Send on WhatsApp", hy: "Ուղարկել WhatsApp-ով", ru: "Отправить в WhatsApp" }
   invalid: { en: "Please check your name and phone number.", hy: "Խնդրում ենք ստուգել անունը և հեռախոսահամարը։", ru: "Проверьте, пожалуйста, имя и номер телефона." }
   close: { en: "Close", hy: "Փակել", ru: "Закрыть" }
   dialog_quote: { en: "Plan my trip", hy: "Պլանավորել ուղևորությունը", ru: "Спланировать поездку" }
   dialog_visa: { en: "Free visa consultation", hy: "Անվճար վիզային խորհրդատվություն", ru: "Бесплатная консультация по визе" }
   dialog_booking: { en: "Visit the office", hy: "Այցելել գրասենյակ", ru: "Визит в офис" }
   dialog_callback: { en: "Call me back", hy: "Զանգահարեք ինձ", ru: "Перезвоните мне" }
+  dialog_flight: { en: "Flight ticket request", hy: "Ավիատոմսի հարցում", ru: "Запрос авиабилета" }
 
 visa:
   title: { en: "What do you need for the visa?", hy: "Ի՞նչ է պետք վիզայի համար", ru: "Что нужно для визы?" }

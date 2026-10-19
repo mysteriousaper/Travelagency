@@ -301,16 +301,21 @@ $$('[data-builder]').forEach((root) => {
 
 /* Dialog shared by "Plan my trip", visa consultation, office visit and call-back */
 const dialog = $('#quote-dialog');
-function openDialog(type, { context = '', destination = '' } = {}) {
+// context: what staff see in Telegram; display: the same choice shown to the visitor in their language;
+// compact: the visitor already picked the details (from the search panel), so only ask how to reach them.
+function openDialog(type, { context = '', display = '', destination = '', compact = false } = {}) {
   if (!dialog) return;
   const form = $('form', dialog);
   form.dataset.lead = type;
   $$('[data-title-for]', dialog).forEach((el) => { el.hidden = el.dataset.titleFor !== type; });
-  $$('[data-only]', dialog).forEach((el) => { el.hidden = !el.dataset.only.split(' ').includes(type); });
+  $$('[data-only]', dialog).forEach((el) => {
+    const forType = el.dataset.only.split(' ').includes(type);
+    el.hidden = !forType || (compact && el.dataset.only === 'quote');
+  });
   $('input[name="context"]', form).value = context;
   const ctx = $('[data-context-text]', dialog);
-  ctx.textContent = context;
-  ctx.hidden = !context;
+  ctx.textContent = display || context;
+  ctx.hidden = !(display || context);
   if (destination) {
     const select = $('select[name="destination"]', form);
     if ([...select.options].some((o) => o.value === destination)) {
@@ -330,6 +335,44 @@ $$('[data-open-dialog]').forEach((btn) => {
     destination: btn.dataset.destination || '',
   }));
 });
+/* Search panel: the picked details go into the dialog, which then asks for name and phone */
+$$('form[data-search]').forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const picked = [...form.elements].filter((el) => el.dataset.detail && el.value);
+    const shown = (el) => (el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : new Date(el.value).toLocaleDateString(lang));
+    openDialog(form.dataset.search, {
+      context: picked.map((el) => `${el.dataset.detail}: ${el.value}`).join(' · '),
+      display: picked.map(shown).join(' · '),
+      destination: form.elements.destination?.value || '',
+      compact: true,
+    });
+  });
+});
+
+/* "Where should we reply?": hint text follows the choice; the email field appears only for Email */
+$$('[data-reply]').forEach((group) => {
+  const hint = $('[data-reply-hint]', group);
+  const emailField = $('[data-email-field]', group);
+  const update = () => {
+    const value = $('input[name="channel"]:checked', group)?.value || 'WhatsApp';
+    hint.textContent = hint.dataset[`hint${value.charAt(0)}${value.slice(1).toLowerCase()}`] || '';
+    emailField.hidden = value !== 'Email';
+    $('input', emailField).required = value === 'Email';
+  };
+  group.addEventListener('change', update);
+  group.closest('form')?.addEventListener('reset', () => setTimeout(update));
+  update();
+});
+
+/* Phone fields accept only what a phone number can contain */
+$$('input[data-phone]').forEach((input) => {
+  input.addEventListener('input', () => {
+    const clean = input.value.replace(/[^\d+\s()-]/g, '').replace(/(?!^)\+/g, '');
+    if (clean !== input.value) input.value = clean;
+  });
+});
+
 $$('[data-close-dialog]').forEach((btn) => btn.addEventListener('click', () => dialog.close()));
 dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 
@@ -338,26 +381,38 @@ const CORE = ['name', 'phone', 'email', 'channel', 'website'];
 function collect(form) {
   const data = { type: form.dataset.lead, lang, page: location.pathname, details: {} };
   for (const el of form.elements) {
-    if (!el.name) continue;
+    if (!el.name || (el.type === 'radio' && !el.checked)) continue;
     if (CORE.includes(el.name)) data[el.name] = el.value;
     else if (el.dataset.detail && el.value && !el.closest('[hidden]')) data.details[el.dataset.detail] = el.value;
   }
   return data;
 }
-function showError(status, text) {
+// When the site can't deliver a request, offer the same request as a ready WhatsApp message.
+function showError(status, text, data) {
   status.className = 'form-status is-error';
   status.textContent = `${text} `;
-  const a = document.createElement('a');
-  a.href = body.dataset.fallbackHref;
-  a.textContent = body.dataset.fallbackLabel;
-  status.append(a);
+  const call = document.createElement('a');
+  call.href = body.dataset.fallbackHref;
+  call.textContent = body.dataset.fallbackLabel;
+  status.append(call);
+  if (body.dataset.fallbackWa && data) {
+    // Use what the visitor saw (their language), not the English labels meant for staff.
+    const shown = status.closest('form')?.parentElement?.querySelector('[data-context-text]:not([hidden])')?.textContent;
+    const details = Object.entries(data.details).filter(([k]) => !(shown && k === 'Request')).map(([, v]) => v);
+    const lines = ['King Travel', shown, data.name, data.phone, data.email, ...details].filter(Boolean);
+    const wa = document.createElement('a');
+    wa.className = 'btn btn-green';
+    wa.href = `${body.dataset.fallbackWa}?text=${encodeURIComponent(lines.join('\n'))}`;
+    wa.target = '_blank';
+    wa.rel = 'noopener';
+    wa.textContent = body.dataset.msgWhatsapp;
+    status.append(document.createElement('br'), wa);
+  }
 }
 $$('form[data-lead]').forEach((form) => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const status = $('[data-status]', form) || $('[data-status]', form.parentElement);
-    const email = form.elements.email;
-    if (email && form.elements.channel) email.required = form.elements.channel.value === 'Email';
     if (!form.checkValidity()) {
       status.className = 'form-status is-error';
       status.textContent = body.dataset.msgInvalid;
@@ -368,11 +423,12 @@ $$('form[data-lead]').forEach((form) => {
     button.disabled = true;
     status.className = 'form-status';
     status.textContent = body.dataset.msgSending;
+    const data = collect(form);
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(collect(form)),
+        body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error(String(res.status));
       status.className = 'form-status is-ok';
@@ -380,7 +436,7 @@ $$('form[data-lead]').forEach((form) => {
       form.reset();
       resetChips(form);
     } catch {
-      showError(status, body.dataset.msgError);
+      showError(status, body.dataset.msgError, data);
     } finally {
       button.disabled = false;
     }

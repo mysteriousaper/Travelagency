@@ -51,6 +51,8 @@ const hotels = ['3★', '4★', '5★'];
 <body
   data-lang={lang}
   data-fallback-href={telHref(mainPhone)}
+  data-fallback-wa={wa ?? ''}
+  data-msg-whatsapp={t('form.send_whatsapp')}
   data-fallback-label={mainPhone}
   data-msg-sending={t('form.sending')}
   data-msg-ok={t('form.ok')}
@@ -58,6 +60,7 @@ const hotels = ['3★', '4★', '5★'];
   data-msg-invalid={t('form.invalid')}
 >
   <script type="application/json" id="rates-fallback" set:html={JSON.stringify(fallbackRates)} />
+  <div class="masthead">
   <div class="topbar">
     <div class="container">
       <div class="topbar-group">
@@ -93,6 +96,7 @@ const hotels = ['3★', '4★', '5★'];
       </div>
     </div>
   </header>
+  </div>
 
   <main class="container">
     <slot />
@@ -176,6 +180,7 @@ const hotels = ['3★', '4★', '5★'];
           <span data-title-for="visa" hidden>{t('form.dialog_visa')}</span>
           <span data-title-for="booking" hidden>{t('form.dialog_booking')}</span>
           <span data-title-for="callback" hidden>{t('form.dialog_callback')}</span>
+          <span data-title-for="flight" hidden>{t('form.dialog_flight')}</span>
         </h2>
         <button type="button" class="icon-btn" data-close-dialog aria-label={t('form.close')}>×</button>
       </div>
@@ -198,7 +203,7 @@ const hotels = ['3★', '4★', '5★'];
           <input type="hidden" name="hotel" value="4★" data-detail="Hotel" />
         </fieldset>
       </div>
-      <label class="field" data-only="quote visa booking">{t('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
+      <label class="field" data-only="quote visa booking flight">{t('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
       <ContactFields lang={lang} />
       <button type="submit" class="btn btn-amber btn-block">{t('form.send')}</button>
       <p class="search-note">{t('search.free_note')}</p>

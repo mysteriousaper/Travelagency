@@ -1,19 +1,31 @@
 ---
-// Name, phone, optional email and reply channel. Used inside every request form.
+// Name, phone and where to send the answer. Used inside every request form.
 import { makeT } from '../lib/i18n.js';
 const { lang } = Astro.props;
 const t = makeT(lang);
-const channels = ['WhatsApp', 'Telegram', 'Email'];
+const channels = [
+  { value: 'WhatsApp', cls: 'wa', icon: '<path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M9 8.5c0 3.6 2.9 6.5 6.5 6.5l1-1.6-2.2-1-1 .9a4.4 4.4 0 0 1-2.1-2.1l.9-1-1-2.2z"/>' },
+  { value: 'Telegram', cls: 'tg', icon: '<path d="M21 4.5 3 11.4l5.6 2 2 6.1 3-3.6 4.7 3.5z"/><path d="m8.6 13.4 9-6.4"/>' },
+  { value: 'Email', cls: 'em', icon: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/>' },
+];
 ---
 <div class="fields">
   <label class="field">{t('field.name')}<input name="name" required maxlength="100" autocomplete="name" /></label>
-  <label class="field">{t('field.phone')}<input name="phone" type="tel" required maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+374" /></label>
-  <label class="field">{t('field.email')}<input name="email" type="email" maxlength="120" autocomplete="email" /></label>
+  <label class="field">{t('field.phone')}<input name="phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+374" data-phone /></label>
 </div>
-<fieldset class="chips" data-chips="channel">
+<fieldset class="reply" data-reply>
   <legend>{t('field.reply_via')}</legend>
-  {channels.map((c, i) => <button type="button" class="chip" data-value={c} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
-  <input type="hidden" name="channel" value="WhatsApp" />
+  <div class="reply-options">
+    {channels.map((c, i) => (
+      <label class={`reply-opt reply-${c.cls}`}>
+        <input type="radio" name="channel" value={c.value} checked={i === 0} />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true" set:html={c.icon} />
+        <span>{c.value}</span>
+      </label>
+    ))}
+  </div>
+  <p class="reply-hint" data-reply-hint data-hint-whatsapp={t('field.hint_whatsapp')} data-hint-telegram={t('field.hint_telegram')} data-hint-email={t('field.hint_email')}>{t('field.hint_whatsapp')}</p>
+  <label class="field" data-email-field hidden>{t('field.email_required')}<input name="email" type="email" maxlength="120" autocomplete="email" /></label>
 </fieldset>
 <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <p class="form-status" data-status role="status" aria-live="polite"></p>

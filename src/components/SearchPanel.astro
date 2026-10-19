@@ -1,5 +1,4 @@
 ---
-import ContactFields from './ContactFields.astro';
 import { tours, visas } from '../lib/content.js';
 import { makeT, pick, monthNames } from '../lib/i18n.js';
 
@@ -21,7 +20,7 @@ const tabs = [
     ))}
   </div>
 
-  <form id="panel-tours" role="tabpanel" aria-labelledby="tab-tours" data-lead="quote" novalidate>
+  <form id="panel-tours" role="tabpanel" aria-labelledby="tab-tours" data-search="quote" novalidate>
     <div class="fields">
       <label class="field">{t('field.destination')}
         <select name="destination" data-detail="Destination">
@@ -42,11 +41,10 @@ const tabs = [
         <select name="hotel" data-detail="Hotel">{hotels.map((o) => <option>{o}</option>)}</select>
       </label>
     </div>
-    <ContactFields lang={lang} />
     <button type="submit" class="btn btn-navy btn-block">{t('search.submit_tours')}</button>
   </form>
 
-  <form id="panel-visa" role="tabpanel" aria-labelledby="tab-visa" data-lead="visa" novalidate hidden>
+  <form id="panel-visa" role="tabpanel" aria-labelledby="tab-visa" data-search="visa" novalidate hidden>
     <div class="fields">
       <label class="field">{t('field.country')}
         <select name="country" data-detail="Visa for">{visas.map((v) => <option value={pick(v.name, 'en')}>{pick(v.name, lang)}</option>)}</select>
@@ -64,15 +62,13 @@ const tabs = [
         </select>
       </label>
     </div>
-    <ContactFields lang={lang} />
     <button type="submit" class="btn btn-navy btn-block">{t('search.submit_visa')}</button>
   </form>
 
-  <form id="panel-flights" role="tabpanel" aria-labelledby="tab-flights" data-lead="flight" novalidate hidden>
+  <form id="panel-flights" role="tabpanel" aria-labelledby="tab-flights" data-search="flight" novalidate hidden>
     <div class="fields">
-      <label class="field">{t('field.from')}<input name="from" value="Yerevan (EVN)" data-detail="From" maxlength="60" /></label>
       <label class="field">{t('field.to')}
-        <select name="to" data-detail="To">
+        <select name="to" data-detail="To (from Yerevan EVN)">
           {tours.map((x) => <option value={`${pick(x.name, 'en')} (${x.code})`}>{pick(x.name, lang)} ({x.code})</option>)}
           <option value="Other">{t('field.other')}</option>
         </select>
@@ -83,8 +79,6 @@ const tabs = [
         <select name="passengers" data-detail="Passengers">{travellers.map((o) => <option>{o}</option>)}</select>
       </label>
     </div>
-    <ContactFields lang={lang} />
     <button type="submit" class="btn btn-navy btn-block">{t('search.submit_flights')}</button>
   </form>
-  <p class="search-note">{t('search.free_note')}</p>
 </div>
