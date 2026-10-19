@@ -25,6 +25,7 @@ cta:
   plan: { en: "Plan a trip", hy: "Ընտրել տուր", ru: "Подобрать тур" }
 
 hero:
+  more: { en: "{n} more", hy: "ևս {n}", ru: "ещё {n}" }
   badge_destinations:
     en: "Sharm El Sheikh · Doha · Belgrade · Tbilisi · Dubai · Europe"
     hy: "Շարմ էլ Շեյխ · Դոհա · Բելգրադ · Թբիլիսի · Դուբայ · Եվրոպա"
@@ -134,13 +135,9 @@ flight:
   page_lead: { en: "Tell us the route and dates. We'll send the options and prices to your phone.", hy: "Նշեք երթուղին և ամսաթվերը։ Տարբերակներն ու գները կուղարկենք ձեր հեռախոսին։", ru: "Укажите маршрут и даты. Варианты и цены пришлём вам на телефон." }
 
 builder:
-  title: { en: "Build your tour", hy: "Կազմեք ձեր տուրը", ru: "Соберите свой тур" }
-  text: { en: "Pick one place or combine a few.", hy: "Ընտրեք մեկ ուղղություն կամ միավորեք մի քանիսը։", ru: "Выберите одно направление или объедините несколько." }
-  types:
-    en: ["Flight + hotel", "All-inclusive", "Group tour"]
-    hy: ["Ավիատոմս + հյուրանոց", "Ամեն ինչ ներառված", "Խմբային տուր"]
-    ru: ["Перелёт + отель", "Всё включено", "Групповой тур"]
-  picked: { en: "picked", hy: "ընտրված", ru: "выбрано" }
+  title: { en: "Several cities in one trip", hy: "Մի քանի քաղաք մեկ ուղևորությամբ", ru: "Несколько городов за одну поездку" }
+  text: { en: "Tick the cities you want to combine. We'll put together the route and send you the price.", hy: "Նշեք այն քաղաքները, որոնք ուզում եք միավորել։ Մենք կկազմենք երթուղին և կուղարկենք գինը։", ru: "Отметьте города, которые хотите объединить. Мы составим маршрут и пришлём цену." }
+  picked: { en: "Picked:", hy: "Ընտրված՝", ru: "Выбрано:" }
   submit: { en: "Get a price", hy: "Ստանալ գինը", ru: "Узнать цену" }
 
 social:

@@ -39,8 +39,6 @@ const filters = [
             {tour.image
               ? <img src={tour.image} alt="" loading="lazy" width="600" height="440" />
               : <div class="ph-box">[PLACEHOLDER: photo of {pick(tour.name, 'en')}]</div>}
-            <span class="tour-code">{tour.code}</span>
-            {tour.image_credit && <span class="photo-credit">Photo: {tour.image_credit}</span>}
           </a>
           <div class="tour-card-body">
             <div class="tour-card-title">
@@ -48,9 +46,7 @@ const filters = [
               <span class="muted" style="font-size: 13px">{pick(tour.country, lang)}</span>
             </div>
             {first && pick(first.title, lang) && <div class="muted" style="font-size: 13px">{pick(first.title, lang)}</div>}
-            {price
-              ? <Price amount={price.amount} currency={price.currency} lang={lang} prefix={t('tours.from')} />
-              : <div class="price">{t('tours.ask_price')}</div>}
+            {price && <Price amount={price.amount} currency={price.currency} lang={lang} prefix={t('tours.from')} />}
             <div class="grow"></div>
             <div class="btn-row">
               {wa && <a class="btn btn-green" href={wa}>WhatsApp</a>}

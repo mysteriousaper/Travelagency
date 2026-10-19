@@ -43,6 +43,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .topbar-group { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
 .topbar .sep { color: #475569; }
 .switch { display: flex; gap: 2px; align-items: center; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .switch button:disabled { opacity: 0.4; cursor: default; }
 .switch a, .switch button { padding: 3px 8px; border-radius: 6px; border: 0; background: transparent; color: #cbd5e1; font-size: 12px; font-weight: 700; }
 .switch [aria-current="true"], .switch [aria-pressed="true"] { background: var(--amber); color: var(--navy); }
@@ -260,7 +261,14 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .route .line { flex: 1; height: 1px; background: #cbd5e1; }
 
 /* Office */
-.slot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+/* Home page: office booking across the full row, details left and day/time picker right. */
+@media (min-width: 900px) {
+  .office-wide { flex-direction: row; gap: 40px; align-items: flex-start; }
+  .office-wide .office-info { flex: 1 1 0; min-width: 0; }
+  .office-wide .office-pick { flex: 1.7 1 0; min-width: 0; }
+}
+.office-info, .office-pick { gap: 14px; }
+.slot-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
 .slot-grid .chip { padding: 8px 4px; font-size: 12px; }
 .day-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .day-row .chip { min-width: 58px; display: flex; flex-direction: column; line-height: 1.2; padding: 8px 6px; }
@@ -280,7 +288,6 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .tour-card-img { position: relative; height: 220px; border-radius: 16px; overflow: hidden; }
 .tour-card-img img { width: 100%; height: 100%; object-fit: cover; }
 .tour-card-img .ph-box { height: 100%; }
-.tour-code { position: absolute; top: 10px; left: 10px; padding: 5px 10px; border-radius: 8px; background: #fff; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; }
 .tour-card-body { padding: 14px 10px 10px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .tour-card-title { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
 .tour-card-title h3 { font-size: 18px; font-weight: 600; }

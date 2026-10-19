@@ -6,6 +6,26 @@ const lang = body.dataset.lang || 'hy';
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+// Chrome ships without Armenian date names (Intl falls back to English), so Armenian is spelled out here.
+const HY_DATES = {
+  weekdayShort: ['կիր', 'երկ', 'երք', 'չրք', 'հնգ', 'ուր', 'շբթ'],
+  weekdayLong: ['կիրակի', 'երկուշաբթի', 'երեքշաբթի', 'չորեքշաբթի', 'հինգշաբթի', 'ուրբաթ', 'շաբաթ'],
+  months: ['հունվարի', 'փետրվարի', 'մարտի', 'ապրիլի', 'մայիսի', 'հունիսի', 'հուլիսի', 'օգոստոսի', 'սեպտեմբերի', 'հոկտեմբերի', 'նոյեմբերի', 'դեկտեմբերի'],
+};
+const ownDateNames = lang === 'hy' && Intl.DateTimeFormat.supportedLocalesOf(['hy']).length === 0;
+function formatDate(date, opts = {}) {
+  if (!ownDateNames) return new Intl.DateTimeFormat(lang, opts).format(date);
+  const pad = (n) => String(n).padStart(2, '0');
+  if (!opts.month) {
+    return opts.weekday ? HY_DATES[opts.weekday === 'short' ? 'weekdayShort' : 'weekdayLong'][date.getDay()]
+      : `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()}`;
+  }
+  let text = `${date.getDate()} ${HY_DATES.months[date.getMonth()]}`;
+  if (opts.year) text += `, ${date.getFullYear()} թ.`;
+  if (opts.weekday) text += `, ${HY_DATES.weekdayLong[date.getDay()]}`;
+  return text;
+}
+
 function storageGet(key) {
   try { return localStorage.getItem(key); } catch { return null; }
 }
@@ -91,7 +111,7 @@ $$('[data-visa]').forEach((root) => {
     const sheet = $('#print-sheet');
     const active = $('[data-country][aria-pressed="true"]', root);
     $('[data-print-country]', sheet).textContent = active?.dataset.countryName || '';
-    $('[data-print-date]', sheet).textContent = new Date().toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
+    $('[data-print-date]', sheet).textContent = formatDate(new Date(), { day: 'numeric', month: 'long', year: 'numeric' });
     const list = $('[data-print-list]', sheet);
     list.replaceChildren(...$$('.visa-list.is-active li', root).map((li) => {
       const item = document.createElement('li');
@@ -250,8 +270,8 @@ $$('[data-office]').forEach((root) => {
   const dayRow = $('[data-days]', root);
   const dayInput = $('input[name="day"]', root);
   const timeInput = $('input[name="time"]', root);
-  const weekday = new Intl.DateTimeFormat(lang, { weekday: 'short' });
-  const full = new Intl.DateTimeFormat(lang, { weekday: 'long', day: 'numeric', month: 'long' });
+  const weekday = { format: (day) => formatDate(day, { weekday: 'short' }) };
+  const full = { format: (day) => formatDate(day, { weekday: 'long', day: 'numeric', month: 'long' }) };
   const days = [];
   const d = new Date();
   d.setHours(12, 0, 0, 0);
@@ -286,16 +306,19 @@ $$('[data-office]').forEach((root) => {
   });
 });
 
-/* Tour builder: picked destinations + trip type go into the quote dialog */
+/* Multi-city builder: the picked cities go into the quote dialog */
 $$('[data-builder]').forEach((root) => {
   const count = $('[data-builder-count]', root);
+  const submit = $('[data-builder-submit]', root);
   root.addEventListener('chips-change', () => {
-    count.textContent = String($$('[data-builder-places] .chip[aria-pressed="true"]', root).length);
+    const n = $$('[data-builder-places] .chip[aria-pressed="true"]', root).length;
+    count.textContent = String(n);
+    submit.disabled = n === 0;
   });
-  $('[data-builder-submit]', root).addEventListener('click', () => {
+  submit.addEventListener('click', () => {
     const places = $('[data-builder-places] input', root).value;
-    const type = $('[data-builder-type] input', root).value;
-    openDialog('quote', { context: [places, type].filter(Boolean).join(' · ') });
+    const shown = $$('[data-builder-places] .chip[aria-pressed="true"]', root).map((c) => c.textContent.trim());
+    openDialog('quote', { context: `Multi-city: ${places}`, display: shown.join(', ') });
   });
 });
 
@@ -340,7 +363,7 @@ $$('form[data-search]').forEach((form) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const picked = [...form.elements].filter((el) => el.dataset.detail && el.value);
-    const shown = (el) => (el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : new Date(el.value).toLocaleDateString(lang));
+    const shown = (el) => (el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : formatDate(new Date(el.value)));
     openDialog(form.dataset.search, {
       context: picked.map((el) => `${el.dataset.detail}: ${el.value}`).join(' · '),
       display: picked.map(shown).join(' · '),
@@ -473,7 +496,7 @@ if (currencyButtons.length) {
     .catch(embedded)
     .then((data) => {
       rates = { AMD: 1, ...(data.rates || {}) };
-      const note = data.date ? `${data.source}, ${new Date(data.date).toLocaleDateString(lang)}` : data.source;
+      const note = data.date ? `${data.source}, ${formatDate(new Date(data.date))}` : data.source;
       currencyButtons.forEach((b) => {
         const code = b.dataset.currency;
         if (rates[code]) b.disabled = false;

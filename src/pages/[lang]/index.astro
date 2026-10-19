@@ -16,11 +16,16 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = makeT(lang);
-const seaNames = tours.filter((x) => x.kind === 'beach').map((x) => pick(x.name, lang));
-const cityNames = tours.filter((x) => x.kind === 'city').map((x) => pick(x.name, lang));
 const list = new Intl.ListFormat(lang, { style: 'long', type: 'conjunction' });
-const types = t('builder.types');
-const typesEn = makeT('en')('builder.types');
+// Card caption: up to three names, tours with a real offer first, then "and N more".
+const caption = (group) => {
+  const sorted = [...group].sort((a, b) => (b.offers?.length ? 1 : 0) - (a.offers?.length ? 1 : 0));
+  const names = sorted.slice(0, 3).map((x) => pick(x.name, lang));
+  const rest = group.length - names.length;
+  return list.format(rest > 0 ? [...names, t('hero.more').replace('{n}', rest)] : names);
+};
+const seaTours = tours.filter((x) => x.kind === 'beach');
+const cityTours = tours.filter((x) => x.kind === 'city');
 ---
 <Base lang={lang} title={t('meta.home_title')} description={t('meta.home_description')} current="home">
   <section class="hero">
@@ -32,11 +37,11 @@ const typesEn = makeT('en')('builder.types');
     <div class="hero-cards">
       <a class="hero-card is-wide" href={href(lang, 'tours')}>
         <img src="/images/tours/dubai.jpg" alt="" fetchpriority="high" />
-        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_sea')}</span><span class="hero-card-title">{list.format(seaNames)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_sea')}</span><span class="hero-card-title">{list.format(seaNames)}</span></span></span>
+        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_sea')}</span><span class="hero-card-title">{caption(seaTours)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_sea')}</span><span class="hero-card-title">{caption(seaTours)}</span></span></span>
       </a>
       <a class="hero-card" href={href(lang, 'tours')}>
         <img src="/images/tours/paris.jpg" alt="" loading="lazy" />
-        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{list.format(cityNames)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{list.format(cityNames)}</span></span></span>
+        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{caption(cityTours)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{caption(cityTours)}</span></span></span>
       </a>
     </div>
   </section>
@@ -58,17 +63,13 @@ const typesEn = makeT('en')('builder.types');
       <h2>{t('builder.title')}</h2>
       <p class="muted" style="margin: 0; font-size: 14px">{t('builder.text')}</p>
       <div class="chips" data-chips="places" data-multiple data-builder-places>
-        {tours.map((x, i) => <button type="button" class="chip" data-value={pick(x.name, 'en')} aria-pressed={i === 0 ? 'true' : 'false'}>{pick(x.name, lang)}</button>)}
-        <input type="hidden" value={pick(tours[0].name, 'en')} />
-      </div>
-      <div class="chips" data-chips="type" data-builder-type>
-        {types.map((label, i) => <button type="button" class="chip chip-amber" data-value={typesEn[i]} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>)}
-        <input type="hidden" value={typesEn[0]} />
+        {cityTours.map((x) => <button type="button" class="chip" data-value={pick(x.name, 'en')} aria-pressed="false">{pick(x.name, lang)}</button>)}
+        <input type="hidden" value="" />
       </div>
       <div class="grow"></div>
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid #f1f5f9">
-        <span class="muted" style="font-size: 14px"><span data-builder-count>1</span> {t('builder.picked')}</span>
-        <button type="button" class="btn btn-navy" data-builder-submit>{t('builder.submit')}</button>
+        <span class="muted" style="font-size: 14px">{t('builder.picked')} <span data-builder-count>0</span></span>
+        <button type="button" class="btn btn-navy" style="white-space: nowrap" data-builder-submit disabled>{t('builder.submit')}</button>
       </div>
     </div>
 
@@ -81,7 +82,7 @@ const typesEn = makeT('en')('builder.types');
       </div>
     )}
 
-    <OfficeBooking lang={lang} />
+    <OfficeBooking lang={lang} wide={!site.social_packages_enabled} />
   </section>
 
   <section class="section" id="tours" aria-label={t('tours.title')}>

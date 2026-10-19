@@ -4,14 +4,15 @@ import ContactFields from './ContactFields.astro';
 import { site } from '../lib/content.js';
 import { makeT, pick } from '../lib/i18n.js';
 
-const { lang, mode = 'tile' } = Astro.props;
+const { lang, mode = 'tile', wide = false } = Astro.props;
 const t = makeT(lang);
 const office = site.office;
 const config = JSON.stringify({ open_days: office.open_days, days_ahead: office.days_ahead });
 const Tag = mode === 'inline' ? 'form' : 'div';
 const formAttrs = mode === 'inline' ? { 'data-lead': 'booking', novalidate: true } : {};
 ---
-<Tag class="card stack" data-office={config} {...formAttrs}>
+<Tag class={`card stack${wide ? ' span-all office-wide' : ''}`} data-office={config} {...formAttrs}>
+  <div class="office-info stack">
   <h2>{t('office.title')}</h2>
   <p class="muted" style="margin: 0; font-size: 14px">{pick(site.branches[0].hours, lang)}. {t('office.pick')}</p>
   {site.branches.length > 1 && (
@@ -20,6 +21,8 @@ const formAttrs = mode === 'inline' ? { 'data-lead': 'booking', novalidate: true
       <input type="hidden" name="office" value={pick(site.branches[0].address, 'en')} data-detail="Office" />
     </div>
   )}
+  </div>
+  <div class="office-pick stack">
   <div class="day-row chips" data-chips="day" data-days aria-label={t('field.day')}>
     <input type="hidden" name="day" data-detail="Day" />
   </div>
@@ -31,4 +34,5 @@ const formAttrs = mode === 'inline' ? { 'data-lead': 'booking', novalidate: true
   {mode === 'inline'
     ? <><ContactFields lang={lang} /><button type="submit" class="btn btn-navy">{t('office.book')}</button></>
     : <button type="button" class="btn btn-outline" data-office-book>{t('office.book')}</button>}
+  </div>
 </Tag>
