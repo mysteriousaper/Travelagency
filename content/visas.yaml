@@ -77,7 +77,25 @@ countries:
         - "Где вы будете жить"
         - "Сдача биометрии"
 
-  - id: other
-    name: { en: "Other countries", hy: "Այլ երկրներ", ru: "Другие страны" }
+  - id: uae
+    name: { en: "UAE", hy: "ԱՄԷ", ru: "ОАЭ" }
     documents:
-      en: ["[PLACEHOLDER: the other countries you handle most often, with their lists]"]
+      en:
+        - "No visa needed for Armenian, Russian and Ukrainian passports"
+        - "Passport valid for at least 6 months, counting the day of arrival"
+      hy:
+        - "Վիզա պետք չէ Հայաստանի, Ռուսաստանի և Ուկրաինայի անձնագրերի համար"
+        - "Անձնագիրը պետք է վավեր լինի առնվազն 6 ամիս՝ ներառյալ ժամանման օրը"
+      ru:
+        - "Виза не нужна для армянского, российского и украинского паспортов"
+        - "Паспорт должен действовать не менее 6 месяцев, включая день прибытия"
+
+  - id: egypt
+    name: { en: "Egypt", hy: "Եգիպտոս", ru: "Египет" }
+    documents:
+      en:
+        - "Visa on arrival at the airport for Armenian, Russian and Ukrainian passports"
+      hy:
+        - "Հայաստանի, Ռուսաստանի և Ուկրաինայի անձնագրերով վիզան տրվում է օդանավակայանում՝ ժամանելիս"
+      ru:
+        - "Для армянского, российского и украинского паспортов виза ставится по прилёте в аэропорту"

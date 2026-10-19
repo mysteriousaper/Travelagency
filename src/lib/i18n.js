@@ -40,8 +40,11 @@ export function whatsappLink(text = '') {
 
 export function telegramLink() {
   const user = String(site.telegram_username ?? '').replace(/^@/, '').trim();
-  return user ? `https://t.me/${user}` : null;
+  return user ? `https://t.me/${user}` : site.social?.telegram || null;
 }
+
+export const telHref = (phone) => `tel:${String(phone).replace(/[^\d+]/g, '')}`;
+export const mainBranch = () => site.branches[0];
 
 export function monthNames(lang) {
   const format = new Intl.DateTimeFormat(lang, { month: 'long' });

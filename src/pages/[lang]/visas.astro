@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Ph from '../../components/Ph.astro';
 import VisaChecker from '../../components/VisaChecker.astro';
 import ContactFields from '../../components/ContactFields.astro';
 import Faq from '../../components/Faq.astro';
@@ -18,7 +17,6 @@ const t = makeT(lang);
   <div class="page-head">
     <h1>{t('visa.page_title')}</h1>
     <p>{t('visa.page_lead')}</p>
-    <p style="font-size: 15px"><Ph text={t('visa.consultation_info')} /></p>
   </div>
   <div class="split">
     <VisaChecker lang={lang} />

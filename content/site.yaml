@@ -1,59 +1,71 @@
 # King Travel: site settings.
-# Anything written as "[PLACEHOLDER: ...]" shows up highlighted on the site
-# until you replace it. Text with en / hy / ru is shown in that language.
+# Texts written as { en, hy, ru } are shown in that language.
+# Anything written as "[PLACEHOLDER: ...]" shows up highlighted on the site.
 
-phones:
-  - "[PLACEHOLDER: main phone, e.g. +374 10 00 00 00]"
-  - "[PLACEHOLDER: second phone]"
+# Offices. The first one is the main office: its phones go in the top bar.
+branches:
+  - name: { en: "Teryan St. office", hy: "Տերյան փողոցի գրասենյակ", ru: "Офис на ул. Терьяна" }
+    address:
+      en: "62 Teryan St, Yerevan 0009"
+      hy: "Երևան 0009, Տերյան փ. 62"
+      ru: "Ереван 0009, ул. Терьяна, 62"
+    district: { en: "Kentron district", hy: "Կենտրոն վարչական շրջան", ru: "Административный район Кентрон" }
+    hours: { en: "Every day 10:00–19:00", hy: "Ամեն օր 10:00–19:00", ru: "Ежедневно 10:00–19:00" }
+    map_query: "62 Teryan St, Yerevan 0009, Armenia"
+    phones:
+      - "+374 10 584402"
+      - "+374 99 584402"
+      - "+374 11 584402"
 
-# Digits only, with the country code and no "+". Example: 37499123456
-# While empty, WhatsApp buttons lead to the contact page instead.
+  - name: { en: "Vazgen I Vehapar St. office", hy: "Վազգեն Առաջին Վեհափառի փողոցի գրասենյակ", ru: "Офис на ул. Вазгена Первого Вехапара" }
+    address:
+      en: "3 Vazgen Arajin Vehapari St, Yerevan 0033"
+      hy: "Երևան 0033, Վազգեն Առաջին Վեհափառի փ. 3"
+      ru: "Ереван 0033, ул. Вазгена Первого Вехапара, 3"
+    district: { en: "Arabkir district", hy: "Արաբկիր վարչական շրջան", ru: "Административный район Арабкир" }
+    hours: ""
+    map_query: "3 Vazgen Arajin Vehapari St, Yerevan 0033, Armenia"
+    phones:
+      - "+374 11 584402"
+      - "+374 96 584402"
+
+# Digits only, with the country code and no "+". Example: 37499584402
+# While empty, the site shows no WhatsApp button.
 whatsapp_number: ""
 
-# Telegram username without "@". Example: kingtravel_am
+# A Telegram username (without "@") that clients can write to.
+# While empty, the Telegram buttons open the channel below.
 telegram_username: ""
 
 email: ""
 
-address:
-  en: "62 Teryan St, Yerevan, Armenia"
-  hy: "Երևան, Տերյան փողոց 62"
-  ru: "Ереван, ул. Терьяна, 62"
-
-address_extra: "[PLACEHOLDER: floor or entrance, and a landmark people know]"
-
-hours: "[PLACEHOLDER: days and hours, e.g. Mon–Sat 10:00–19:00]"
-
-licence: "[PLACEHOLDER: tour operator licence number]"
-
 social:
-  instagram: ""
+  instagram: "https://www.instagram.com/kingtravel.am/"
+  telegram: "https://t.me/kingtravelArmenia"
   facebook: ""
   tiktok: ""
-  telegram: ""
   youtube: ""
 
 reviews:
   google_url: ""
   yandex_url: ""
-  # Paste real reviews here, word for word, with the client's permission:
+  # Real reviews, word for word, with the client's permission. The reviews
+  # block appears on the home page once there is at least one.
   # - text: "..."
   #   name: "Anna"
   #   city: "Yerevan"
   #   source: "Google"
   items: []
 
-# Office visit requests. Visitors choose one of these; staff confirm by phone.
+# Office visit requests. Visitors choose a day and time; staff confirm by phone.
 office:
-  # 1 = Monday ... 7 = Sunday.  [PLACEHOLDER: confirm your open days]
-  open_days: [1, 2, 3, 4, 5, 6]
-  # [PLACEHOLDER: confirm the times you can see visitors]
-  times: ["10:00", "11:30", "13:00", "14:30", "16:00", "17:30"]
-  days_ahead: 6
+  open_days: [1, 2, 3, 4, 5, 6, 7]   # 1 = Monday ... 7 = Sunday
+  times: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
+  days_ahead: 7
 
 # Exchange rates for the $ / € / ₽ price switch come automatically from the
 # Central Bank of Armenia (official daily rates), refreshed every hour.
 
-# Set to false to hide the social package tile, footer link and FAQ entry.
-social_packages_enabled: true
-social_packages_text: "[PLACEHOLDER: one sentence on what you do with Armenian social packages]"
+# Set to true (and write the text) to show the social package tile, footer link and FAQ entry.
+social_packages_enabled: false
+social_packages_text: ""

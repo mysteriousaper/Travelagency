@@ -102,7 +102,7 @@ form:
   send: { en: "Send", hy: "Ուղարկել", ru: "Отправить" }
   sending: { en: "Sending…", hy: "Ուղարկվում է…", ru: "Отправляем…" }
   ok: { en: "Thank you! We'll reply soon.", hy: "Շնորհակալություն։ Շուտով կպատասխանենք։", ru: "Спасибо! Скоро ответим." }
-  error: { en: "Couldn't send. Please write to us on WhatsApp instead.", hy: "Չհաջողվեց ուղարկել։ Խնդրում ենք գրել մեզ WhatsApp-ով։", ru: "Не удалось отправить. Пожалуйста, напишите нам в WhatsApp." }
+  error: { en: "Couldn't send. Please call us:", hy: "Չհաջողվեց ուղարկել։ Խնդրում ենք զանգահարել՝", ru: "Не удалось отправить. Позвоните нам:" }
   invalid: { en: "Please check your name and phone number.", hy: "Խնդրում ենք ստուգել անունը և հեռախոսահամարը։", ru: "Проверьте, пожалуйста, имя и номер телефона." }
   close: { en: "Close", hy: "Փակել", ru: "Закрыть" }
   dialog_quote: { en: "Plan my trip", hy: "Պլանավորել ուղևորությունը", ru: "Спланировать поездку" }
@@ -118,7 +118,6 @@ visa:
   services: { en: "We check your documents, translate them, book the embassy appointment and issue travel insurance.", hy: "Ստուգում ենք փաստաթղթերը, թարգմանում ենք դրանք, գրանցում ենք դեսպանատանը և ձևակերպում ճամփորդական ապահովագրություն։", ru: "Проверяем документы, переводим их, записываем в посольство и оформляем страховку." }
   page_title: { en: "Visas", hy: "Վիզաներ", ru: "Визы" }
   page_lead: { en: "Schengen, US, UK and other visas for Armenian passport holders. The first consultation is free.", hy: "Շենգենյան, ԱՄՆ, Մեծ Բրիտանիայի և այլ վիզաներ ՀՀ քաղաքացիների համար։ Առաջին խորհրդատվությունն անվճար է։", ru: "Шенгенские, американские, британские и другие визы для граждан Армении. Первая консультация бесплатно." }
-  consultation_info: "[PLACEHOLDER: how long the consultation takes, and whether it's in person or online]"
   success_title: { en: "How often are applications approved?", hy: "Որքա՞ն հաճախ են դիմումները հաստատվում", ru: "Как часто одобряют заявки?" }
 
 flight:
@@ -147,7 +146,9 @@ office:
   pick: { en: "Pick a time so someone is free when you arrive. We'll call to confirm.", hy: "Ընտրեք ժամը, որ ձեր գալու պահին մեզանից մեկն ազատ լինի։ Կզանգենք հաստատելու։", ru: "Выберите время, чтобы к вашему приходу кто-то был свободен. Мы позвоним и подтвердим." }
   book: { en: "Request this time", hy: "Ամրագրել այս ժամը", ru: "Записаться на это время" }
   map: { en: "Open in Google Maps", hy: "Բացել Google Maps-ում", ru: "Открыть в Google Maps" }
-  photo: "[PLACEHOLDER: photo of your door or sign on Teryan Street]"
+  which: { en: "Which office", hy: "Որ գրասենյակը", ru: "Какой офис" }
+  address: { en: "Address", hy: "Հասցե", ru: "Адрес" }
+  online: { en: "Write to us", hy: "Գրեք մեզ", ru: "Напишите нам" }
   page_title: { en: "Office and contacts", hy: "Գրասենյակ և կոնտակտներ", ru: "Офис и контакты" }
 
 tours:
@@ -172,17 +173,14 @@ tours:
 
 reviews:
   title: { en: "What clients wrote", hy: "Ինչ են գրել հաճախորդները", ru: "Что пишут клиенты" }
-  empty: "[PLACEHOLDER: a real review, word for word, with the client's permission]"
   google: { en: "Google reviews →", hy: "Google կարծիքներ →", ru: "Отзывы в Google →" }
   yandex: { en: "Yandex reviews →", hy: "Yandex կարծիքներ →", ru: "Отзывы в Яндексе →" }
-  photo: "[PLACEHOLDER: client trip photo, with permission]"
 
 faq:
   title: { en: "Questions people ask us", hy: "Հաճախ տրվող հարցեր", ru: "Частые вопросы" }
 
 footer:
   newsletter: { en: "New tours and visa news by email", hy: "Նոր տուրեր և վիզային նորություններ էլ. փոստով", ru: "Новые туры и новости о визах на почту" }
-  newsletter_note: "[PLACEHOLDER: how often you'll send it]"
   subscribe: { en: "Subscribe", hy: "Բաժանորդագրվել", ru: "Подписаться" }
   services: { en: "Services", hy: "Ծառայություններ", ru: "Услуги" }
   insurance: { en: "Travel insurance", hy: "Ճամփորդական ապահովագրություն", ru: "Страховка" }
@@ -191,7 +189,7 @@ footer:
 
 widget:
   title: { en: "Write to us", hy: "Գրեք մեզ", ru: "Напишите нам" }
-  call: { en: "Call me", hy: "Զանգեք ինձ", ru: "Перезвоните" }
+  call: { en: "Call", hy: "Զանգել", ru: "Позвонить" }
 
 notfound:
   title: { en: "Page not found", hy: "Էջը չի գտնվել", ru: "Страница не найдена" }

@@ -143,7 +143,8 @@ $$('[data-office]').forEach((root) => {
   root.addEventListener('chips-change', update);
   update();
   $('[data-office-book]', root)?.addEventListener('click', () => {
-    openDialog('booking', { context: `${dayInput.value}, ${timeInput.value}` });
+    const office = $('input[name="office"]', root)?.value;
+    openDialog('booking', { context: [office, `${dayInput.value}, ${timeInput.value}`].filter(Boolean).join(' · ') });
   });
 });
 
@@ -206,8 +207,8 @@ function showError(status, text) {
   status.className = 'form-status is-error';
   status.textContent = `${text} `;
   const a = document.createElement('a');
-  a.href = body.dataset.wa;
-  a.textContent = 'WhatsApp';
+  a.href = body.dataset.fallbackHref;
+  a.textContent = body.dataset.fallbackLabel;
   status.append(a);
 }
 $$('form[data-lead]').forEach((form) => {

@@ -1,37 +1,37 @@
-# Questions and answers. Replace the placeholders with your real policies.
+# Questions and answers shown on the home, visas and office pages.
 # "social: true" entries are hidden when social_packages_enabled is false.
 
 items:
-  - question:
-      en: "How often do the visa applications you prepare get approved?"
-      hy: "Որքա՞ն հաճախ են հաստատվում ձեր պատրաստած վիզայի դիմումները"
-      ru: "Как часто одобряют визовые заявки, которые вы готовите?"
-    answer: "[PLACEHOLDER: your real figure (the brief says 99%) and what it counts]. The embassy makes the final decision."
-
   - question:
       en: "Do I pay anything to get a price?"
       hy: "Պե՞տք է արդյոք վճարել գինն իմանալու համար"
       ru: "Нужно ли платить, чтобы узнать цену?"
     answer:
-      en: "No. Prices and the first visa consultation are free. [PLACEHOLDER: when you take a deposit, and how much]"
-      hy: "Ոչ։ Գների հարցումը և առաջին վիզային խորհրդատվությունն անվճար են։ [PLACEHOLDER: when you take a deposit, and how much]"
-      ru: "Нет. Расчёт цены и первая консультация по визе бесплатны. [PLACEHOLDER: when you take a deposit, and how much]"
+      en: "No. Asking for prices is free, and so is the first visa consultation."
+      hy: "Ոչ։ Գների հարցումն անվճար է, ինչպես նաև առաջին վիզային խորհրդատվությունը։"
+      ru: "Нет. Узнать цены можно бесплатно, первая консультация по визе тоже бесплатна."
 
   - question:
-      en: "Can I change the trip after booking?"
-      hy: "Կարո՞ղ եմ փոխել ուղևորությունը ամրագրումից հետո"
-      ru: "Можно ли изменить поездку после бронирования?"
-    answer: "[PLACEHOLDER: what can be changed, until when, and any fees]"
+      en: "Do you arrange transfers?"
+      hy: "Կազմակերպո՞ւմ եք տրանսֆեր"
+      ru: "Вы организуете трансфер?"
+    answer:
+      en: "Yes, at your destination: from the airport you land at to your hotel and back. We don't arrange transfers to or from Zvartnots."
+      hy: "Այո, ժամանման վայրում՝ օդանավակայանից մինչև հյուրանոց և հետ։ «Զվարթնոց» օդանավակայան և այնտեղից տրանսֆեր մենք չենք կազմակերպում։"
+      ru: "Да, в месте отдыха: из аэропорта прилёта в отель и обратно. Трансфер в Звартноц и из Звартноца мы не организуем."
 
   - question:
-      en: "Do you arrange the transfer to Zvartnots?"
-      hy: "Կազմակերպո՞ւմ եք տրանսֆեր դեպի «Զվարթնոց»"
-      ru: "Вы организуете трансфер в Звартноц?"
-    answer: "[PLACEHOLDER: yes or no, and at what hours]"
+      en: "Which passports can travel to the UAE and Egypt without a visa in advance?"
+      hy: "Ո՞ր անձնագրերով կարելի է մեկնել ԱՄԷ և Եգիպտոս առանց նախապես վիզա ստանալու"
+      ru: "С какими паспортами можно поехать в ОАЭ и Египет без заранее оформленной визы?"
+    answer:
+      en: "Armenian, Russian and Ukrainian passports. The UAE is visa-free if the passport is valid for at least 6 months, counting the day of arrival. In Egypt you get a visa on arrival at the airport."
+      hy: "Հայաստանի, Ռուսաստանի և Ուկրաինայի անձնագրերով։ ԱՄԷ կարելի է մեկնել առանց վիզայի, եթե անձնագիրը վավեր է առնվազն 6 ամիս՝ ներառյալ ժամանման օրը։ Եգիպտոսում վիզան տրվում է օդանավակայանում՝ ժամանելիս։"
+      ru: "С армянским, российским и украинским паспортом. В ОАЭ виза не нужна, если паспорт действует не менее 6 месяцев, включая день прибытия. В Египте виза ставится по прилёте в аэропорту."
 
   - question:
       en: "How do social packages work with you?"
       hy: "Ինչպե՞ս է աշխատում սոցիալական փաթեթը ձեզ մոտ"
       ru: "Как у вас работает социальный пакет?"
-    answer: "[PLACEHOLDER: the steps]"
+    answer: ""
     social: true

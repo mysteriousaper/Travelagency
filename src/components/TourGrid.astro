@@ -39,7 +39,7 @@ const amd = new Intl.NumberFormat(lang, { style: 'currency', currency: 'AMD', ma
               <h3><a href={href(lang, `tours/${tour.slug}`)}>{name}</a></h3>
               <span class="muted" style="font-size: 13px">{pick(tour.country, lang)}</span>
             </div>
-            <div class="muted" style="font-size: 13px"><Ph text={pick(tour.nights, lang)} /></div>
+            {pick(tour.nights, lang) && <div class="muted" style="font-size: 13px"><Ph text={pick(tour.nights, lang)} /></div>}
             {typeof tour.price_from_amd === 'number'
               ? <div class="price" data-price-amd={tour.price_from_amd} data-prefix={t('tours.from')}>{t('tours.from')} {amd.format(tour.price_from_amd)}</div>
               : <div class="price">{t('tours.ask_price')}</div>}

@@ -1,5 +1,4 @@
 ---
-import Ph from './Ph.astro';
 import { site } from '../lib/content.js';
 import { makeT } from '../lib/i18n.js';
 
@@ -10,21 +9,14 @@ const items = reviews.items ?? [];
 ---
 <section class="card stack" aria-labelledby="reviews-title">
   <h2 id="reviews-title">{t('reviews.title')}</h2>
-  {items.length
-    ? items.slice(0, 3).map((r) => (
+  {items.slice(0, 3).map((r) => (
         <figure style="margin: 0" class="stack">
           <blockquote class="review-text" style="margin: 0">“{r.text}”</blockquote>
           <figcaption class="muted" style="font-size: 13px">{r.name}{r.city ? `, ${r.city}` : ''}{r.source ? ` · ${r.source}` : ''}</figcaption>
         </figure>
-      ))
-    : <p class="review-text"><Ph text={t('reviews.empty')} /></p>}
+      ))}
   <div class="btn-row" style="flex: none">
-    <a class="btn btn-outline" href={reviews.google_url || '#'} aria-disabled={reviews.google_url ? undefined : 'true'}>{t('reviews.google')}</a>
-    <a class="btn btn-outline" href={reviews.yandex_url || '#'} aria-disabled={reviews.yandex_url ? undefined : 'true'}>{t('reviews.yandex')}</a>
-  </div>
-  <div class="photo-row">
-    <div class="ph-box">{t('reviews.photo')}</div>
-    <div class="ph-box">{t('reviews.photo')}</div>
-    <div class="ph-box">{t('reviews.photo')}</div>
+    {reviews.google_url && <a class="btn btn-outline" href={reviews.google_url}>{t('reviews.google')}</a>}
+    {reviews.yandex_url && <a class="btn btn-outline" href={reviews.yandex_url}>{t('reviews.yandex')}</a>}
   </div>
 </section>

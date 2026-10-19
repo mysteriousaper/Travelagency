@@ -17,11 +17,12 @@ flight:
   en: "Direct flights from Zvartnots, some of them seasonal."
   hy: "Ուղիղ չվերթեր «Զվարթնոց»-ից, որոշները՝ սեզոնային։"
   ru: "Прямые рейсы из Звартноца, часть из них сезонные."
-visa: "[PLACEHOLDER: Egypt / Sinai entry rules for Armenian passports. Online sources disagree, please confirm]"
+visa:
+  en: "Armenian, Russian and Ukrainian passport holders get a visa on arrival at the airport."
+  hy: "Հայաստանի, Ռուսաստանի և Ուկրաինայի անձնագրերով վիզան տրվում է օդանավակայանում՝ ժամանելիս։"
+  ru: "Владельцам армянского, российского и украинского паспортов виза ставится по прилёте в аэропорту."
 best_months:
   en: "October to May. June to September is very hot."
   hy: "Հոկտեմբերից մայիս։ Հունիսից սեպտեմբեր շատ շոգ է։"
   ru: "С октября по май. С июня по сентябрь очень жарко."
-nights: "[PLACEHOLDER: typical length, e.g. 7 nights]"
-includes: "[PLACEHOLDER: what the package includes]"
-price_from_amd:
+price_from_amd:      # e.g. 450000; empty shows "Price on request"

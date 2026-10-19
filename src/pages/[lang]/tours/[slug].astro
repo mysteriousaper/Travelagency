@@ -21,7 +21,7 @@ const facts = [
   [t('tours.months'), tour.best_months],
   [t('tours.nights'), tour.nights],
   [t('tours.includes'), tour.includes],
-];
+].filter(([, value]) => pick(value, lang));
 ---
 <Base lang={lang} title={`${name}, ${pick(tour.country, lang)} · King Travel`} description={description} current="tours">
   <div class="page-head">

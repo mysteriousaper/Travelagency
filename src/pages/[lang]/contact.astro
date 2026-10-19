@@ -1,10 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Ph from '../../components/Ph.astro';
 import OfficeBooking from '../../components/OfficeBooking.astro';
 import Faq from '../../components/Faq.astro';
 import { site } from '../../lib/content.js';
-import { LOCALES, makeT, pick, whatsappLink, telegramLink } from '../../lib/i18n.js';
+import { LOCALES, makeT, pick, whatsappLink, telegramLink, telHref } from '../../lib/i18n.js';
 
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
@@ -12,31 +11,48 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = makeT(lang);
-const address = pick(site.address, 'en');
-const mapQuery = encodeURIComponent(address);
 const wa = whatsappLink();
 const tg = telegramLink();
+const social = Object.entries(site.social ?? {}).filter(([, url]) => url);
+const socialNames = { instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', telegram: 'Telegram', youtube: 'YouTube' };
 ---
-<Base lang={lang} title={`${t('office.page_title')} · King Travel`} description={pick(site.address, lang)} current="contact">
+<Base lang={lang} title={`${t('office.page_title')} · King Travel`} description={site.branches.map((b) => pick(b.address, lang)).join(' · ')} current="contact">
   <div class="page-head">
     <h1>{t('office.page_title')}</h1>
-    <p>{pick(site.address, lang)}. <Ph text={pick(site.address_extra, lang)} /></p>
+    <p>{pick(site.branches[0].hours, lang)}</p>
   </div>
   <div class="split">
-    <div class="card stack">
-      <dl class="facts">
-        <dt>{t('field.phone')}</dt>
-        <dd>{site.phones.map((p) => <div>{p.startsWith('[PLACEHOLDER') ? <Ph text={p} /> : <a href={`tel:${p.replace(/[^\d+]/g, '')}`}>{p}</a>}</div>)}</dd>
-        <dt>WhatsApp</dt><dd>{wa ? <a href={wa}>{site.whatsapp_number}</a> : <Ph text="[PLACEHOLDER: WhatsApp number in content/site.yaml]" />}</dd>
-        <dt>Telegram</dt><dd>{tg ? <a href={tg}>@{site.telegram_username}</a> : <Ph text="[PLACEHOLDER: Telegram username in content/site.yaml]" />}</dd>
-        <dt>Email</dt><dd>{site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <Ph text="[PLACEHOLDER: email in content/site.yaml]" />}</dd>
-        <dt>{t('office.open')}</dt><dd><Ph text={pick(site.hours, lang)} /></dd>
-      </dl>
-      <iframe class="map-frame" title={pick(site.address, lang)} loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}></iframe>
-      <a class="btn btn-outline" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} rel="noopener" target="_blank">{t('office.map')}</a>
-      <div class="ph-box" style="height: 200px">{t('office.photo')}</div>
-    </div>
+    {site.branches.map((b) => {
+      const q = encodeURIComponent(b.map_query);
+      return (
+        <section class="card stack">
+          <h2>{pick(b.name, lang)}</h2>
+          <dl class="facts">
+            <dt>{t('office.address')}</dt><dd>{pick(b.address, lang)}<br /><span class="muted">{pick(b.district, lang)}</span></dd>
+            {pick(b.hours, lang) && <><dt>{t('office.open')}</dt><dd>{pick(b.hours, lang)}</dd></>}
+            <dt>{t('field.phone')}</dt><dd>{b.phones.map((p) => <div><a href={telHref(p)}>{p}</a></div>)}</dd>
+          </dl>
+          <iframe class="map-frame" title={pick(b.address, lang)} loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${q}&output=embed`}></iframe>
+          <a class="btn btn-outline" href={`https://www.google.com/maps/search/?api=1&query=${q}`} rel="noopener" target="_blank">{t('office.map')}</a>
+        </section>
+      );
+    })}
+  </div>
+  <div class="split">
     <OfficeBooking lang={lang} mode="inline" />
+    <section class="card stack">
+      <h2>{t('office.online')}</h2>
+      <div class="btn-row" style="flex: none">
+        {wa && <a class="btn btn-green" href={wa}>WhatsApp</a>}
+        {tg && <a class="btn btn-navy" href={tg} rel="noopener" target="_blank">Telegram</a>}
+        {site.email && <a class="btn btn-outline" href={`mailto:${site.email}`}>{site.email}</a>}
+      </div>
+      {social.length > 0 && (
+        <div class="btn-row" style="flex: none">
+          {social.filter(([k]) => k !== 'telegram').map(([k, url]) => <a class="btn btn-outline" href={url} rel="noopener" target="_blank">{socialNames[k] ?? k}</a>)}
+        </div>
+      )}
+    </section>
   </div>
   <div class="section"><Faq lang={lang} /></div>
 </Base>

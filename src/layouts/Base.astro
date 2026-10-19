@@ -1,15 +1,16 @@
 ---
 import '../styles/global.css';
-import Ph from '../components/Ph.astro';
 import ContactFields from '../components/ContactFields.astro';
 import { site, tours } from '../lib/content.js';
-import { LOCALES, LOCALE_LABELS, LOCALE_NAMES, makeT, pick, href, switchLocale, whatsappLink, telegramLink } from '../lib/i18n.js';
+import { LOCALES, LOCALE_LABELS, LOCALE_NAMES, makeT, pick, href, switchLocale, whatsappLink, telegramLink, telHref, mainBranch } from '../lib/i18n.js';
 
 const { lang, title, description, current = '' } = Astro.props;
 const t = makeT(lang);
 const path = Astro.url.pathname;
-const wa = whatsappLink() ?? href(lang, 'contact');
-const tg = telegramLink() ?? href(lang, 'contact');
+const wa = whatsappLink();
+const tg = telegramLink();
+const main = mainBranch();
+const mainPhone = main.phones[0];
 
 // Rates come from the Central Bank of Armenia via /api/rates (see src/lib/cba.js).
 const currencies = [['AMD', '֏'], ['USD', '$'], ['EUR', '€'], ['RUB', '₽']];
@@ -46,7 +47,8 @@ const hotels = ['3★', '4★', '5★'];
 </head>
 <body
   data-lang={lang}
-  data-wa={wa}
+  data-fallback-href={telHref(mainPhone)}
+  data-fallback-label={mainPhone}
   data-msg-sending={t('form.sending')}
   data-msg-ok={t('form.ok')}
   data-msg-error={t('form.error')}
@@ -55,14 +57,12 @@ const hotels = ['3★', '4★', '5★'];
   <div class="topbar">
     <div class="container">
       <div class="topbar-group">
-        {site.phones.map((p, i) => (
-          p.startsWith('[PLACEHOLDER') ? <span><Ph text={p} /></span> : <a href={`tel:${p.replace(/[^\d+]/g, '')}`} class={i > 0 ? 'hide-sm' : ''}>{p}</a>
-        ))}
-        <span>{pick(site.address, lang)}</span>
+        {main.phones.slice(0, 2).map((p, i) => <a href={telHref(p)} class={i > 0 ? 'hide-sm' : ''}>{p}</a>)}
+        <span class="hide-sm">{pick(main.address, lang)}</span>
       </div>
       <div class="topbar-group">
-        <a href={wa}>WhatsApp</a>
-        <a href={tg}>Telegram</a>
+        {wa && <a href={wa}>WhatsApp</a>}
+        {tg && <a href={tg} rel="noopener" target="_blank">Telegram</a>}
         <span class="sep" aria-hidden="true">|</span>
         <nav class="switch" aria-label={t('nav.language')}>
           {LOCALES.map((l) => <a href={switchLocale(path, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : 'false'} title={LOCALE_NAMES[l]}>{LOCALE_LABELS[l]}</a>)}
@@ -100,7 +100,6 @@ const hotels = ['3★', '4★', '5★'];
       <div class="footer-top">
         <div class="footer-news">
           <h2>{t('footer.newsletter')}</h2>
-          <p class="muted" style="margin: 0; color: #a3aec0"><Ph text={t('footer.newsletter_note')} /></p>
           <form data-lead="newsletter" novalidate>
             <label class="visually-hidden" for="newsletter-email">{t('field.email_required')}</label>
             <input id="newsletter-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
@@ -135,7 +134,7 @@ const hotels = ['3★', '4★', '5★'];
         </div>
       </div>
       <div class="footer-bottom">
-        <span>King Travel · {pick(site.address, lang)} · <Ph text={pick(site.hours, lang)} /> · {t('footer.licence')} <Ph text={site.licence} /></span>
+        <span>King Travel · {site.branches.map((b) => pick(b.address, lang)).join(' · ')} · {pick(main.hours, lang)}</span>
         <span>© {new Date().getFullYear()} King Travel</span>
       </div>
     </div>
@@ -144,9 +143,9 @@ const hotels = ['3★', '4★', '5★'];
   <aside class="widget" aria-label={t('widget.title')}>
     <div class="widget-title">{t('widget.title')}</div>
     <div class="widget-row">
-      <a class="w-wa" href={wa}>WhatsApp</a>
-      <a class="w-tg" href={tg}>Telegram</a>
-      <button type="button" class="w-call" data-open-dialog="callback">{t('widget.call')}</button>
+      {wa && <a class="w-wa" href={wa}>WhatsApp</a>}
+      {tg && <a class="w-tg" href={tg} rel="noopener" target="_blank">Telegram</a>}
+      <a class="w-call" href={telHref(mainPhone)}>{t('widget.call')}</a>
     </div>
   </aside>
 

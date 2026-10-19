@@ -93,7 +93,7 @@ const typesEn = makeT('en')('builder.types');
   </section>
 
   <section class="section bento" style="padding-top: 72px">
-    <Reviews lang={lang} />
-    <Faq lang={lang} class="span-2" />
+    {site.reviews?.items?.length > 0 && <Reviews lang={lang} />}
+    <Faq lang={lang} class={site.reviews?.items?.length > 0 ? 'span-2' : 'span-all'} />
   </section>
 </Base>

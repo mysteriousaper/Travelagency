@@ -140,6 +140,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 /* Bento grid */
 .bento { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; padding-top: 16px; }
 .span-2 { grid-column: span 2; min-width: 0; }
+.span-all { grid-column: 1 / -1; min-width: 0; }
 @media (max-width: 760px) { .span-2 { grid-column: auto; } }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .grow { flex: 1; }

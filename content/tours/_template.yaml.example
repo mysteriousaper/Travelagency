@@ -11,9 +11,9 @@ image_credit_url: ""
 name: { en: "", hy: "", ru: "" }
 country: { en: "", hy: "", ru: "" }
 description: { en: "", hy: "", ru: "" }
-flight: "[PLACEHOLDER: direct or connecting from Zvartnots, and flight time]"
-visa: "[PLACEHOLDER: entry rules for Armenian passports]"
-best_months: "[PLACEHOLDER: your recommendation]"
-nights: "[PLACEHOLDER: typical length, e.g. 7 nights]"
-includes: "[PLACEHOLDER: what the package includes]"
+flight: ""
+visa: ""
+best_months: ""
+nights: ""           # optional, e.g. { en: "7 nights", hy: "7 գիշեր", ru: "7 ночей" }
+includes: ""         # optional
 price_from_amd:      # a number like 450000, or leave empty for "Price on request"
