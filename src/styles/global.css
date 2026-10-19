@@ -116,6 +116,10 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .hero-main { flex: 1 1 520px; background: var(--card); border-radius: var(--radius); padding: 44px; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
 .hero-main h1 { font-size: 52px; line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; }
 .hero-main h1 em { font-style: normal; color: var(--amber-ink); }
+/* Armenian headline: serif, light first half, bold second half on its own line. The site's
+   tight Latin letter-spacing squeezes Armenian letters, so it is reset here. */
+.hero-main h1:lang(hy) { font-family: 'Noto Serif Armenian', 'Noto Sans Armenian', serif; font-weight: 400; letter-spacing: 0; line-height: 1.14; text-wrap: balance; }
+.hero-main h1:lang(hy) em { display: block; font-weight: 700; }
 .hero-lead { margin: 0; font-size: 17px; color: var(--muted); max-width: 540px; }
 /* On laptops and desktops the first screen fits the window and keeps the same height in every language. */
 @media (min-width: 1101px) {
