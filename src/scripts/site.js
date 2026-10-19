@@ -245,9 +245,9 @@ $$('form[data-lead]').forEach((form) => {
   });
 });
 
-/* Currency switch for "from" prices (rates come from content/site.yaml) */
-const rates = JSON.parse($('#rates')?.textContent || '{}');
+/* Currency switch for "from" prices. Rates: Central Bank of Armenia, via /api/rates */
 const currencyButtons = $$('[data-currency]');
+let rates = {};
 function showPrices(code) {
   const rate = code === 'AMD' ? 1 : rates[code];
   if (!rate) return;
@@ -261,7 +261,20 @@ currencyButtons.forEach((b) => b.addEventListener('click', () => {
   storageSet('kt-currency', b.dataset.currency);
   showPrices(b.dataset.currency);
 }));
-showPrices(storageGet('kt-currency') || 'AMD');
+if (currencyButtons.length) {
+  fetch('/api/rates')
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
+      rates = data.rates || {};
+      const note = data.date ? `${data.source}, ${new Date(data.date).toLocaleDateString(lang)}` : data.source;
+      currencyButtons.forEach((b) => {
+        if (b.dataset.currency === 'AMD' || rates[b.dataset.currency]) b.disabled = false;
+        if (rates[b.dataset.currency]) b.title = `1 ${b.dataset.currency} = ${rates[b.dataset.currency]} AMD (${note})`;
+      });
+      showPrices(storageGet('kt-currency') || 'AMD');
+    })
+    .catch(() => { /* rates unavailable: prices stay in dram */ });
+}
 
 /* Remember the chosen language for the next visit to the root address */
 storageSet('kt-lang', lang);

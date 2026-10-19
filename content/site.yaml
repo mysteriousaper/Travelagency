@@ -51,12 +51,8 @@ office:
   times: ["10:00", "11:30", "13:00", "14:30", "16:00", "17:30"]
   days_ahead: 6
 
-# How many dram one unit is worth. Fill these in to let visitors switch
-# prices to $, € or ₽. Currencies left empty are hidden from the switcher.
-currency_rates_amd:
-  USD:
-  EUR:
-  RUB:
+# Exchange rates for the $ / € / ₽ price switch come automatically from the
+# Central Bank of Armenia (official daily rates), refreshed every hour.
 
 # Set to false to hide the social package tile, footer link and FAQ entry.
 social_packages_enabled: true

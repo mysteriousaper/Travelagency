@@ -43,7 +43,7 @@ Anything still written as `[PLACEHOLDER: ...]` shows on the site with a yellow h
 
 | File | What's in it |
 |---|---|
-| `content/site.yaml` | Phones, WhatsApp, Telegram, email, address, hours, licence, social links, reviews, office visit times, currency rates |
+| `content/site.yaml` | Phones, WhatsApp, Telegram, email, address, hours, licence, social links, reviews, office visit times |
 | `content/tours/*.yaml` | One file per destination: name, description, photo, flight, visa, price |
 | `content/visas.yaml` | Visa document checklists |
 | `content/faq.yaml` | Questions and answers |
@@ -51,7 +51,7 @@ Anything still written as `[PLACEHOLDER: ...]` shows on the site with a yellow h
 
 **Add a destination:** copy `content/tours/_template.yaml.example` to `content/tours/<name>.yaml` and fill it in. Put its photo in `public/images/tours/`. It then appears automatically in the tour list, search, footer and its own page.
 
-**Prices:** set `price_from_amd: 450000` in a tour file. Leave it empty to show "Price on request". To let visitors switch to $, € or ₽, fill in `currency_rates_amd` in `site.yaml` (dram per one unit).
+**Prices:** set `price_from_amd: 450000` in a tour file. Leave it empty to show "Price on request". Visitors can switch prices to $, € or ₽. The site converts them with the official rates of the Central Bank of Armenia, which it fetches automatically every hour.
 
 After editing, rebuild and redeploy (`npm run build`). If the site is connected to the repository on a host like Render, pushing the change is enough.
 
@@ -76,5 +76,6 @@ The Sharm El Sheikh, Dubai, Paris, Venice and flight photos are Unsplash stock i
 - [Astro](https://astro.build) 5. Pages are built from `src/pages/[lang]/...` for each language.
 - `src/lib/content.js` loads the YAML files and `src/lib/i18n.js` handles the languages.
 - `src/lib/lead.js` checks requests and formats the Telegram message (covered by `tests/`).
+- `src/pages/api/rates.js` serves the Central Bank of Armenia rates (fetched by `src/lib/cba.js`, cached for an hour).
 - `src/pages/api/lead.js` is the form endpoint. It has a hidden bot trap, a size limit and a simple per-visitor rate limit.
 - `src/scripts/site.js` is the browser script for tabs, chips, the request dialog, office slots, the currency switch and form sending.

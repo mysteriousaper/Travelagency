@@ -11,10 +11,8 @@ const path = Astro.url.pathname;
 const wa = whatsappLink() ?? href(lang, 'contact');
 const tg = telegramLink() ?? href(lang, 'contact');
 
-const rates = Object.fromEntries(
-  Object.entries(site.currency_rates_amd ?? {}).filter(([, v]) => typeof v === 'number' && v > 0),
-);
-const currencies = [['AMD', '֏'], ['USD', '$'], ['EUR', '€'], ['RUB', '₽']].filter(([c]) => c === 'AMD' || rates[c]);
+// Rates come from the Central Bank of Armenia via /api/rates (see src/lib/cba.js).
+const currencies = [['AMD', '֏'], ['USD', '$'], ['EUR', '€'], ['RUB', '₽']];
 
 const nav = [
   ['home', '', t('nav.home')],
@@ -54,8 +52,6 @@ const hotels = ['3★', '4★', '5★'];
   data-msg-error={t('form.error')}
   data-msg-invalid={t('form.invalid')}
 >
-  <script type="application/json" id="rates" set:html={JSON.stringify(rates)} />
-
   <div class="topbar">
     <div class="container">
       <div class="topbar-group">
@@ -71,14 +67,10 @@ const hotels = ['3★', '4★', '5★'];
         <nav class="switch" aria-label={t('nav.language')}>
           {LOCALES.map((l) => <a href={switchLocale(path, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : 'false'} title={LOCALE_NAMES[l]}>{LOCALE_LABELS[l]}</a>)}
         </nav>
-        {currencies.length > 1 && (
-          <>
-            <span class="sep" aria-hidden="true">|</span>
-            <div class="switch" role="group" aria-label={t('nav.currency')}>
-              {currencies.map(([code, sym]) => <button type="button" data-currency={code} aria-pressed={code === 'AMD' ? 'true' : 'false'} aria-label={code}>{sym}</button>)}
-            </div>
-          </>
-        )}
+        <span class="sep" aria-hidden="true">|</span>
+        <div class="switch" role="group" aria-label={t('nav.currency')} data-currency-switch>
+          {currencies.map(([code, sym]) => <button type="button" data-currency={code} aria-pressed={code === 'AMD' ? 'true' : 'false'} aria-label={code} disabled={code !== 'AMD'}>{sym}</button>)}
+        </div>
       </div>
     </div>
   </div>

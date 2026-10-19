@@ -43,6 +43,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 .topbar-group { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
 .topbar .sep { color: #475569; }
 .switch { display: flex; gap: 2px; align-items: center; }
+.switch button:disabled { opacity: 0.4; cursor: default; }
 .switch a, .switch button { padding: 3px 8px; border-radius: 6px; border: 0; background: transparent; color: #cbd5e1; font-size: 12px; font-weight: 700; }
 .switch [aria-current="true"], .switch [aria-pressed="true"] { background: var(--amber); color: var(--navy); }
 
