@@ -10,8 +10,8 @@ const channels = [
 ];
 ---
 <div class="fields">
-  <label class="field">{t('field.name')}<input name="name" required maxlength="100" autocomplete="name" /></label>
-  <label class="field">{t('field.phone')}<input name="phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+374" data-phone /></label>
+  <label class="field">{t.caps('field.name')}<input name="name" required maxlength="100" autocomplete="name" /></label>
+  <label class="field">{t.caps('field.phone')}<input name="phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+374" data-phone /></label>
 </div>
 <fieldset class="reply" data-reply>
   <legend>{t('field.reply_via')}</legend>
@@ -25,7 +25,7 @@ const channels = [
     ))}
   </div>
   <p class="reply-hint" data-reply-hint data-hint-whatsapp={t('field.hint_whatsapp')} data-hint-telegram={t('field.hint_telegram')} data-hint-email={t('field.hint_email')}>{t('field.hint_whatsapp')}</p>
-  <label class="field" data-email-field hidden>{t('field.email_required')}<input name="email" type="email" maxlength="120" autocomplete="email" /></label>
+  <label class="field" data-email-field hidden>{t.caps('field.email_required')}<input name="email" type="email" maxlength="120" autocomplete="email" /></label>
 </fieldset>
 <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 <p class="form-status" data-status role="status" aria-live="polite"></p>

@@ -20,18 +20,18 @@ const travellers = t('field.travellers_options');
   <div class="split">
     <form class="card stack" data-lead="flight" novalidate>
       <div class="fields">
-        <label class="field">{t('field.from')}<input name="from" value="Yerevan (EVN)" maxlength="60" data-detail="From" required /></label>
-        <label class="field">{t('field.to')}
+        <label class="field">{t.caps('field.from')}<input name="from" value="Yerevan (EVN)" maxlength="60" data-detail="From" required /></label>
+        <label class="field">{t.caps('field.to')}
           <input name="to" list="destinations" maxlength="60" data-detail="To" required />
           <datalist id="destinations">{tours.map((x) => <option value={`${pick(x.name, lang)} (${x.code})`} />)}</datalist>
         </label>
-        <label class="field">{t('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
-        <label class="field">{t('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
-        <label class="field">{t('field.passengers')}
+        <label class="field">{t.caps('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
+        <label class="field">{t.caps('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
+        <label class="field">{t.caps('field.passengers')}
           <select name="passengers" data-detail="Passengers">{travellers.map((o) => <option>{o}</option>)}</select>
         </label>
       </div>
-      <label class="field">{t('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
+      <label class="field">{t.caps('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
       <ContactFields lang={lang} />
       <button type="submit" class="btn btn-amber">{t('search.submit_flights')}</button>
       <p class="search-note">{t('search.free_note')}</p>

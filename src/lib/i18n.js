@@ -1,4 +1,5 @@
 import { ui, site } from './content.js';
+import { caps } from './caps.js';
 
 export const LOCALES = ['hy', 'en', 'ru'];
 export const DEFAULT_LOCALE = 'hy';
@@ -15,11 +16,13 @@ export function pick(value, lang) {
 }
 
 export function makeT(lang) {
-  return (key) => {
+  const t = (key) => {
     const value = key.split('.').reduce((node, part) => node?.[part], ui);
     if (value === undefined) throw new Error(`Missing text "${key}" in content/ui.yaml`);
     return pick(value, lang);
   };
+  t.caps = (key) => caps(t(key));
+  return t;
 }
 
 export function href(lang, path = '') {

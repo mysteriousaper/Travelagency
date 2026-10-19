@@ -23,16 +23,16 @@ const t = makeT(lang);
     <form class="card stack" data-lead="visa" novalidate>
       <h2>{t('visa.book')}</h2>
       <div class="fields">
-        <label class="field">{t('field.country')}
+        <label class="field">{t.caps('field.country')}
           <select name="country" data-detail="Visa for">{visas.map((v) => <option value={pick(v.name, 'en')}>{pick(v.name, lang)}</option>)}</select>
         </label>
-        <label class="field">{t('field.purpose')}
+        <label class="field">{t.caps('field.purpose')}
           <select name="purpose" data-detail="Purpose">{t('field.purpose_options').map((o) => <option>{o}</option>)}</select>
         </label>
-        <label class="field">{t('field.work')}
+        <label class="field">{t.caps('field.work')}
           <select name="work" data-detail="Work">{t('field.work_options').map((o) => <option>{o}</option>)}</select>
         </label>
-        <label class="field">{t('field.month')}
+        <label class="field">{t.caps('field.month')}
           <select name="month" data-detail="Travel month"><option>{t('field.not_sure')}</option>{monthNames(lang).map((m) => <option>{m}</option>)}</select>
         </label>
       </div>

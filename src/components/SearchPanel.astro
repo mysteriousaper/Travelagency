@@ -22,22 +22,22 @@ const tabs = [
 
   <form id="panel-tours" role="tabpanel" aria-labelledby="tab-tours" data-search="quote" novalidate>
     <div class="fields">
-      <label class="field">{t('field.destination')}
+      <label class="field">{t.caps('field.destination')}
         <select name="destination" data-detail="Destination">
           {tours.map((x) => <option value={pick(x.name, 'en')}>{pick(x.name, lang)}</option>)}
           <option value="Other">{t('field.other')}</option>
         </select>
       </label>
-      <label class="field">{t('field.month')}
+      <label class="field">{t.caps('field.month')}
         <select name="month" data-detail="Month">
           <option>{t('field.not_sure')}</option>
           {months.map((m) => <option>{m}</option>)}
         </select>
       </label>
-      <label class="field">{t('field.travellers')}
+      <label class="field">{t.caps('field.travellers')}
         <select name="travellers" data-detail="Travellers">{travellers.map((o) => <option>{o}</option>)}</select>
       </label>
-      <label class="field">{t('field.hotel')}
+      <label class="field">{t.caps('field.hotel')}
         <select name="hotel" data-detail="Hotel">{hotels.map((o) => <option>{o}</option>)}</select>
       </label>
     </div>
@@ -46,16 +46,16 @@ const tabs = [
 
   <form id="panel-visa" role="tabpanel" aria-labelledby="tab-visa" data-search="visa" novalidate hidden>
     <div class="fields">
-      <label class="field">{t('field.country')}
+      <label class="field">{t.caps('field.country')}
         <select name="country" data-detail="Visa for">{visas.map((v) => <option value={pick(v.name, 'en')}>{pick(v.name, lang)}</option>)}</select>
       </label>
-      <label class="field">{t('field.purpose')}
+      <label class="field">{t.caps('field.purpose')}
         <select name="purpose" data-detail="Purpose">{t('field.purpose_options').map((o) => <option>{o}</option>)}</select>
       </label>
-      <label class="field">{t('field.work')}
+      <label class="field">{t.caps('field.work')}
         <select name="work" data-detail="Work">{t('field.work_options').map((o) => <option>{o}</option>)}</select>
       </label>
-      <label class="field">{t('field.month')}
+      <label class="field">{t.caps('field.month')}
         <select name="month" data-detail="Travel month">
           <option>{t('field.not_sure')}</option>
           {months.map((m) => <option>{m}</option>)}
@@ -67,15 +67,15 @@ const tabs = [
 
   <form id="panel-flights" role="tabpanel" aria-labelledby="tab-flights" data-search="flight" novalidate hidden>
     <div class="fields">
-      <label class="field">{t('field.to')}
+      <label class="field">{t.caps('field.to')}
         <select name="to" data-detail="To (from Yerevan EVN)">
           {tours.map((x) => <option value={`${pick(x.name, 'en')} (${x.code})`}>{pick(x.name, lang)} ({x.code})</option>)}
           <option value="Other">{t('field.other')}</option>
         </select>
       </label>
-      <label class="field">{t('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
-      <label class="field">{t('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
-      <label class="field">{t('field.passengers')}
+      <label class="field">{t.caps('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
+      <label class="field">{t.caps('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
+      <label class="field">{t.caps('field.passengers')}
         <select name="passengers" data-detail="Passengers">{travellers.map((o) => <option>{o}</option>)}</select>
       </label>
     </div>

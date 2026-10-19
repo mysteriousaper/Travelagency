@@ -188,14 +188,14 @@ const hotels = ['3★', '4★', '5★'];
       <input type="hidden" name="context" data-detail="Request" />
       <div data-only="quote" class="stack" style="gap: 10px">
         <div class="fields">
-          <label class="field">{t('field.destination')}
+          <label class="field">{t.caps('field.destination')}
             <select name="destination" data-detail="Destination">
               {tours.map((x) => <option value={pick(x.name, 'en')}>{pick(x.name, lang)}</option>)}
               <option value="Other">{t('field.other')}</option>
             </select>
           </label>
-          <label class="field">{t('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
-          <label class="field">{t('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
+          <label class="field">{t.caps('field.depart')}<input type="date" name="depart" data-detail="Leave" /></label>
+          <label class="field">{t.caps('field.return')}<input type="date" name="return" data-detail="Come back" /></label>
         </div>
         <fieldset class="chips" data-chips="hotel">
           <legend>{t('field.hotel')}</legend>
@@ -203,7 +203,7 @@ const hotels = ['3★', '4★', '5★'];
           <input type="hidden" name="hotel" value="4★" data-detail="Hotel" />
         </fieldset>
       </div>
-      <label class="field" data-only="quote visa booking flight">{t('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
+      <label class="field" data-only="quote visa booking flight">{t.caps('field.notes')}<textarea name="notes" rows="3" maxlength="500" data-detail="Notes"></textarea></label>
       <ContactFields lang={lang} />
       <button type="submit" class="btn btn-amber btn-block">{t('form.send')}</button>
       <p class="search-note">{t('search.free_note')}</p>
