@@ -7,13 +7,18 @@ import { fromPrice, offersOf } from '../lib/price.js';
 const { lang, headingLevel = 'h2', showHeading = true } = Astro.props;
 const t = makeT(lang);
 const Heading = headingLevel;
+const tagsOf = (tour) => [tour.kind, tour.visa_free && 'visa-free'].filter(Boolean);
+// A filter only shows up when it narrows the list: it must match some tours but not all of them.
 const filters = [
   ['all', t('tours.all')],
-  ['sea', t('tours.region_sea')],
-  ['gulf', t('tours.region_gulf')],
-  ['europe', t('tours.region_europe')],
-  ['caucasus', t('tours.region_caucasus')],
-].filter(([key]) => key === 'all' || tours.some((x) => x.region === key));
+  ['beach', t('tours.filter_beach')],
+  ['city', t('tours.filter_city')],
+  ['visa-free', t('tours.filter_visa_free')],
+].filter(([key]) => {
+  if (key === 'all') return true;
+  const n = tours.filter((x) => tagsOf(x).includes(key)).length;
+  return n > 0 && n < tours.length;
+});
 ---
 <div data-filter-root>
   <div class="section-head">
@@ -29,7 +34,7 @@ const filters = [
       const price = fromPrice(tour);
       const first = offersOf(tour)[0];
       return (
-        <article class="tour-card" data-region={tour.region}>
+        <article class="tour-card" data-tags={tagsOf(tour).join(' ')}>
           <a class="tour-card-img" href={href(lang, `tours/${tour.slug}`)} tabindex="-1" aria-hidden="true">
             {tour.image
               ? <img src={tour.image} alt="" loading="lazy" width="600" height="440" />

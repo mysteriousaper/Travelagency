@@ -19,7 +19,7 @@ export const faq = load('faq').items.filter((item) => !item.social || site.socia
 export const tours = Object.entries(tourFiles)
   .map(([path, raw]) => {
     const tour = parse(raw);
-    for (const key of ['slug', 'region', 'name']) {
+    for (const key of ['slug', 'kind', 'name']) {
       if (!tour[key]) throw new Error(`${path}: "${key}" is required`);
     }
     return tour;

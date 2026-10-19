@@ -1,6 +1,7 @@
 slug: prague
 order: 9
-region: europe
+kind: city
+visa_free: false
 code: PRG
 image: "/images/tours/prague.jpg"
 image_alt: { en: "Charles Bridge and the Vltava river in Prague", hy: "Կարլի կամուրջը և Վլտավա գետը Պրահայում", ru: "Карлов мост и Влтава в Праге" }

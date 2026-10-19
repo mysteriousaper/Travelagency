@@ -24,8 +24,8 @@ const nav = [
   ['flights', 'flights', t('nav.flights')],
   ['contact', 'contact', t('nav.contact')],
 ];
-const seaTours = tours.filter((x) => x.region === 'sea' || x.region === 'gulf');
-const euTours = tours.filter((x) => x.region === 'europe' || x.region === 'caucasus');
+const seaTours = tours.filter((x) => x.kind === 'beach');
+const cityTours = tours.filter((x) => x.kind === 'city');
 const social = Object.entries(site.social ?? {}).filter(([, url]) => url);
 const socialNames = { instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', telegram: 'Telegram', youtube: 'YouTube' };
 const hotels = ['3★', '4★', '5★'];
@@ -122,8 +122,8 @@ const hotels = ['3★', '4★', '5★'];
             {seaTours.map((x) => <a href={href(lang, `tours/${x.slug}`)}>{pick(x.name, lang)}</a>)}
           </div>
           <div>
-            <strong>{t('hero.card_europe')}</strong>
-            {euTours.map((x) => <a href={href(lang, `tours/${x.slug}`)}>{pick(x.name, lang)}</a>)}
+            <strong>{t('hero.card_city')}</strong>
+            {cityTours.map((x) => <a href={href(lang, `tours/${x.slug}`)}>{pick(x.name, lang)}</a>)}
           </div>
           <div>
             <strong>{t('footer.services')}</strong>

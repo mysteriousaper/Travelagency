@@ -1,6 +1,7 @@
 slug: doha
 order: 2
-region: gulf
+kind: beach
+visa_free: true
 code: DOH
 image: "/images/tours/doha.jpg"
 image_alt: { en: "Souq Waqif market in Doha", hy: "Սուկ Վակիֆ շուկան Դոհայում", ru: "Рынок Сук-Вакиф в Дохе" }

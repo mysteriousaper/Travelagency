@@ -1,6 +1,7 @@
 slug: sharm-el-sheikh
 order: 1
-region: sea
+kind: beach
+visa_free: false
 code: SSH
 image: /images/tours/sharm-el-sheikh.jpg
 image_alt:

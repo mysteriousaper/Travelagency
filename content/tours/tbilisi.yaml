@@ -1,6 +1,7 @@
 slug: tbilisi
 order: 4
-region: caucasus
+kind: city
+visa_free: true
 code: TBS
 image: "/images/tours/tbilisi.jpg"
 image_alt: { en: "Tbilisi seen from the Narikala fortress", hy: "Թբիլիսին Նարիկալա ամրոցից", ru: "Тбилиси с крепости Нарикала" }

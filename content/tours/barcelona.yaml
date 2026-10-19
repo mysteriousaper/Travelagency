@@ -1,6 +1,7 @@
 slug: barcelona
 order: 10
-region: europe
+kind: city
+visa_free: false
 code: BCN
 image: "/images/tours/barcelona.jpg"
 image_alt: { en: "The ceiling of the Sagrada Família in Barcelona", hy: "Սագրադա Ֆամիլիայի առաստաղը Բարսելոնայում", ru: "Своды Саграда Фамилии в Барселоне" }

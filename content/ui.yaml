@@ -46,7 +46,7 @@ hero:
     hy: "Հանգստի փաթեթներ դեպի Շարմ էլ Շեյխ, Դուբայ, Դոհա և Եվրոպայի քաղաքներ։ Մենք նաև զբաղվում ենք վիզաներով և ավիատոմսերով։ Գրեք WhatsApp-ով, և ձեզ կպատասխանի մեր գրասենյակի աշխատակիցը։"
     ru: "Пакетные туры в Шарм-эль-Шейх, Дубай, Доху и города Европы. Также оформляем визы и авиабилеты. Напишите в WhatsApp, и вам ответит сотрудник нашего офиса."
   card_sea: { en: "Sun & Sea", hy: "Արև և ծով", ru: "Солнце и море" }
-  card_europe: { en: "Europe & Georgia", hy: "Եվրոպա և Վրաստան", ru: "Европа и Грузия" }
+  card_city: { en: "City breaks", hy: "Քաղաքներ", ru: "Города" }
 
 search:
   label: { en: "Search", hy: "Որոնում", ru: "Поиск" }
@@ -162,10 +162,9 @@ tours:
   title: { en: "Tours", hy: "Տուրեր", ru: "Туры" }
   subtitle: { en: "from Zvartnots", hy: "«Զվարթնոց»-ից", ru: "из Звартноца" }
   all: { en: "All", hy: "Բոլորը", ru: "Все" }
-  region_sea: { en: "Red Sea", hy: "Կարմիր ծով", ru: "Красное море" }
-  region_gulf: { en: "Gulf", hy: "Պարսից ծոց", ru: "Персидский залив" }
-  region_europe: { en: "Europe", hy: "Եվրոպա", ru: "Европа" }
-  region_caucasus: { en: "Georgia", hy: "Վրաստան", ru: "Грузия" }
+  filter_beach: { en: "Sea", hy: "Ծով", ru: "Море" }
+  filter_city: { en: "Cities", hy: "Քաղաքներ", ru: "Города" }
+  filter_visa_free: { en: "No visa", hy: "Առանց վիզայի", ru: "Без визы" }
   from: { en: "from", hy: "սկսած", ru: "от" }
   ask_price: { en: "Price on request", hy: "Գինը՝ ըստ հարցման", ru: "Цена по запросу" }
   offers: { en: "Current offers", hy: "Ընթացիկ առաջարկներ", ru: "Актуальные предложения" }

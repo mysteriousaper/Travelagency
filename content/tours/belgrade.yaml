@@ -1,6 +1,7 @@
 slug: belgrade
 order: 3
-region: europe
+kind: city
+visa_free: true
 code: BEG
 image: "/images/tours/belgrade.jpg"
 image_alt: { en: "Inside the Temple of Saint Sava in Belgrade", hy: "Սուրբ Սավա տաճարի ներսը Բելգրադում", ru: "Внутри храма Святого Саввы в Белграде" }

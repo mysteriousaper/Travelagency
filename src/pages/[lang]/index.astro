@@ -16,8 +16,8 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = makeT(lang);
-const seaNames = tours.filter((x) => x.region === 'sea' || x.region === 'gulf').map((x) => pick(x.name, lang));
-const euNames = tours.filter((x) => x.region === 'europe' || x.region === 'caucasus').map((x) => pick(x.name, lang));
+const seaNames = tours.filter((x) => x.kind === 'beach').map((x) => pick(x.name, lang));
+const cityNames = tours.filter((x) => x.kind === 'city').map((x) => pick(x.name, lang));
 const list = new Intl.ListFormat(lang, { style: 'long', type: 'conjunction' });
 const types = t('builder.types');
 const typesEn = makeT('en')('builder.types');
@@ -36,7 +36,7 @@ const typesEn = makeT('en')('builder.types');
       </a>
       <a class="hero-card" href={href(lang, 'tours')}>
         <img src="/images/tours/paris.jpg" alt="" loading="lazy" />
-        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_europe')}</span><span class="hero-card-title">{list.format(euNames)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_europe')}</span><span class="hero-card-title">{list.format(euNames)}</span></span></span>
+        <span class="hero-card-text"><span class="t-wide"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{list.format(cityNames)}</span></span><span class="t-narrow" aria-hidden="true"><span class="eyebrow">{t.caps('hero.card_city')}</span><span class="hero-card-title">{list.format(cityNames)}</span></span></span>
       </a>
     </div>
   </section>

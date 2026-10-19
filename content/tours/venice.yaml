@@ -1,6 +1,7 @@
 slug: venice
 order: 8
-region: europe
+kind: city
+visa_free: false
 code: VCE
 image: "/images/tours/venice.jpg"
 image_alt: { en: "Boats on the Grand Canal in Venice", hy: "Նավակներ Վենետիկի Մեծ ջրանցքում", ru: "Лодки на Большом канале в Венеции" }

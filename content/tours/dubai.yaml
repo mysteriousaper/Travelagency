@@ -1,6 +1,7 @@
 slug: dubai
 order: 5
-region: gulf
+kind: beach
+visa_free: true
 code: DXB
 image: /images/tours/dubai.jpg
 image_alt:

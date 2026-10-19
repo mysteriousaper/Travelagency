@@ -238,8 +238,8 @@ $$('[data-filter-root]').forEach((root) => {
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      const region = btn.dataset.filter;
-      $$('[data-region]', root).forEach((card) => { card.hidden = region !== 'all' && card.dataset.region !== region; });
+      const tag = btn.dataset.filter;
+      $$('[data-tags]', root).forEach((card) => { card.hidden = tag !== 'all' && !card.dataset.tags.split(' ').includes(tag); });
     });
   });
 });

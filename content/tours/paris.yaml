@@ -1,6 +1,7 @@
 slug: paris
 order: 6
-region: europe
+kind: city
+visa_free: false
 code: CDG
 image: "/images/tours/paris.jpg"
 image_alt: { en: "Pont Alexandre III in Paris at dusk", hy: "Ալեքսանդր III կամուրջը Փարիզում մթնշաղին", ru: "Мост Александра III в Париже в сумерках" }

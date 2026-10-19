@@ -2,7 +2,8 @@
 # used; "slug" decides the page address, e.g. /en/tours/antalya/.
 slug: example
 order: 99            # lower numbers come first
-region: sea          # sea (Red Sea) | gulf | europe | caucasus
+kind: beach          # beach (sea holiday) | city (city trip)
+visa_free: false     # true only if Armenian passport holders need no visa at all (visa on arrival = false)
 code: XXX            # airport code shown on the card
 image: ""            # e.g. /images/tours/example.jpg (put the file in public/images/tours/)
 image_alt: { en: "", hy: "", ru: "" }

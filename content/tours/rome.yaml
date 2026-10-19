@@ -1,6 +1,7 @@
 slug: rome
 order: 7
-region: europe
+kind: city
+visa_free: false
 code: FCO
 image: "/images/tours/rome.jpg"
 image_alt: { en: "The Colosseum in Rome at dusk", hy: "Կոլիզեումը Հռոմում մթնշաղին", ru: "Колизей в Риме в сумерках" }
